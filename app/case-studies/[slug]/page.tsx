@@ -295,13 +295,13 @@ const caseStudies: Record<string, any> = {
   },
   "sandalwood-memorials": {
     title: "Sandalwood Memorials",
-    subtitle: "Hybrid Headless Platform — Next.js, WordPress & 3D Memorial Rendering",
+    subtitle: "Hybrid Headless Platform: Next.js, WordPress & 3D Memorial Rendering",
     client: "Sandalwood Memorials",
     category: "Hybrid Headless E-Commerce",
     duration: "6 weeks",
     year: "2024",
     challenge:
-      "Sandalwood Memorials, a bespoke memorial masons serving families across London and the UK, needed to blend the best of two worlds: the familiarity of WordPress and WooCommerce for their sales team to manage products, inventory, and enquiries day-to-day, with the speed and polish of a modern, conversion-focused storefront. Families grieving loved ones often couldn't visualise custom designs before committing—static photos weren't enough. Competitors were winning online with faster sites and clearer journeys. Sandalwood's premium craftsmanship and 25 years of experience deserved a digital presence that felt as refined as their work.",
+      "Sandalwood Memorials, a bespoke memorial masons serving families across London and the UK, needed to blend the best of two worlds: the familiarity of WordPress and WooCommerce for their sales team to manage products, inventory, and enquiries day-to-day, with the speed and polish of a modern, conversion-focused storefront. Families grieving loved ones often couldn't visualise custom designs before committing; static photos weren't enough. Competitors were winning online with faster sites and clearer journeys. Sandalwood's premium craftsmanship and 25 years of experience deserved a digital presence that felt as refined as their work.",
     challenges: [
       "Sales team needed a familiar CMS to manage products, categories, and enquiries without developer involvement",
       "Families couldn't visualise bespoke memorial designs before ordering",
@@ -310,7 +310,7 @@ const caseStudies: Record<string, any> = {
       "Need to showcase granite options, shapes, inscriptions, and grave decorations in a dignified, accessible way",
     ],
     solution:
-      "We architected a hybrid headless platform that delivers the best of both worlds. WordPress and WooCommerce power the backend—familiar, flexible, and fully under the sales team's control for product management, pricing, and order handling. Next.js drives the customer-facing site, delivering server-side rendering, blazing-fast page loads, and exceptional Core Web Vitals. We connected the two via GraphQL using WPGraphQL and WooGraphQL, so the Next.js front-end fetches only the data it needs—products, categories, custom fields, media—without the bloat of traditional REST. The standout feature: an immersive 3D memorial renderer built with Three.js. Families can explore headstones, plaques, and monuments in real time, swap stone colours, preview inscriptions, and understand scale before requesting a brochure or enquiry. The design is compassionate and elegant—serene photography, warm typography, clear CTAs for 'Our Memorials', 'Request Brochure', and 'Enquire', with WhatsApp for instant support. The result is a site that feels premium and performant whilst giving the team full control behind the scenes.",
+      "We architected a hybrid headless platform that delivers the best of both worlds. WordPress and WooCommerce power the backend, familiar, flexible, and fully under the sales team's control for product management, pricing, and order handling. Next.js drives the customer-facing site, delivering server-side rendering, blazing-fast page loads, and exceptional Core Web Vitals. We connected the two via GraphQL using WPGraphQL and WooGraphQL, so the Next.js front-end fetches only the data it needs (products, categories, custom fields, media) without the bloat of traditional REST. The standout feature: an immersive 3D memorial renderer built with Three.js. Families can explore headstones, plaques, and monuments in real time, swap stone colours, preview inscriptions, and understand scale before requesting a brochure or enquiry. The design is compassionate and elegant: serene photography, warm typography, clear CTAs for 'Our Memorials', 'Request Brochure', and 'Enquire', with WhatsApp for instant support. The result is a site that feels premium and performant whilst giving the team full control behind the scenes.",
     solutionPhases: [
       {
         title: "Hybrid Architecture",
@@ -333,7 +333,7 @@ const caseStudies: Record<string, any> = {
         points: [
           "Developed interactive 3D visualisation for headstones, plaques, urns, and benches",
           "Real-time preview of stone types, colours, shapes, and inscription text",
-          "Families visualise their bespoke design before enquiry—reducing hesitation and improving conversion",
+          "Families visualise their bespoke design before enquiry, reducing hesitation and improving conversion",
         ],
       },
       {
@@ -353,7 +353,7 @@ const caseStudies: Record<string, any> = {
       "Customer Satisfaction": "4.9/5 stars with 94% recommending Sandalwood",
     },
     testimonial: {
-      quote: "The platform gives us the best of both worlds—our team manages everything in WordPress like we're used to, whilst families get a fast, beautiful site. The 3D memorial preview has been a game-changer. Customers can really see what they're choosing.",
+      quote: "The platform gives us the best of both worlds. Our team manages everything in WordPress like we're used to, whilst families get a fast, beautiful site. The 3D memorial preview has been a game-changer. Customers can really see what they're choosing.",
       author: "Sophia Clarke",
       role: "Marketing Manager, Sandalwood Memorials",
     },
@@ -796,7 +796,7 @@ const caseStudies: Record<string, any> = {
     heroImage: "/case-studies/teachers-surgery-landing.png",
     heroImageClass: "object-cover object-top",
     challenge:
-      "The Teacher's Surgery needed a digital home that matched the warmth and purpose of their work — empowering educators, supporting families, and growing a community built on trust. Their previous presence did not reflect the scale of their impact, made it hard for visitors to find support quickly, or showcase their video content and services. As a charitable organisation, every click needed to feel welcoming whilst guiding teachers, parents, and partners toward meaningful action without feeling corporate or cold.",
+      "The Teacher's Surgery needed a digital home that matched the warmth and purpose of their work: empowering educators, supporting families, and growing a community built on trust. Their previous presence did not reflect the scale of their impact, made it hard for visitors to find support quickly, or showcase their video content and services. As a charitable organisation, every click needed to feel welcoming whilst guiding teachers, parents, and partners toward meaningful action without feeling corporate or cold.",
     challenges: [
       "Outdated digital presence that did not reflect community scale or mission",
       "Unclear pathways for teachers and parents seeking support",
@@ -806,7 +806,7 @@ const caseStudies: Record<string, any> = {
       "Fast delivery on a charitable budget without compromising quality",
     ],
     solution:
-      "We designed and built a full Next.js landing experience in one month at theteachersurgery.com. A warm hero introduces their mission — empowering educators and supporting families — with prominent Get Support and Videos pathways. Alternating light and charcoal sections guide visitors through bridging home and school, a Watch & Learn video gallery, education and mentoring services, and a community hub covering parent groups, student mentoring, staff development, and public-sector programmes. Orange script accents, serif headlines, and rounded cards keep the charitable tone approachable without sacrificing clarity. Navigation spans Services, The Team, Videos, Community, and Podcast, with conversion-focused CTAs repeated through the page so teachers, parents, and partners can act quickly on any device.",
+      "We designed and built a full Next.js landing experience in one month at theteachersurgery.com. A warm hero introduces their mission (empowering educators and supporting families) with prominent Get Support and Videos pathways. Alternating light and charcoal sections guide visitors through bridging home and school, a Watch & Learn video gallery, education and mentoring services, and a community hub covering parent groups, student mentoring, staff development, and public-sector programmes. Orange script accents, serif headlines, and rounded cards keep the charitable tone approachable without sacrificing clarity. Navigation spans Services, The Team, Videos, Community, and Podcast, with conversion-focused CTAs repeated through the page so teachers, parents, and partners can act quickly on any device.",
     solutionPhases: [
       {
         title: "Discovery & Positioning",
@@ -851,7 +851,7 @@ const caseStudies: Record<string, any> = {
       "User Experience": "Clear navigation for teachers, parents, and partners on any device",
     },
     testimonial: {
-      quote: "Devora understood our mission from day one. The new site feels like us — warm, clear, and built for the people we serve. Support enquiries are up, and our community finally has a home online that reflects the work we do every day.",
+      quote: "Devora understood our mission from day one. The new site feels like us: warm, clear, and built for the people we serve. Support enquiries are up, and our community finally has a home online that reflects the work we do every day.",
       author: "The Teacher's Surgery Team",
       role: "The Teacher's Surgery",
     },
@@ -1047,7 +1047,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                   <dl className="space-y-5">
                     <div>
                       <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] opacity-70 mb-1">Client</dt>
-                      <dd className={`font-bold ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-foreground"}`}>{caseStudy.client || "—"}</dd>
+                      <dd className={`font-bold ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-foreground"}`}>{caseStudy.client || "N/A"}</dd>
                     </div>
                     {caseStudy.website && (
                       <div>
@@ -1061,11 +1061,11 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                     )}
                     <div>
                       <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] opacity-70 mb-1">Duration</dt>
-                      <dd className={`font-bold ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-foreground"}`}>{caseStudy.duration || "—"}</dd>
+                      <dd className={`font-bold ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-foreground"}`}>{caseStudy.duration || "N/A"}</dd>
                     </div>
                     <div>
                       <dt className="text-[10px] font-semibold uppercase tracking-[0.2em] opacity-70 mb-1">Year</dt>
-                      <dd className={`font-bold ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-foreground"}`}>{caseStudy.year || "—"}</dd>
+                      <dd className={`font-bold ${heroImage || variant === "tech" || variant === "bold" ? "text-white" : "text-foreground"}`}>{caseStudy.year || "N/A"}</dd>
                     </div>
                   </dl>
                 </div>
@@ -1136,7 +1136,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                     <ul className="space-y-3">
                       {phase.points?.map((point: string, pidx: number) => (
                         <li key={pidx} className="text-muted-foreground flex gap-3 text-sm leading-relaxed">
-                          <span className="text-primary mt-1.5 flex-shrink-0">—</span>
+                          <span className="text-primary mt-1.5 flex-shrink-0" aria-hidden="true">•</span>
                           <span>{point}</span>
                         </li>
                       ))}

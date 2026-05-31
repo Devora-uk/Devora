@@ -7,6 +7,8 @@ import path from 'path';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
+import type { BlogCategory } from './blog-clusters';
+
 interface PostMeta {
   title: string;
   date: string;
@@ -16,6 +18,9 @@ interface PostMeta {
   coverImage: string;
   readingTime: string;
   tags: string[];
+  category?: BlogCategory;
+  featured?: boolean;
+  relatedServices?: string[];
 }
 
 interface Post extends PostMeta {
@@ -71,6 +76,9 @@ export function getPostBySlug(slug: string | undefined): Post | null {
       coverImage: data.coverImage || '/blog/default-cover.jpg',
       readingTime: data.readingTime || calculateReadingTime(content),
       tags: data.tags || [],
+      category: data.category,
+      featured: Boolean(data.featured),
+      relatedServices: data.relatedServices || [],
       content,
       contentHtml: ''
     };
@@ -104,15 +112,18 @@ export function getAllPosts(): PostMeta[] {
       .filter((post): post is Post => post !== null)
       .sort((post1, post2) => (new Date(post2.date) > new Date(post1.date) ? 1 : -1));
     
-    return posts.map(({ slug, title, date, excerpt, author, coverImage, readingTime, tags }) => ({
+    return posts.map(({ slug, title, date, excerpt, author, coverImage, readingTime, tags, category, featured, relatedServices }) => ({
       slug,
       title,
       date,
       excerpt,
       author,
       coverImage,
-      readingTime, 
-      tags
+      readingTime,
+      tags,
+      category,
+      featured,
+      relatedServices,
     }));
   } catch (e) {
     console.error('Error getting all posts:', e);

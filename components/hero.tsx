@@ -1,11 +1,11 @@
 "use client"
-
+ 
 import Link from "next/link"
-import { ArrowRight, CheckCircle2, MapPin, MousePointer2 } from "lucide-react"
+import { ArrowRight, CheckCircle2, MapPin, MousePointer2, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
+ 
 export function Hero() {
-  const proof = ["Bespoke builds", "Sheffield & UK", "Search-ready structure"]
+  const proof = ["Bespoke builds", "Brand Development", "Search-ready structure"]
   const visualCards = [
     {
       className: "left-[8%] top-[12%] w-[58%] animate-hero-card-a",
@@ -29,16 +29,16 @@ export function Hero() {
       bars: ["w-[96%]", "w-[82%]", "w-[88%]"],
     },
   ]
-
+ 
   return (
     <section
       className="relative isolate overflow-hidden bg-background pt-20 sm:pt-24 md:min-h-[92vh] md:pt-32"
-      aria-label="Hero section - web design and development in Sheffield and the UK"
+      aria-label="Hero section - bespoke web design and development for startups"
     >
       <div className="absolute inset-0 premium-grid opacity-55 md:opacity-75" aria-hidden="true" />
       <div className="absolute inset-x-0 top-0 hidden h-64 bg-white/85 md:block" aria-hidden="true" />
       <div className="absolute inset-y-0 left-0 hidden w-[66%] bg-gradient-to-r from-background via-background/96 to-background/35 md:block" aria-hidden="true" />
-
+ 
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="relative pb-10 md:min-h-[calc(92vh-7rem)] md:pb-16">
           <div className="absolute right-[-1.5rem] top-12 hidden h-[76%] w-[48%] md:block lg:right-0" aria-hidden="true">
@@ -52,7 +52,7 @@ export function Hero() {
                 </div>
                 <span className="text-[10px] font-black uppercase tracking-[0.22em] text-background/70">Live site engine</span>
               </div>
-
+ 
               <div className="absolute inset-x-12 top-28 h-px bg-foreground/20" />
               <div className="absolute bottom-24 left-12 right-12 h-px bg-foreground/20" />
               <div className="absolute bottom-24 left-12 top-28 w-px bg-foreground/20" />
@@ -61,7 +61,7 @@ export function Hero() {
               <div className="absolute right-[18%] top-[52%] h-3 w-3 rounded-full bg-foreground shadow-[0_0_0_8px_rgba(15,23,42,0.1)] animate-hero-pulse-delayed" />
               <div className="absolute bottom-[22%] left-[46%] h-3 w-3 rounded-full bg-accent shadow-[0_0_0_8px_rgba(200,54,28,0.1)] animate-hero-pulse" />
               <div className="absolute left-0 top-16 h-24 w-full bg-gradient-to-b from-accent/18 via-transparent to-transparent animate-hero-scan" />
-
+ 
               {visualCards.map((card) => (
                 <div key={card.title} className={`absolute border border-black/20 bg-card p-5 shadow-[0_18px_60px_rgba(15,23,42,0.16)] ${card.className}`}>
                   <div className="mb-5 flex items-start justify-between gap-4">
@@ -82,21 +82,21 @@ export function Hero() {
               ))}
             </div>
           </div>
-
+ 
           <div className="relative z-10 max-w-xl pt-5 sm:max-w-2xl md:max-w-[min(100%,40rem)] md:pt-16 lg:max-w-[min(100%,42rem)]">
             <div className="mb-4 inline-flex max-w-full items-center gap-2 border border-black/20 bg-card px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-foreground shadow-sm sm:mb-5 sm:text-xs sm:tracking-[0.2em]">
-              <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
-              Sheffield studio · UK coverage
+              <Sparkles className="h-4 w-4 text-accent" aria-hidden="true" />
+              BUILT FOR START-UPS • WEB DEVELOPMENT • BRAND DEVELOPMENT
             </div>
-
+ 
             <h1 className="max-w-[16.5rem] text-[2.4rem] font-black leading-[1.06] tracking-[-0.025em] text-foreground sm:max-w-lg sm:text-[2.65rem] md:max-w-[14em] md:text-balance md:text-[clamp(2.65rem,3.6vw,3.75rem)] md:leading-[1.02] md:tracking-[-0.035em] lg:max-w-[14.5em] lg:text-[clamp(2.85rem,3.2vw,4.25rem)] xl:text-[4.35rem]">
-              <span className="block">Web design and development</span>
-              <span className="block">in Sheffield and the UK</span>
+              <span className="block">Bespoke web design &</span>
+              <span className="block">custom development</span>
             </h1>
-
+ 
             <div className="mt-5 flex flex-col gap-5 md:mt-8">
               <p className="max-w-xl text-base leading-[1.72] text-foreground/78 sm:max-w-2xl md:max-w-[34rem] md:text-xl md:leading-8 lg:max-w-[36rem]">
-                Devora builds bespoke, fast and conversion-led websites for Sheffield and UK businesses that need to look sharper, load faster, rank better and generate more qualified enquiries.
+                We specialize in helping early-stage startups and ambitious brands stand out and scale intelligently. No inflated agency overhead, no premium bloat, just high-end design, custom development, and brand development built to perform.
               </p>
 
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap md:flex-col lg:flex-row lg:flex-wrap">

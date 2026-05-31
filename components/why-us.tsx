@@ -31,7 +31,7 @@ export function WhyUs() {
             </h2>
           </div>
           <p className="max-w-2xl text-lg leading-8 text-background/82">
-            A Sheffield web development business should bring more than production. We bring taste, urgency, local market awareness, and the technical judgement to make ambitious ideas feel effortless online.
+            A startup-focused web development studio should bring more than just code. We bring taste, urgency, market validation, and the technical judgment to make ambitious ideas feel effortless online.
           </p>
         </div>
 

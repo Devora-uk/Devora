@@ -5,10 +5,10 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "FAQ - Frequently Asked Questions",
-  description: "Find answers to common questions about our Sheffield-based web design and development process, services, technologies, and how we build websites for businesses across the UK.",
+  description: "Find answers to common questions about our web design and development process, startup branding and custom development, technologies, and how we build websites for businesses across the UK.",
   openGraph: {
-    title: "FAQ - Frequently Asked Questions | Devora Sheffield",
-    description: "Find answers to common questions about our Sheffield-based web design and development process, services, and business website builds.",
+    title: "FAQ - Frequently Asked Questions | Devora",
+    description: "Find answers to common questions about our startup web design and development process, services, and website builds.",
   },
 }
 

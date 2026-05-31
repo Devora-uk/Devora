@@ -12,7 +12,7 @@ import { breadcrumbSchema, graphSchema, webPageSchema } from "@/lib/schema"
 export const metadata: Metadata = {
   title: "Industry Website Design | Trades, Recruiters & Services",
   description:
-    "Industry website design for trades, recruiters, professional services, education, property maintenance and startup businesses across Sheffield and the UK.",
+    "Industry website design for trades, recruiters, professional services, education, property maintenance and startup businesses across the UK.",
   alternates: { canonical: `${SITE_URL}/industries` },
   openGraph: {
     title: "Industry Website Design | Devora",

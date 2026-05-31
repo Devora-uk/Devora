@@ -230,7 +230,7 @@ export function Contact() {
                 </div>
                 <div className="min-w-0">
                   <h3 className="mb-1 text-sm font-black">Location</h3>
-                  <p className="text-sm text-background/82">Sheffield, South Yorkshire</p>
+                  <p className="text-sm text-background/82">United Kingdom (Remote-First)</p>
                 </div>
               </div>
             </div>

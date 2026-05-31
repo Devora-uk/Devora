@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Breadcrumbs } from "@/components/Breadcrumbs"
 import { JsonLd } from "@/components/JsonLd"
 import { getIndustryPage, getServicePage, servicePages, SITE_URL } from "@/lib/seo-pages"
+import { ServiceFurtherReading } from "@/components/service-further-reading"
 import { absoluteUrl, breadcrumbSchema, faqSchema, graphSchema, serviceSchema, webPageSchema } from "@/lib/schema"
 
 type ServicePageProps = {
@@ -194,6 +195,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
             </div>
           </div>
         </section>
+
+        <ServiceFurtherReading serviceSlug={page.slug} />
 
         <section className="bg-background px-4 py-16 md:px-6 md:py-24">
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1fr]">

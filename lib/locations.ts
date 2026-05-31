@@ -1,12 +1,10 @@
-export type LocationArea = {
-  name: string
-  slug: string
-  region: string
-  country: "England" | "Scotland" | "Wales" | "Northern Ireland"
-  priority?: "primary" | "major"
-}
+import type { LocationArea } from "./location-types"
+import { extraUkLocations } from "./extra-uk-locations"
 
-export const ukLocations: LocationArea[] = [
+export type { LocationArea } from "./location-types"
+
+/** Primary list, merged with `extraUkLocations`; first occurrence wins on duplicate slug. */
+const coreUkLocations: LocationArea[] = [
   { name: "Sheffield", slug: "sheffield", region: "South Yorkshire", country: "England", priority: "primary" },
   { name: "Rotherham", slug: "rotherham", region: "South Yorkshire", country: "England" },
   { name: "Barnsley", slug: "barnsley", region: "South Yorkshire", country: "England" },
@@ -74,6 +72,16 @@ export const ukLocations: LocationArea[] = [
   { name: "Derry", slug: "derry", region: "County Londonderry", country: "Northern Ireland" },
   { name: "Lisburn", slug: "lisburn", region: "County Antrim", country: "Northern Ireland" },
 ]
+
+function dedupeLocationsBySlug(preferredFirst: LocationArea[]): LocationArea[] {
+  const map = new Map<string, LocationArea>()
+  for (const loc of preferredFirst) {
+    if (!map.has(loc.slug)) map.set(loc.slug, loc)
+  }
+  return [...map.values()]
+}
+
+export const ukLocations: LocationArea[] = dedupeLocationsBySlug([...coreUkLocations, ...extraUkLocations])
 
 export const ukRegionGroups = [
   "Yorkshire and the Humber",

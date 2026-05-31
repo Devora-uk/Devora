@@ -13,12 +13,12 @@ export function About() {
     {
       icon: Gauge,
       title: "Performance-first builds",
-      copy: "Next.js, clean architecture, fast pages, and SEO foundations that help you compete in Sheffield and beyond.",
+      copy: "Next.js, clean architecture, fast pages, and SEO foundations that help startups compete and dominate search results.",
     },
     {
       icon: Building2,
-      title: "Local commercial instinct",
-      copy: "We understand the gap between looking good and winning enquiries from real businesses in South Yorkshire.",
+      title: "Startup commercial instinct",
+      copy: "We understand the gap between smart scaling, brand presentation, and earning customers in competitive markets.",
     },
   ]
 
@@ -27,12 +27,12 @@ export function About() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
           <div className="lg:sticky lg:top-28">
-            <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">Built by Devora, never outsourced</p>
+            <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">Bespoke Web Design & Brand Development</p>
             <h2 id="about-heading" className="max-w-2xl text-4xl font-black leading-[0.98] tracking-[-0.045em] md:text-6xl">
-              Built in Sheffield. Designed to look expensive. Engineered to earn.
+              Bespoke design. High-performance development. Engineered to earn.
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-8 text-foreground/76">
-              Devora is a web design and development business for businesses that cannot afford to blend in. We turn early ideas, tired websites, and underperforming digital presences into premium web experiences, handled in-house from strategy to launch.
+              Devora is a web design and development partner for startups that cannot afford to blend in. We turn early ideas, custom brand identities, and underperforming digital presences into premium web experiences, handled in-house from strategy to launch.
             </p>
             <Link href="#contact" aria-label="Get started with Devora web design services">
               <Button className="mt-8 rounded-full bg-foreground px-7 font-bold text-background hover:bg-accent" size="lg">

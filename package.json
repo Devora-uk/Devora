@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "start": "next start",
     "generate-blog-images": "node lib/generate-blog-images.js",
-    "update-blog-metadata": "node lib/update-blog-metadata.js"
+    "update-blog-metadata": "node lib/update-blog-metadata.js",
+    "generate:locations": "node scripts/generate-uk-locations-extra.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

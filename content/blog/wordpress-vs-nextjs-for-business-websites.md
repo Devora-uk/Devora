@@ -6,6 +6,9 @@ author: "Devora"
 coverImage: "/blog/react-server-components-complete-guide-for-business.jpg"
 readingTime: "7 min read"
 tags: ["Next.js", "Web development", "Technical SEO"]
+category: "technical-build"
+featured: true
+relatedServices: ["nextjs-development", "web-development"]
 ---
 
 ## Search intent

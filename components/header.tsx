@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Menu, X, ScanSearch } from "lucide-react"
+import { ArrowRight, Menu, X, ScanSearch, Search } from "lucide-react"
 import { useState, useEffect } from "react"
 import {
   Dialog,
@@ -15,12 +15,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import WebsiteAuditForm from "@/components/website-audit-form"
+import { SiteSearchDialog } from "@/components/site-search-dialog"
 
 export function Header() {
   const pathname = usePathname()
   const isHomePage = pathname === "/"
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isAuditDialogOpen, setIsAuditDialogOpen] = useState(false)
+  const [siteSearchOpen, setSiteSearchOpen] = useState(false)
 
   // Close menu when pathname changes
   useEffect(() => {
@@ -69,13 +71,15 @@ export function Header() {
 
   const navLinks = [
     { href: "/services", label: "Services" },
-    { href: "/areas-we-cover/sheffield", label: "Sheffield" },
+    { href: "/areas-we-cover", label: "Locations", ariaLabel: "Devora UK web design and development locations" },
     { href: "/industries", label: "Industries" },
     { href: "/case-studies", label: "Case Studies" },
+    { href: "/guides", label: "Guides", ariaLabel: "Website guides for UK businesses" },
     { href: "/blog", label: "Blog", ariaLabel: "Web design and development blog" },
   ]
 
   return (
+    <>
     <Dialog open={isAuditDialogOpen} onOpenChange={setIsAuditDialogOpen}>
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-black/15 bg-card/95 shadow-sm backdrop-blur-xl supports-[backdrop-filter]:bg-card/82" role="banner">
         <div className="mx-auto max-w-7xl px-4 py-2.5 md:px-6 md:py-3">
@@ -84,7 +88,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-3" aria-label="Devora - Home">
             <Image 
               src="/devora-bw.png" 
-              alt="Devora logo - Sheffield web design and development studio" 
+              alt="Devora logo - Startup web design and development studio" 
               width={48} 
               height={48} 
               className="h-10 w-10 rounded-md"
@@ -92,12 +96,12 @@ export function Header() {
             />
             <span className="hidden sm:flex flex-col leading-none">
               <span className="text-base font-black tracking-[-0.03em]">Devora</span>
-              <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">Sheffield web studio</span>
+              <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">Startup web studio</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-7" aria-label="Main navigation">
+          <nav className="hidden md:flex flex-1 items-center justify-end gap-6 lg:gap-7" aria-label="Main navigation">
             {navLinks.map((link) => (
               <Link 
                 key={link.label}
@@ -108,10 +112,24 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => setSiteSearchOpen(true)}
+              className="h-10 gap-2 rounded-full border-black/25 bg-card px-3 text-sm font-semibold text-foreground/80 hover:border-accent hover:text-accent-foreground"
+              aria-label="Open search"
+            >
+              <Search className="h-4 w-4 shrink-0" aria-hidden="true" />
+              <span className="max-w-[6rem] truncate">Search</span>
+              <kbd className="pointer-events-none hidden rounded border border-black/15 bg-muted px-1.5 py-0.5 font-mono text-[10px] font-semibold text-muted-foreground xl:inline">
+                ⌘K
+              </kbd>
+            </Button>
           </nav>
 
           {/* Desktop Action Buttons */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3 pl-3 lg:pl-4">
             <DialogTrigger asChild>
               <Button variant="outline" className="h-10 rounded-full gap-2 border-black/25 bg-card px-4 text-sm font-semibold hover:border-accent hover:text-accent-foreground">
                 <ScanSearch className="w-4 h-4" />
@@ -127,23 +145,32 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button - min 44x44px touch target (WCAG 2.5.5) */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation()
-              setIsMenuOpen(!isMenuOpen)
-            }}
-            className="relative z-50 flex min-h-12 min-w-12 items-center justify-center rounded-full border border-black/10 bg-background/80 shadow-sm transition-colors hover:bg-muted active:bg-muted md:hidden"
-            aria-label={isMenuOpen ? "Close mobile menu" : "Open mobile menu"}
-            aria-expanded={isMenuOpen}
-            type="button"
-          >
-            {isMenuOpen ? (
-              <X className="w-6 h-6" aria-hidden="true" />
-            ) : (
-              <Menu className="w-6 h-6" aria-hidden="true" />
-            )}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              type="button"
+              onClick={() => setSiteSearchOpen(true)}
+              className="flex min-h-12 min-w-12 items-center justify-center rounded-full border border-black/10 bg-background/80 text-foreground shadow-sm"
+              aria-label="Open search"
+            >
+              <Search className="h-5 w-5" aria-hidden="true" />
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                setIsMenuOpen(!isMenuOpen)
+              }}
+              className="relative z-50 flex min-h-12 min-w-12 items-center justify-center rounded-full border border-black/10 bg-background/80 shadow-sm transition-colors hover:bg-muted active:bg-muted"
+              aria-label={isMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+              aria-expanded={isMenuOpen}
+              type="button"
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" aria-hidden="true" />
+              ) : (
+                <Menu className="w-6 h-6" aria-hidden="true" />
+              )}
+            </button>
+          </div>
           </div>
 
           {/* Mobile Menu */}
@@ -209,7 +236,7 @@ export function Header() {
           </Link>
         </div>
       </div>
-      <DialogContent className="max-h-[calc(100dvh-2rem)] overflow-y-auto bg-background p-0 sm:max-w-[500px]">
+      <DialogContent className="gap-0 max-h-[min(100dvh-1rem,44rem)] overflow-y-auto border-black/20 bg-card p-0 shadow-[0_30px_110px_rgba(15,23,42,0.16)] sm:max-w-[min(100vw-2rem,32rem)] [&_[data-slot=dialog-close]]:top-4 [&_[data-slot=dialog-close]]:right-4 [&_[data-slot=dialog-close]]:flex [&_[data-slot=dialog-close]]:h-9 [&_[data-slot=dialog-close]]:w-9 [&_[data-slot=dialog-close]]:items-center [&_[data-slot=dialog-close]]:justify-center [&_[data-slot=dialog-close]]:rounded-full [&_[data-slot=dialog-close]]:border [&_[data-slot=dialog-close]]:border-black/15 [&_[data-slot=dialog-close]]:bg-background [&_[data-slot=dialog-close]]:text-foreground [&_[data-slot=dialog-close]]:opacity-100 hover:[&_[data-slot=dialog-close]]:bg-muted">
         <DialogHeader className="sr-only">
           <DialogTitle>Free Website Audit</DialogTitle>
           <DialogDescription>
@@ -219,5 +246,7 @@ export function Header() {
         <WebsiteAuditForm variant="inline" />
       </DialogContent>
     </Dialog>
+    <SiteSearchDialog open={siteSearchOpen} onOpenChange={setSiteSearchOpen} />
+    </>
   )
 }

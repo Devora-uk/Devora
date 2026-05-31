@@ -15,7 +15,7 @@ YOUR PRIMARY DIFFERENTIATORS (Now Featured Throughout)
    ✓ Bootstrap Plan (£2,500)
    ✓ Growth Plan (£6,500)
    ✓ Custom Plan (tailored)
-   ✓ Cancel anytime—no lock-in
+   ✓ Cancel anytime, no lock-in
 
 3. RAPID DELIVERY
    ✓ 30-45 day average launch time
@@ -35,11 +35,11 @@ SECTION-BY-SECTION MESSAGING
 ┌─────────────────────────────────────────────────────────────────┐
 │ Badge: "BUILT FOR START-UPS • FLEXIBLE PRICING • RAPID DELIVERY" │
 │                                                                   │
-│ Headline: "We create, you grow. — simple as that."               │
+│ Headline: "We create, you grow. Simple as that."               │
 │                                                                   │
 │ Subtext: "We specialise in helping start-ups launch affordably   │
 │ and scale intelligently. Our flexible pricing models mean you    │
-│ only pay for what you need—no hidden costs, no premium bloat."   │
+│ only pay for what you need, no hidden costs, no premium bloat."   │
 │                                                                   │
 │ Social Proof: "4.9/5 • 100+ Start-ups Launched Successfully"    │
 └─────────────────────────────────────────────────────────────────┘
@@ -51,7 +51,7 @@ SECTION-BY-SECTION MESSAGING
 │                                                                   │
 │ Body: "We partner with ambitious start-ups to create             │
 │ cost-effective digital solutions without compromise. Our         │
-│ flexible pricing models adapt to your growth stage—whether       │
+│ flexible pricing models adapt to your growth stage, whether       │
 │ you're bootstrapped or funded, we've got a plan that works       │
 │ for you."                                                         │
 └─────────────────────────────────────────────────────────────────┘
@@ -72,7 +72,7 @@ SECTION-BY-SECTION MESSAGING
 │                                                                   │
 │ WITH DEVORA:                                                      │
 │   ✅ Transparent, affordable pricing from day one                │
-│   ✅ No hidden costs—only pay for what you build                 │
+│   ✅ No hidden costs, only pay for what you build                 │
 │   ✅ Scale your investment as your start-up grows                │
 │   ✅ Ongoing support included, every step of the way             │
 │   ✅ Custom packages that fit your bootstrap budget              │
@@ -113,7 +113,7 @@ KEY TALKING POINTS FOR MARKETING
 When promoting your services, emphasise:
 
 1. "Affordable from day one"
-   → Starting at £2,500—no inflated agency costs
+   → Starting at £2,500, no inflated agency costs
 
 2. "Flexible pricing models"
    → Pay for what you need, scale as you grow
@@ -131,7 +131,7 @@ When promoting your services, emphasise:
    → Included with every package
 
 7. "No lock-in"
-   → Cancel anytime—we're confident you'll stay
+   → Cancel anytime. We're confident you'll stay
 
 8. "Plain English"
    → Jargon-free communication, always

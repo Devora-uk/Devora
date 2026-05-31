@@ -1,14 +1,17 @@
-import { ArrowRight, Building2, Globe2, MapPin, Search } from "lucide-react"
+import { ArrowRight, Globe2, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { areaPages } from "@/lib/area-pages"
+import { getLocationsByCountry, type LocationArea } from "@/lib/locations"
+import { areaLandingPath } from "@/lib/resolve-area-landing"
 
 export const metadata: Metadata = {
   title: "Areas We Cover | UK Web Design & Website Development | Devora",
-  description: "Devora builds bespoke business websites from the ground up for companies across the UK. See the major cities, regions, and local SEO areas we cover.",
+  description:
+    "Devora builds bespoke business websites from the ground up for companies across the UK. Browse every major city and region we cover.",
   keywords: [
     "areas we cover web design",
     "UK web design business",
@@ -40,10 +43,26 @@ export const metadata: Metadata = {
   },
 }
 
+const regionalAreaPages = areaPages.filter((p) => p.slug === "yorkshire" || p.slug === "uk")
+
+function hrefForLocation(slug: string): string {
+  return areaLandingPath(slug)
+}
+
+function sortByName(a: LocationArea, b: LocationArea) {
+  return a.name.localeCompare(b.name, "en-GB")
+}
+
+const countryHeading: Record<LocationArea["country"], string> = {
+  England: "England",
+  Scotland: "Scotland",
+  Wales: "Wales",
+  "Northern Ireland": "Northern Ireland",
+}
+
 export default function AreasWeCoverPage() {
-  const featuredLocations = areaPages.filter((location) =>
-    ["sheffield", "leeds", "manchester", "yorkshire"].includes(location.slug),
-  )
+  const byCountry = getLocationsByCountry()
+  const cityCount = Object.values(byCountry).reduce((n, list) => n + list.length, 0)
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -51,201 +70,157 @@ export default function AreasWeCoverPage() {
       {
         "@type": "WebPage",
         "@id": "https://www.devora.co.uk/areas-we-cover#webpage",
-        "url": "https://www.devora.co.uk/areas-we-cover",
-        "name": "Areas We Cover",
-        "description": "UK service area page for business website design and website development from the ground up.",
-        "isPartOf": {
-          "@id": "https://www.devora.co.uk/#website"
-        }
+        url: "https://www.devora.co.uk/areas-we-cover",
+        name: "Areas We Cover",
+        description: "UK service area page for business website design and website development from the ground up.",
+        isPartOf: {
+          "@id": "https://www.devora.co.uk/#website",
+        },
       },
       {
         "@type": "Service",
         "@id": "https://www.devora.co.uk/areas-we-cover#website-development-service",
-        "name": "Bespoke business website design and development",
-        "serviceType": ["Website Design", "Website Development", "Custom Website Builds", "Local SEO"],
-        "provider": {
-          "@id": "https://www.devora.co.uk/#organization"
+        name: "Bespoke business website design and development",
+        serviceType: ["Website Design", "Website Development", "Custom Website Builds", "Local SEO"],
+        provider: {
+          "@id": "https://www.devora.co.uk/#organization",
         },
-        "areaServed": areaPages.map((location) => ({
-          "@type": "City",
-          "name": location.name,
-          "addressRegion": location.region,
-          "addressCountry": "GB"
-        })),
+        areaServed: [
+          ...Object.values(byCountry)
+            .flat()
+            .map((location) => ({
+              "@type": "City" as const,
+              name: location.name,
+              addressRegion: location.region,
+              addressCountry: "GB",
+            })),
+          ...regionalAreaPages.map((p) => ({
+            "@type": "AdministrativeArea" as const,
+            name: p.name,
+            addressRegion: p.region,
+            addressCountry: "GB",
+          })),
+        ],
       },
       {
         "@type": "BreadcrumbList",
         "@id": "https://www.devora.co.uk/areas-we-cover#breadcrumb",
-        "itemListElement": [
+        itemListElement: [
           {
             "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.devora.co.uk"
+            position: 1,
+            name: "Home",
+            item: "https://www.devora.co.uk",
           },
           {
             "@type": "ListItem",
-            "position": 2,
-            "name": "Areas We Cover",
-            "item": "https://www.devora.co.uk/areas-we-cover"
-          }
-        ]
-      }
-    ]
+            position: 2,
+            name: "Areas We Cover",
+            item: "https://www.devora.co.uk/areas-we-cover",
+          },
+        ],
+      },
+    ],
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex min-h-screen flex-col">
       <Header />
 
       <main className="flex-1">
-        <section className="bg-background px-4 pb-16 pt-32 md:px-6 md:pb-24 md:pt-44">
+        <section className="bg-background px-4 pb-12 pt-32 md:px-6 md:pb-16 md:pt-40">
           <div className="mx-auto max-w-7xl">
-            <div className="grid gap-10 lg:grid-cols-[1fr_0.72fr] lg:items-end">
-              <div>
-                <div className="mb-7 inline-flex items-center gap-2 border border-black/10 bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.22em] text-foreground shadow-sm">
-                  <Globe2 className="h-4 w-4 text-accent" aria-hidden="true" />
-                  UK website development areas
-                </div>
-
-                <h1 className="max-w-5xl text-5xl font-black leading-[0.94] tracking-[-0.055em] text-foreground md:text-7xl">
-                  Areas we cover for
-                  <span className="block font-serif font-normal italic tracking-[-0.06em] text-accent">business websites.</span>
-                </h1>
-              </div>
-
-              <div className="border-l border-black/10 pl-6">
-                <p className="text-lg leading-8 text-muted-foreground">
-                  Devora designs and develops bespoke websites from the ground up for businesses across Sheffield, Yorkshire, England, Scotland, Wales, and Northern Ireland. Each location page is structured for local search intent, technical SEO, and conversion.
-                </p>
-                <div className="mt-7 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-                  <Link href="/#contact">
-                    <Button size="lg" className="w-full rounded-full bg-foreground px-7 font-bold text-background hover:bg-accent sm:w-auto">
-                      Build my website
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </Button>
-                  </Link>
-                  <Link href="/areas-we-cover/sheffield">
-                    <Button size="lg" variant="outline" className="w-full rounded-full border-black/15 bg-white px-7 font-bold hover:border-accent hover:text-accent-foreground sm:w-auto">
-                      Sheffield web design
-                      <MapPin className="h-4 w-4" aria-hidden="true" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
+            <div className="mb-4 inline-flex items-center gap-2 border border-black/10 bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.22em] text-foreground shadow-sm">
+              <Globe2 className="h-4 w-4 text-accent" aria-hidden="true" />
+              UK coverage
             </div>
 
-            <div className="mt-12 grid gap-px overflow-hidden border border-black/10 bg-black/10 md:grid-cols-3">
-              {[
-                { icon: Building2, label: "Built from scratch", copy: "Custom strategy, design, development, copy structure, and launch planning." },
-                { icon: Search, label: "Local SEO structure", copy: "Location-led metadata, internal links, schema, and service content." },
-                { icon: Globe2, label: "UK coverage", copy: `${areaPages.length} priority local, regional and UK service areas indexed through the sitemap.` },
-              ].map((item) => {
-                const Icon = item.icon
-                return (
-                  <div key={item.label} className="bg-white p-6">
-                    <Icon className="mb-8 h-6 w-6 text-accent" strokeWidth={1.75} aria-hidden="true" />
-                    <h2 className="text-2xl font-black tracking-[-0.03em]">{item.label}</h2>
-                    <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.copy}</p>
-                  </div>
-                )
-              })}
+            <h1 className="max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.045em] text-foreground md:text-6xl">
+              Areas we cover
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
+              We work remotely with businesses across the UK. Pick your city or region; each page explains how we approach web design, development and local SEO for that area.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link href="/#contact">
+                <Button size="lg" className="w-full rounded-full bg-foreground px-7 font-bold text-background hover:bg-accent sm:w-auto">
+                  Start a project
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Button>
+              </Link>
+              <Link href="/areas-we-cover/sheffield">
+                <Button size="lg" variant="outline" className="w-full rounded-full border-black/15 bg-white px-7 font-bold hover:border-accent hover:text-accent-foreground sm:w-auto">
+                  Sheffield
+                  <MapPin className="h-4 w-4" aria-hidden="true" />
+                </Button>
+              </Link>
             </div>
+
+            <p className="mt-8 text-sm font-semibold text-foreground/70">
+              <span className="text-accent">{cityCount + regionalAreaPages.length}</span> cities and regions. Jump to your area below.
+            </p>
           </div>
         </section>
 
-        <section className="bg-muted/35 px-4 py-16 md:px-6 md:py-24">
+        <section className="border-t border-black/10 bg-muted/35 px-4 py-12 md:px-6 md:py-16">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-10 max-w-3xl">
-              <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">Featured locations</p>
-              <h2 className="text-4xl font-black leading-[0.98] tracking-[-0.045em] md:text-6xl">
-                High-intent web design pages for major UK cities.
+            <div className="mb-10 max-w-2xl">
+              <h2 className="text-2xl font-black tracking-[-0.03em] text-foreground md:text-3xl">
+                UK regions
               </h2>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Broader service-area pages for regional and national searches.
+              </p>
             </div>
 
-            <div className="grid gap-px overflow-hidden border border-black/10 bg-black/10 md:grid-cols-2 lg:grid-cols-4">
-              {featuredLocations.map((location) => (
+            <div className="grid grid-cols-2 gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              {regionalAreaPages.map((location) => (
                 <Link
                   key={location.slug}
                   href={`/areas-we-cover/${location.slug}`}
-                  className="group bg-white p-6 transition-colors hover:bg-foreground"
+                  className="group bg-white px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                 >
-                  <div className="mb-8 flex items-center justify-between">
-                    <MapPin className="h-5 w-5 text-accent" aria-hidden="true" />
-                    <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-background" aria-hidden="true" />
-                  </div>
-                  <h3 className="text-2xl font-black tracking-[-0.03em] group-hover:text-background">
-                    Web design {location.name}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground group-hover:text-background/75">
-                    Ground-up website development for businesses in {location.name} and {location.region}.
-                  </p>
+                  {location.name}
+                  <span className="mt-1 block text-xs font-normal text-muted-foreground group-hover:text-accent-foreground/90">
+                    {location.region}
+                  </span>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="bg-background px-4 py-16 md:px-6 md:py-24">
-          <div className="mx-auto max-w-7xl">
-            <div className="grid gap-10 lg:grid-cols-[0.7fr_1fr]">
-              <div>
-                <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">All areas</p>
-                <h2 className="text-4xl font-black leading-[0.98] tracking-[-0.045em] md:text-6xl">
-                  UK regions and cities we cover.
+        {(Object.keys(byCountry) as LocationArea["country"][]).map((country) => {
+          const locations = [...byCountry[country]].sort(sortByName)
+          return (
+            <section
+              key={country}
+              className="border-t border-black/10 bg-background px-4 py-12 md:px-6 md:py-16"
+            >
+              <div className="mx-auto max-w-7xl">
+                <h2 className="mb-6 text-2xl font-black tracking-[-0.03em] text-foreground md:text-3xl">
+                  {countryHeading[country]}
                 </h2>
-                <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                  We work remotely and collaboratively, so your business can get a properly built website whether you are around the corner in South Yorkshire or scaling nationally.
-                </p>
 
-                <div className="mt-8 flex flex-wrap gap-2">
-                  {["South Yorkshire", "Yorkshire", "Greater Manchester", "United Kingdom"].map((region) => (
-                    <span key={region} className="border border-black/10 bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
-                      {region}
-                    </span>
+                <div className="grid grid-cols-2 gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                  {locations.map((location) => (
+                    <Link
+                      key={location.slug}
+                      href={hrefForLocation(location.slug)}
+                      className="group bg-white px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-foreground hover:text-background"
+                    >
+                      {location.name}
+                      <span className="mt-1 block text-xs font-normal text-muted-foreground group-hover:text-background/75">
+                        {location.region}
+                      </span>
+                    </Link>
                   ))}
                 </div>
               </div>
-
-              <div className="space-y-8">
-                {[["Priority areas", areaPages] as const].map(([country, locations]) => (
-                  <div key={country}>
-                    <h3 className="mb-3 border-b border-black/10 pb-3 text-xl font-black tracking-[-0.02em]">{country}</h3>
-                    <div className="grid grid-cols-2 gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-3">
-                      {locations.map((location) => (
-                        <Link
-                          key={location.slug}
-                          href={`/areas-we-cover/${location.slug}`}
-                          className="bg-white px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                        >
-                          {location.name}
-                          <span className="block pt-1 text-xs font-normal text-muted-foreground">{location.region}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-primary px-6 py-20 text-primary-foreground">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-4xl font-black leading-tight tracking-[-0.04em] md:text-5xl">
-              Want a business website built properly from day one?
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-primary-foreground/85">
-              We plan, design, build, optimise, and launch websites with the technical foundations Google expects and the commercial clarity your customers need.
-            </p>
-            <Link href="/#contact" className="mt-8 inline-flex">
-              <Button size="lg" className="rounded-full bg-background px-7 font-bold text-foreground hover:bg-background/90">
-                Start a website project
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Button>
-            </Link>
-          </div>
-        </section>
+            </section>
+          )
+        })}
       </main>
 
       <script

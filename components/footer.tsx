@@ -11,7 +11,7 @@ export function Footer() {
               <Image src="/devora-bw.png" alt="Devora logo" width={36} height={36} className="h-9 w-9" />
               <span className="text-xl font-black tracking-[-0.03em]">Devora</span>
             </div>
-            <p className="max-w-xs text-sm leading-6 text-muted-foreground"><strong>Sheffield web design and development studio</strong> building bespoke, fast and conversion-led websites for businesses across South Yorkshire and the UK.</p>
+            <p className="max-w-xs text-sm leading-6 text-muted-foreground"><strong>Bespoke web design and development studio</strong> building fast, conversion-led websites and brand identities for startups and growing brands across the UK.</p>
           </div>
 
           <nav aria-label="Services navigation">
@@ -19,7 +19,7 @@ export function Footer() {
             <ul className="space-y-1 text-sm text-muted-foreground">
               <li>
                 <Link href="/services/web-design" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
-                  Web Design Sheffield
+                  Web Design
                 </Link>
               </li>
               <li>
@@ -64,6 +64,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/guides" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
+                  Guides
+                </Link>
+              </li>
+              <li>
                 <Link href="/blog" className="inline-flex items-center min-h-[44px] py-2 hover:opacity-100 transition-opacity touch-manipulation">
                   Blog
                 </Link>
@@ -104,7 +109,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-black/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© 2026 Devora. All rights reserved. <span className="sr-only">Bespoke web design and website development for businesses in Sheffield, South Yorkshire, and across the UK.</span></p>
+          <p>© 2026 Devora. All rights reserved. <span className="sr-only">Bespoke web design, brand development, and custom website development for startups and businesses across the UK.</span></p>
           <nav aria-label="Social media navigation">
             <ul className="flex flex-wrap gap-4 md:gap-6">
               <li>

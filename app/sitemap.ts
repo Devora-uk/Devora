@@ -2,7 +2,8 @@ import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { areaPages } from '@/lib/area-pages'
+import { getLocationBySlug } from '@/lib/locations'
+import { allAreaLandingSlugs, areaLandingPath } from '@/lib/resolve-area-landing'
 import { industryPages, servicePages } from '@/lib/seo-pages'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -27,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.86,
+    },
+    {
+      url: `${baseUrl}/guides`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.88,
     },
     {
       url: `${baseUrl}/blog`,
@@ -86,12 +93,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.78,
   }))
 
-  // Canonical area pages for local SEO
-  const areaEntries: MetadataRoute.Sitemap = areaPages.map((area) => ({
-    url: `${baseUrl}/areas-we-cover/${area.slug}`,
+  function areaSitemapPriority(slug: string): number {
+    if (slug === 'sheffield') return 0.92
+    if (slug === 'yorkshire' || slug === 'uk') return 0.86
+    const loc = getLocationBySlug(slug)
+    if (loc?.priority === 'major') return 0.82
+    return 0.76
+  }
+
+  // Canonical area landing pages (all UK cities + regional pages)
+  const areaEntries: MetadataRoute.Sitemap = allAreaLandingSlugs().map((slug) => ({
+    url: `${baseUrl}${areaLandingPath(slug)}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: area.slug === 'sheffield' ? 0.92 : area.slug === 'yorkshire' || area.slug === 'uk' ? 0.86 : 0.8,
+    changeFrequency: 'monthly' as const,
+    priority: areaSitemapPriority(slug),
   }))
 
   // Get blog posts dynamically

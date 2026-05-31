@@ -5,8 +5,8 @@ import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 export const metadata = {
-  title: "Careers - Devora | Web Development Jobs in Sheffield",
-  description: "Join our Sheffield-based team and help businesses transform their digital presence. Web development jobs in South Yorkshire.",
+  title: "Careers - Devora | Remote Web Development & Startup Design Jobs",
+  description: "Join the Devora team. We build high-performance web applications and brand identities for startups and growing brands across the UK.",
 }
 
 export default function CareersPage() {

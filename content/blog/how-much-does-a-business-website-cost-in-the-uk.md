@@ -5,6 +5,9 @@ excerpt: "A practical guide to UK business website costs, what affects price and
 author: "Devora"
 coverImage: "/blog/website-performance-optimisation-guide-2026.jpg"
 readingTime: "7 min read"
+category: "cost-and-planning"
+featured: true
+relatedServices: ["web-design", "small-business-websites"]
 tags: ["Website strategy", "Web design", "Small business"]
 ---
 

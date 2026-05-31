@@ -6,6 +6,7 @@ import { WhyUs } from "@/components/why-us"
 import { OurServices } from "@/components/our-services"
 import { OurWork } from "@/components/our-work"
 import { SuccessStories } from "@/components/success-stories"
+import { HomeInsights } from "@/components/home-insights"
 import { FAQ } from "@/components/faq"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
@@ -23,29 +24,29 @@ import {
 } from "@/lib/schema"
 
 export const metadata: Metadata = {
-  title: "Web Design & Development in Sheffield & the UK | Devora",
-  description: "Devora builds bespoke, fast and conversion-led websites for Sheffield and UK businesses that need to look sharper, rank better and generate more enquiries.",
+  title: "Bespoke Web Design, Development & Branding for Startups | Devora",
+  description: "Devora builds bespoke, fast, and conversion-focused websites for startups and growing UK brands that need to stand out, explain their offer, and scale intelligently.",
   keywords: [
-    "web design Sheffield",
-    "web development Sheffield",
-    "web development business Sheffield",
-    "business website design Sheffield",
-    "website development for businesses",
+    "startup web design UK",
+    "web design for startups",
+    "startup web development",
+    "brand development UK",
     "build a website from scratch UK",
-    "bespoke website development UK",
-    "web design South Yorkshire",
-    "web design UK",
-    "website development business Sheffield",
-    "website design near me",
-    "Sheffield web developers",
+    "bespoke web design UK",
+    "next.js developers UK",
+    "custom web development for startups",
+    "affordable web development startups",
+    "bootstrap web design",
+    "scalable digital solutions",
     "SEO website design UK",
+    "website design near me",
   ],
   alternates: {
     canonical: "https://www.devora.co.uk",
   },
   openGraph: {
-    title: "Web Design & Development in Sheffield & the UK | Devora",
-    description: "Bespoke, fast and conversion-led websites for Sheffield and UK businesses.",
+    title: "Bespoke Web Design, Development & Branding for Startups | Devora",
+    description: "Bespoke, fast and conversion-focused websites for startups and growing UK brands.",
     url: "https://www.devora.co.uk",
     type: "website",
     locale: "en_GB",
@@ -54,14 +55,14 @@ export const metadata: Metadata = {
         url: "/devora-office.png",
         width: 1200,
         height: 630,
-        alt: "Devora Sheffield web design and website development studio",
+        alt: "Devora startup web design, development and branding studio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Web Design & Development in Sheffield & the UK | Devora",
-    description: "Bespoke websites built to win trust, rank better and generate enquiries.",
+    title: "Bespoke Web Design, Development & Branding for Startups | Devora",
+    description: "Bespoke websites built for startups to win trust, rank better and scale.",
     images: ["/devora-office.png"],
     creator: "@devora",
   },
@@ -72,12 +73,12 @@ export default function Home() {
     {
       question: "What services does Devora offer?",
       answer:
-        "Devora provides bespoke web design, web development, branding, local SEO, website redesign and Next.js development for Sheffield and UK businesses.",
+        "Devora provides bespoke web design, custom development, branding, and conversion refinement for startups and businesses across the UK.",
     },
     {
       question: "Do you build websites from the ground up?",
       answer:
-        "Yes. Our preference is to plan, design, and develop business websites from the ground up rather than forcing your goals into a generic template.",
+        "Yes. Our preference is to plan, design, and develop custom business websites and digital platforms from the ground up rather than forcing your goals into a generic template.",
     },
   ]
 
@@ -90,14 +91,14 @@ export default function Home() {
           websiteSchema(),
           webPageSchema({
             path: "/",
-            name: "Web Design & Development in Sheffield & the UK",
+            name: "Bespoke Web Design, Development & Branding for Startups",
             description:
-              "Devora builds bespoke, fast and conversion-led websites for Sheffield and UK businesses.",
+              "Devora builds bespoke, fast and conversion-focused websites for startups and UK businesses.",
           }),
           serviceSchema({
             path: "/services/web-design",
             name: "Web design and development",
-            description: "Bespoke web design, web development, branding and local SEO for Sheffield and UK businesses.",
+            description: "Bespoke web design, web development, branding and custom platforms for growing UK businesses.",
           }),
           faqSchema(homeFaqs, "/"),
           breadcrumbSchema([{ name: "Home", url: "https://www.devora.co.uk" }]),
@@ -113,6 +114,7 @@ export default function Home() {
         <OurServices />
         <OurWork />
         <SuccessStories />
+        <HomeInsights />
         <FAQ />
         <Contact />
         <Footer />

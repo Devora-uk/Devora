@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, ArrowRight, User } from 'lucide-react';
 import { getPostWithHtml, getAllPosts } from '@/lib/markdown';
+import { getRelatedPostsForSlug } from '@/lib/blog-clusters';
+import { BlogPostAside } from '@/components/blog-post-aside';
 import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/header';
@@ -71,10 +73,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const resolvedParams = await params;
   const post = await getPostWithHtml(resolvedParams.slug);
   const allPosts = getAllPosts();
-  const relatedPosts = allPosts
-    .filter(p => p.slug !== resolvedParams.slug)
-    .filter(p => p.tags.some(tag => post?.tags.includes(tag)))
-    .slice(0, 2);
+  const relatedPosts = getRelatedPostsForSlug(resolvedParams.slug, allPosts, 3);
   
   if (!post) {
     notFound();
@@ -181,8 +180,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         
         {/* Article Content */}
         <section className="py-16 md:py-24 bg-background">
-          <div className="max-w-6xl mx-auto px-6">
-            <article className="max-w-none">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid gap-12 lg:grid-cols-[1fr_320px] lg:gap-16 items-start">
+            <article className="max-w-none min-w-0">
               <div 
                 dangerouslySetInnerHTML={{ __html: post.contentHtml }} 
                 className="
@@ -223,6 +223,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 "
               />
             </article>
+            <BlogPostAside
+              slug={post.slug}
+              category={post.category}
+              relatedServiceSlugs={post.relatedServices}
+            />
+            </div>
           </div>
         </section>
         
@@ -254,7 +260,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </h2>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {relatedPosts.map((relatedPost) => (
                   <Link 
                     key={relatedPost.slug}

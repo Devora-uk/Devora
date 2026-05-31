@@ -6,6 +6,9 @@ author: "Devora"
 coverImage: "/blog/the-ultimate-guide-to-seo-strategies-for-businesses-i.jpg"
 readingTime: "6 min read"
 tags: ["Sheffield", "Web design", "Local business growth"]
+category: "choosing-a-partner"
+featured: true
+relatedServices: ["web-design", "local-seo", "small-business-websites"]
 ---
 
 ## Search intent

@@ -3,18 +3,24 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
 import { getAllPosts } from "@/lib/markdown"
+import { featuredPostSlugs } from "@/lib/blog-clusters"
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
-  title: "Blog | Devora - Business Website Design & Development Insights",
-  description: "Explore website design, development, SEO, and growth insights from our Sheffield-based team. Practical guidance for UK businesses building better websites.",
-  keywords: ["web development blog", "business website tips", "Sheffield web design tips", "UK website design advice", "react development", "next.js tutorials", "SEO strategies UK", "web design tips Yorkshire"],
+  title: "Blog | Devora - Startup Web Design & Development Insights",
+  description: "Explore website design, development, SEO, and growth insights from our startup engineering team. Practical guidance for UK brands building better websites.",
+  keywords: ["web development blog", "business website tips", "startup web design tips", "UK website design advice", "react development", "next.js tutorials", "SEO strategies UK", "startup brand development"],
 }
 
 export default async function BlogPage() {
   const allPosts = getAllPosts();
+  const featuredSet = new Set(featuredPostSlugs);
+  const featured = featuredPostSlugs
+    .map((slug) => allPosts.find((p) => p.slug === slug))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const rest = allPosts.filter((p) => !featuredSet.has(p.slug));
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -35,10 +41,35 @@ export default async function BlogPage() {
               <p className="text-sm md:text-base lg:text-lg text-muted-foreground max-w-2xl">
                 Practical knowledge and proven strategies to help you build better web experiences and grow your business online.
               </p>
+              <Link
+                href="/guides"
+                className="mt-4 inline-flex text-sm font-semibold text-primary hover:underline underline-offset-4"
+              >
+                Browse curated guides →
+              </Link>
             </div>
 
             <div className="max-w-6xl mx-auto">
-              {/* Section Header */}
+              {featured.length > 0 && (
+                <>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider font-light mb-4">
+                    Start here: featured guides
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                    {featured.slice(0, 3).map((post) => (
+                      <Link
+                        key={post.slug}
+                        href={`/blog/${post.slug}`}
+                        className="rounded-xl border-2 border-accent/20 bg-card p-5 hover:border-accent transition-colors block"
+                      >
+                        <h3 className="font-semibold text-foreground line-clamp-2">{post.title}</h3>
+                        <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+
               <div className="mb-12 md:mb-16">
                 <div className="text-xs text-muted-foreground uppercase tracking-wider font-light mb-8 flex items-center gap-2">
                   <BookOpen className="w-4 h-4" />
@@ -49,9 +80,9 @@ export default async function BlogPage() {
                 </h2>
               </div>
 
-              {allPosts.length > 0 ? (
+              {rest.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {allPosts.map((post, index) => (
+                  {rest.map((post, index) => (
                     <Link
                       key={post.slug}
                       href={`/blog/${post.slug}`}

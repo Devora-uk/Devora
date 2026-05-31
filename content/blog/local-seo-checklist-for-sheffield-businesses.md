@@ -6,6 +6,9 @@ author: "Devora"
 coverImage: "/blog/the-ultimate-guide-to-seo-strategies-for-businesses-.jpg"
 readingTime: "7 min read"
 tags: ["Local SEO", "Sheffield", "SEO"]
+category: "local-sheffield"
+featured: true
+relatedServices: ["local-seo", "web-design"]
 ---
 
 ## Search intent

@@ -20,7 +20,7 @@ export default function NotFound() {
           <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
               ["Services", "/services"],
-              ["Sheffield web design", "/areas-we-cover/sheffield"],
+              ["UK web design", "/areas-we-cover"],
               ["Case studies", "/case-studies"],
               ["Blog", "/blog"],
             ].map(([label, href]) => (

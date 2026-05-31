@@ -41,7 +41,7 @@ const allProjects = [
     name: "The Teacher's Surgery",
     slug: "teachers-surgery",
     description:
-      "A charitable community platform empowering educators and supporting families. Built with Next.js in one month at theteachersurgery.com, the full landing experience combines warm branding with video, podcast, and community sections — driving strong conversion and steady growth beyond 7,000 members.",
+      "A charitable community platform empowering educators and supporting families. Built with Next.js in one month at theteachersurgery.com, the full landing experience combines warm branding with video, podcast, and community sections, driving strong conversion and steady growth beyond 7,000 members.",
     image: "/case-studies/teachers-surgery-landing.png",
     tags: ["Next.js", "Charitable", "Community"],
   },

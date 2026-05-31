@@ -7,34 +7,82 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Breadcrumbs } from "@/components/Breadcrumbs"
 import { JsonLd } from "@/components/JsonLd"
-import { areaPages, getAreaPage } from "@/lib/area-pages"
 import { getServicePage, SITE_URL } from "@/lib/seo-pages"
-import { absoluteUrl, breadcrumbSchema, faqSchema, graphSchema, localBusinessSchema, serviceSchema, webPageSchema } from "@/lib/schema"
+import {
+  absoluteUrl,
+  breadcrumbSchema,
+  faqSchema,
+  graphSchema,
+  localBusinessSchema,
+  serviceSchema,
+  webPageSchema,
+} from "@/lib/schema"
+import { allAreaLandingSlugs, areaLandingPath, resolveAreaLanding } from "@/lib/resolve-area-landing"
 
 type AreaPageProps = {
   params: Promise<{ slug: string }>
 }
 
 export function generateStaticParams() {
-  return areaPages.map((page) => ({ slug: page.slug }))
+  return allAreaLandingSlugs().map((slug) => ({ slug }))
+}
+
+function metaDescription(area: NonNullable<ReturnType<typeof resolveAreaLanding>>): string {
+  if (area.slug === "sheffield") {
+    return "Devora builds bespoke, fast and conversion-led websites for Sheffield and South Yorkshire businesses that need stronger local SEO and better enquiries."
+  }
+  if (area.kind === "curated") {
+    return `Devora builds bespoke, fast and conversion-led websites for ${area.name} businesses that need stronger SEO, sharper positioning and better enquiries.`
+  }
+  return `Bespoke web design and website development in ${area.name}. Devora builds business websites from the ground up with strategy, technical SEO, performance, and conversion in mind.`
+}
+
+function metaKeywords(area: NonNullable<ReturnType<typeof resolveAreaLanding>>): string[] {
+  if (area.kind === "curated" && area.slug === "sheffield") {
+    return [
+      "web design Sheffield",
+      "web development Sheffield",
+      "business website design Sheffield",
+      "local SEO Sheffield",
+      "bespoke website Sheffield",
+    ]
+  }
+  if (area.kind === "curated") {
+    return [
+      `web design ${area.name}`,
+      `website development ${area.name}`,
+      `business website design ${area.name}`,
+      "bespoke website development UK",
+    ]
+  }
+  return [
+    `web design ${area.name}`,
+    `website development ${area.name}`,
+    `business website design ${area.name}`,
+    `web development ${area.name}`,
+    `website designer ${area.name}`,
+    `custom website development ${area.name}`,
+    `SEO web design ${area.name}`,
+    `web development business ${area.name}`,
+    `build a website from scratch ${area.name}`,
+    `bespoke website ${area.regionShort}`,
+  ]
 }
 
 export async function generateMetadata({ params }: AreaPageProps): Promise<Metadata> {
   const { slug } = await params
-  const area = getAreaPage(slug)
+  const area = resolveAreaLanding(slug)
 
   if (!area) return { title: "Area Not Found" }
 
-  const path = `/areas-we-cover/${area.slug}`
+  const path = areaLandingPath(area.slug)
   const title = area.slug === "sheffield" ? "Web Design Sheffield" : `Web Design ${area.name}`
-  const description =
-    area.slug === "sheffield"
-      ? "Devora builds bespoke, fast and conversion-led websites for Sheffield and South Yorkshire businesses that need stronger local SEO and better enquiries."
-      : `Devora builds bespoke, fast and conversion-led websites for ${area.name} businesses that need stronger SEO, sharper positioning and better enquiries.`
+  const description = metaDescription(area)
 
   return {
     title,
     description,
+    keywords: metaKeywords(area),
     alternates: { canonical: absoluteUrl(path) },
     openGraph: {
       title,
@@ -57,18 +105,24 @@ const commercialServices = ["web-design", "web-development", "local-seo", "websi
 
 export default async function AreaLandingPage({ params }: AreaPageProps) {
   const { slug } = await params
-  const area = getAreaPage(slug)
+  const area = resolveAreaLanding(slug)
 
   if (!area) notFound()
 
-  const path = `/areas-we-cover/${area.slug}`
+  const path = areaLandingPath(area.slug)
   const breadcrumbs = [
     { name: "Home", href: "/" },
     { name: "Areas We Cover", href: "/areas-we-cover" },
     { name: area.name, href: path },
   ]
-  const services = commercialServices.map((serviceSlug) => getServicePage(serviceSlug)).filter((service): service is NonNullable<typeof service> => Boolean(service))
-  const nearby = area.nearby.map((nearbySlug) => getAreaPage(nearbySlug)).filter((nearbyArea): nearbyArea is NonNullable<typeof nearbyArea> => Boolean(nearbyArea))
+  const services = commercialServices
+    .map((serviceSlug) => getServicePage(serviceSlug))
+    .filter((service): service is NonNullable<typeof service> => Boolean(service))
+
+  const nearbyItems = area.nearbySlugs
+    .map((s) => resolveAreaLanding(s))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item))
+
   const faqs = [
     {
       question: `Do you work with businesses in ${area.name}?`,
@@ -87,7 +141,7 @@ export default async function AreaLandingPage({ params }: AreaPageProps) {
   ]
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
         <section className="bg-primary px-4 pb-16 pt-32 text-primary-foreground md:px-6 md:pb-24 md:pt-44">
@@ -97,7 +151,7 @@ export default async function AreaLandingPage({ params }: AreaPageProps) {
               <div>
                 <div className="mb-6 inline-flex items-center gap-2 border border-primary-foreground/20 px-3 py-2 text-xs font-bold uppercase tracking-[0.22em]">
                   <MapPin className="h-4 w-4" aria-hidden="true" />
-                  {area.region}
+                  {area.regionLine}
                 </div>
                 <h1 className="max-w-5xl text-5xl font-black leading-[0.94] tracking-[-0.055em] md:text-7xl">
                   Web design {area.name}
@@ -130,10 +184,22 @@ export default async function AreaLandingPage({ params }: AreaPageProps) {
               </p>
               <p>
                 For {area.name}, useful internal routes include{" "}
-                <Link href="/services/web-design" className="font-bold text-foreground underline underline-offset-4">web design</Link>,{" "}
-                <Link href="/services/web-development" className="font-bold text-foreground underline underline-offset-4">web development</Link>,{" "}
-                <Link href="/services/local-seo" className="font-bold text-foreground underline underline-offset-4">local SEO</Link> and{" "}
-                <Link href="/case-studies" className="font-bold text-foreground underline underline-offset-4">case studies</Link>.
+                <Link href="/services/web-design" className="font-bold text-foreground underline underline-offset-4">
+                  web design
+                </Link>
+                ,{" "}
+                <Link href="/services/web-development" className="font-bold text-foreground underline underline-offset-4">
+                  web development
+                </Link>
+                ,{" "}
+                <Link href="/services/local-seo" className="font-bold text-foreground underline underline-offset-4">
+                  local SEO
+                </Link>{" "}
+                and{" "}
+                <Link href="/case-studies" className="font-bold text-foreground underline underline-offset-4">
+                  case studies
+                </Link>
+                .
               </p>
             </div>
           </div>
@@ -162,17 +228,23 @@ export default async function AreaLandingPage({ params }: AreaPageProps) {
               <h2 className="text-4xl font-black leading-[0.98] tracking-[-0.045em]">Businesses we serve in {area.name}</h2>
               <div className="mt-8 grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-2">
                 {area.businessTypes.map((type) => (
-                  <div key={type} className="bg-white p-5 text-sm font-bold text-foreground">{type}</div>
+                  <div key={type} className="bg-white p-5 text-sm font-bold text-foreground">
+                    {type}
+                  </div>
                 ))}
               </div>
             </div>
             <div>
               <h2 className="text-4xl font-black leading-[0.98] tracking-[-0.045em]">Nearby areas</h2>
               <div className="mt-8 grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-2">
-                {nearby.map((nearbyArea) => (
-                  <Link key={nearbyArea.slug} href={`/areas-we-cover/${nearbyArea.slug}`} className="group bg-white p-5 hover:bg-foreground">
+                {nearbyItems.map((nearbyArea) => (
+                  <Link
+                    key={nearbyArea.slug}
+                    href={areaLandingPath(nearbyArea.slug)}
+                    className="group bg-white p-5 hover:bg-foreground"
+                  >
                     <span className="font-bold group-hover:text-background">{nearbyArea.name}</span>
-                    <span className="block pt-1 text-xs text-muted-foreground group-hover:text-background/70">{nearbyArea.region}</span>
+                    <span className="block pt-1 text-xs text-muted-foreground group-hover:text-background/70">{nearbyArea.regionLine}</span>
                   </Link>
                 ))}
               </div>
@@ -208,7 +280,12 @@ export default async function AreaLandingPage({ params }: AreaPageProps) {
             areaServed: area.name,
           }),
           faqSchema(faqs, path),
-          breadcrumbSchema(breadcrumbs.map((item) => ({ name: item.name, url: `${SITE_URL}${item.href === "/" ? "" : item.href}` }))),
+          breadcrumbSchema(
+            breadcrumbs.map((item) => ({
+              name: item.name,
+              url: `${SITE_URL}${item.href === "/" ? "" : item.href}`,
+            })),
+          ),
         ])}
       />
       <Footer />
