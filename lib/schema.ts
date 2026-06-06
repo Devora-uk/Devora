@@ -148,6 +148,19 @@ export function faqSchema(faqs: Array<{ question: string; answer: string }>, pat
   }
 }
 
+export function itemListSchema(items: Array<{ name: string; url: string }>, path: string) {
+  return {
+    "@type": "ItemList",
+    "@id": `${absoluteUrl(path)}#itemlist`,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url,
+    })),
+  }
+}
+
 export function graphSchema(items: object[]) {
   return {
     "@context": "https://schema.org",

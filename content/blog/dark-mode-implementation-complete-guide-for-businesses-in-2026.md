@@ -2,8 +2,9 @@
 title: Dark Mode Implementation – Complete Guide for Businesses in 2026
 excerpt: >-
   Discover essential strategies and best practices for dark mode implementation.
-  Learn how to implement dark mode effectively in your business's web development
-  projects. Practical insights and actionable tips from industry professionals.
+  Learn how to implement dark mode effectively in your business's web
+  development projects. Practical insights and actionable tips from industry
+  professionals.
 date: '2026-01-11'
 author: Emily Chen
 coverImage: /blog/dark-mode-implementation-complete-guide-for-startu.jpg
@@ -13,6 +14,7 @@ tags:
   - css
   - web development
   - business growth
+dateModified: '2026-01-11'
 ---
 
 # Dark Mode Implementation – Complete Guide for Businesses in 2026

@@ -13,6 +13,7 @@ tags:
   - deployment
   - web development
   - business growth
+dateModified: '2026-01-20'
 ---
 
 # CI/CD Pipeline Setup – Complete Guide for Businesses in 2026

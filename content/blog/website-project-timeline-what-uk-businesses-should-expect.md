@@ -1,14 +1,23 @@
 ---
-title: "Website Project Timeline: What UK Businesses Should Expect"
-date: "2026-05-19"
-excerpt: "A realistic week-by-week view of a business website project in the UK, from discovery and design through development, content, QA and launch."
-author: "Devora"
-coverImage: "/blog/the-ultimate-guide-to-branding-consistency-in-web-design-in-2025.jpg"
-readingTime: "7 min read"
-tags: ["Web design", "Project planning", "UK business growth"]
-category: "cost-and-planning"
+title: 'Website Project Timeline: What UK Businesses Should Expect'
+date: '2026-05-19'
+excerpt: >-
+  A realistic week-by-week view of a business website project in the UK, from
+  discovery and design through development, content, QA and launch.
+author: Devora
+coverImage: /blog/the-ultimate-guide-to-branding-consistency-in-web-design-in-2025.jpg
+readingTime: 7 min read
+tags:
+  - Web design
+  - Project planning
+  - UK business growth
+category: cost-and-planning
 featured: true
-relatedServices: ["web-design", "web-development", "website-redesign"]
+relatedServices:
+  - web-design
+  - web-development
+  - website-redesign
+dateModified: '2026-05-19'
 ---
 
 ## A timeline reduces risk

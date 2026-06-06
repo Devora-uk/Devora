@@ -14,6 +14,7 @@ tags:
   - design system
   - web development
   - business growth
+dateModified: '2026-01-13'
 ---
 
 # Component Library Design – Complete Guide for Businesses in 2026

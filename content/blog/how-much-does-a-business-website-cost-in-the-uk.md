@@ -1,14 +1,22 @@
 ---
-title: "How Much Does a Business Website Cost in the UK?"
-date: "2026-05-17"
-excerpt: "A practical guide to UK business website costs, what affects price and how to judge whether a quote is likely to produce a useful commercial website."
-author: "Devora"
-coverImage: "/blog/website-performance-optimisation-guide-2026.jpg"
-readingTime: "7 min read"
-category: "cost-and-planning"
+title: How Much Does a Business Website Cost in the UK?
+date: '2026-05-17'
+excerpt: >-
+  A practical guide to UK business website costs, what affects price and how to
+  judge whether a quote is likely to produce a useful commercial website.
+author: Devora
+coverImage: /blog/website-performance-optimisation-guide-2026.jpg
+readingTime: 7 min read
+category: cost-and-planning
 featured: true
-relatedServices: ["web-design", "small-business-websites"]
-tags: ["Website strategy", "Web design", "Small business"]
+relatedServices:
+  - web-design
+  - small-business-websites
+tags:
+  - Website strategy
+  - Web design
+  - Small business
+dateModified: '2026-05-17'
 ---
 
 ## Search intent

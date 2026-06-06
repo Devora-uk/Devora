@@ -18,6 +18,7 @@ tags:
   - business growth
   - marketing automation
   - SEO optimisation
+dateModified: '2026-01-29'
 ---
 
 # Blaze.ai Review – How AI-Powered Social Media Management Transforms Business Marketing in 2026

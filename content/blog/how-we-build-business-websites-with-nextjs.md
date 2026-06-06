@@ -1,14 +1,24 @@
 ---
-title: "How We Build Business Websites with Next.js"
-date: "2026-05-19"
-excerpt: "An inside look at how Devora uses Next.js to build fast, SEO-ready business websites for UK companies, from architecture and performance to content and launch."
-author: "Devora"
-coverImage: "/blog/react-server-components-complete-guide-for-business.jpg"
-readingTime: "8 min read"
-tags: ["Next.js", "Web development", "SEO"]
-category: "technical-build"
+title: How We Build Business Websites with Next.js
+date: '2026-05-19'
+excerpt: >-
+  An inside look at how Devora uses Next.js to build fast, SEO-ready business
+  websites for UK companies, from architecture and performance to content and
+  launch.
+author: Devora
+coverImage: /blog/react-server-components-complete-guide-for-business.jpg
+readingTime: 8 min read
+tags:
+  - Next.js
+  - Web development
+  - SEO
+category: technical-build
 featured: true
-relatedServices: ["nextjs-development", "web-development", "web-design"]
+relatedServices:
+  - nextjs-development
+  - web-development
+  - web-design
+dateModified: '2026-05-19'
 ---
 
 ## Why Next.js for business sites

@@ -1,10 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Menu, X, ScanSearch, Search } from "lucide-react"
+import { ChevronDown, Menu, ScanSearch, Search, X } from "lucide-react"
 import { useState, useEffect } from "react"
 import {
   Dialog,
@@ -23,230 +21,348 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isAuditDialogOpen, setIsAuditDialogOpen] = useState(false)
   const [siteSearchOpen, setSiteSearchOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
 
-  // Close menu when pathname changes
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const [hash, setHash] = useState("")
+
+  useEffect(() => {
+    const updateHash = () => setHash(window.location.hash)
+    updateHash()
+    window.addEventListener("hashchange", updateHash)
+    return () => window.removeEventListener("hashchange", updateHash)
+  }, [pathname])
+
   useEffect(() => {
     setIsMenuOpen(false)
+    setServicesOpen(pathname.startsWith("/services"))
   }, [pathname])
 
   useEffect(() => {
     document.body.classList.toggle("mobile-nav-open", isMenuOpen)
-
-    return () => {
-      document.body.classList.remove("mobile-nav-open")
-    }
+    return () => document.body.classList.remove("mobile-nav-open")
   }, [isMenuOpen])
 
-  // Close menu when clicking outside
-  useEffect(() => {
-    if (!isMenuOpen) return
+  const getNavHref = (hash: string) =>
+    isHomePage ? hash : `/#${hash.replace("#", "")}`
 
-    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      const target = event.target as HTMLElement
-      const header = document.querySelector('header')
-      // Close menu if click is outside the header
-      if (header && !header.contains(target)) {
-        setIsMenuOpen(false)
-      }
-    }
-
-    // Use both mouse and touch events for better mobile support
-    // Small delay to avoid immediate closure when opening
-    const timeoutId = setTimeout(() => {
-      document.addEventListener('mousedown', handleClickOutside)
-      document.addEventListener('touchstart', handleClickOutside)
-    }, 100)
-
-    return () => {
-      clearTimeout(timeoutId)
-      document.removeEventListener('mousedown', handleClickOutside)
-      document.removeEventListener('touchstart', handleClickOutside)
-    }
-  }, [isMenuOpen])
-
-  // Helper function to handle navigation - if not on home, go to home with hash, otherwise just use hash
-  const getNavHref = (hash: string) => {
-    return isHomePage ? hash : `/#${hash.replace("#", "")}`
+  const isRouteActive = (href: string) => {
+    const path = href.split("#")[0]
+    if (!path || path === "/") return false
+    return pathname === path || pathname.startsWith(`${path}/`)
   }
 
+  const isHashLinkActive = (href: string) => {
+    const linkHash = href.includes("#") ? `#${href.split("#")[1]}` : ""
+    if (!linkHash) return false
+    return pathname === "/" && hash === linkHash
+  }
+
+  const isNavItemActive = (href: string) =>
+    isHashLinkActive(href) || isRouteActive(href)
+
   const navLinks = [
-    { href: "/services", label: "Services" },
-    { href: "/areas-we-cover", label: "Locations", ariaLabel: "Devora UK web design and development locations" },
-    { href: "/industries", label: "Industries" },
-    { href: "/case-studies", label: "Case Studies" },
-    { href: "/guides", label: "Guides", ariaLabel: "Website guides for UK businesses" },
-    { href: "/blog", label: "Blog", ariaLabel: "Web design and development blog" },
+    { href: "/#about", label: "about us" },
+    {
+      label: "services",
+      href: "/services",
+      children: [
+        { href: "/services/web-design", label: "Web Design" },
+        { href: "/services/web-development", label: "Web Development" },
+        { href: "/services/branding", label: "Branding" },
+        { href: "/services/local-seo", label: "Local SEO" },
+        { href: "/services", label: "All services" },
+      ],
+    },
+    { href: "/areas-we-cover", label: "locations" },
+    { href: "/case-studies", label: "projects" },
+    { href: "/guides", label: "guides" },
+    { href: getNavHref("#contact"), label: "contact us" },
   ]
+
+  const tabletNavLinks = [
+    { href: "/#about", label: "about" },
+    { href: "/services", label: "services" },
+    { href: "/case-studies", label: "projects" },
+    { href: getNavHref("#contact"), label: "contact" },
+  ]
+
+  const onHero = isHomePage && !scrolled
+  const textClass = onHero ? "text-[#0F1729]" : "text-black"
+  const activeTextClass = textClass
+  const mutedClass = onHero
+    ? "text-[#0F1729]/78 hover:text-[#0F1729]"
+    : "text-black/78 hover:text-black"
+  const navLinkClass = `nav-link transition-colors ${mutedClass}`
+  const headerBg = onHero
+    ? "border-transparent bg-[#F0EBE3]/40 backdrop-blur-sm"
+    : "border-black/8 bg-white/95 shadow-[0_1px_12px_rgba(0,0,0,0.06)] backdrop-blur-md"
 
   return (
     <>
-    <Dialog open={isAuditDialogOpen} onOpenChange={setIsAuditDialogOpen}>
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-black/15 bg-card/95 shadow-sm backdrop-blur-xl supports-[backdrop-filter]:bg-card/82" role="banner">
-        <div className="mx-auto max-w-7xl px-4 py-2.5 md:px-6 md:py-3">
-          <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3" aria-label="Devora - Home">
-            <Image 
-              src="/devora-bw.png" 
-              alt="Devora logo - Startup web design and development studio" 
-              width={48} 
-              height={48} 
-              className="h-10 w-10 rounded-md"
-              priority={true}
-            />
-            <span className="hidden sm:flex flex-col leading-none">
-              <span className="text-base font-black tracking-[-0.03em]">Devora</span>
-              <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">Startup web studio</span>
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex flex-1 items-center justify-end gap-6 lg:gap-7" aria-label="Main navigation">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.label}
-                href={link.href} 
-                className="text-sm font-semibold text-foreground/76 hover:text-foreground transition-colors duration-200"
-                aria-label={link.ariaLabel}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              onClick={() => setSiteSearchOpen(true)}
-              className="h-10 gap-2 rounded-full border-black/25 bg-card px-3 text-sm font-semibold text-foreground/80 hover:border-accent hover:text-accent-foreground"
-              aria-label="Open search"
+      <Dialog open={isAuditDialogOpen} onOpenChange={setIsAuditDialogOpen}>
+        <header
+          className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${headerBg}`}
+          role="banner"
+        >
+          <div className="mx-auto flex max-w-[90rem] items-center justify-between mobile-safe-x px-5 py-3.5 max-md:py-3 md:px-8 md:py-5 lg:px-10">
+            <Link
+              href="/"
+              className={`text-2xl font-bold tracking-[-0.03em] md:text-[1.75rem] lg:text-3xl ${textClass}`}
+              aria-label="Devora home"
             >
-              <Search className="h-4 w-4 shrink-0" aria-hidden="true" />
-              <span className="max-w-[6rem] truncate">Search</span>
-              <kbd className="pointer-events-none hidden rounded border border-black/15 bg-muted px-1.5 py-0.5 font-mono text-[10px] font-semibold text-muted-foreground xl:inline">
-                ⌘K
-              </kbd>
-            </Button>
-          </nav>
-
-          {/* Desktop Action Buttons */}
-          <div className="hidden md:flex items-center gap-3 pl-3 lg:pl-4">
-            <DialogTrigger asChild>
-              <Button variant="outline" className="h-10 rounded-full gap-2 border-black/25 bg-card px-4 text-sm font-semibold hover:border-accent hover:text-accent-foreground">
-                <ScanSearch className="w-4 h-4" />
-                Free Audit
-              </Button>
-            </DialogTrigger>
-            
-            <Link href={getNavHref("#contact")} aria-label="Contact Devora for web design services">
-              <Button className="h-10 rounded-full gap-2 bg-foreground px-5 text-sm font-semibold text-background hover:bg-accent">
-                Get in touch
-                <ArrowRight className="w-4 h-4" aria-hidden="true" />
-              </Button>
+              devora.
             </Link>
-          </div>
 
-          <div className="flex items-center gap-2 md:hidden">
-            <button
-              type="button"
-              onClick={() => setSiteSearchOpen(true)}
-              className="flex min-h-12 min-w-12 items-center justify-center rounded-full border border-black/10 bg-background/80 text-foreground shadow-sm"
-              aria-label="Open search"
+            <nav
+              className="hidden items-center gap-0.5 md:flex lg:hidden"
+              aria-label="Tablet navigation"
             >
-              <Search className="h-5 w-5" aria-hidden="true" />
-            </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                setIsMenuOpen(!isMenuOpen)
-              }}
-              className="relative z-50 flex min-h-12 min-w-12 items-center justify-center rounded-full border border-black/10 bg-background/80 shadow-sm transition-colors hover:bg-muted active:bg-muted"
-              aria-label={isMenuOpen ? "Close mobile menu" : "Open mobile menu"}
-              aria-expanded={isMenuOpen}
-              type="button"
+              {tabletNavLinks.map((link) => {
+                const isActive = isNavItemActive(link.href)
+
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className={`nav-link nav-link-compact transition-colors ${mutedClass} ${isActive ? `nav-link-active ${activeTextClass}` : ""}`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              })}
+              <button
+                type="button"
+                onClick={() => setSiteSearchOpen(true)}
+                className={`nav-link nav-link-compact gap-1.5 transition-colors ${mutedClass}`}
+                aria-label="Open search"
+              >
+                <Search className="h-4 w-4" aria-hidden="true" />
+                <span className="sr-only">search</span>
+              </button>
+            </nav>
+
+            <nav
+              className="hidden items-center gap-2 lg:flex xl:gap-4"
+              aria-label="Main navigation"
             >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" aria-hidden="true" />
-              ) : (
-                <Menu className="w-6 h-6" aria-hidden="true" />
-              )}
-            </button>
-          </div>
-          </div>
+              {navLinks.map((link) => {
+                const isActive = isNavItemActive(link.href)
 
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-          <nav 
-            className="fixed inset-x-0 top-[65px] z-40 max-h-[calc(100dvh-65px)] overflow-y-auto border-b border-black/15 bg-card/98 px-4 pb-[calc(6rem+env(safe-area-inset-bottom))] pt-4 shadow-2xl backdrop-blur-xl animate-in slide-in-from-top-2 duration-200 md:hidden" 
-            aria-label="Mobile navigation"
-            onClick={(e) => {
-              // Close menu when clicking on nav links
-              const target = e.target as HTMLElement
-              if (target.tagName === 'A') {
-                setIsMenuOpen(false)
-              }
-            }}
-          >
-            <div className="space-y-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="flex min-h-14 items-center justify-between border border-black/10 bg-background px-4 text-lg font-black tracking-[-0.02em] text-foreground shadow-sm transition-colors duration-200 hover:text-primary active:bg-muted"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                  <ArrowRight className="h-4 w-4 text-accent" aria-hidden="true" />
-                </Link>
-              ))}
-            </div>
+                return link.children ? (
+                  <div key={link.label} className="group relative">
+                    <Link
+                      href={link.href}
+                      className={`${navLinkClass} gap-1.5 px-2 ${isActive ? `nav-link-active ${activeTextClass}` : ""}`}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {link.label}
+                      <ChevronDown className="h-4 w-4 opacity-70" aria-hidden="true" />
+                    </Link>
+                    <div className="invisible absolute left-0 top-full z-50 min-w-[16rem] pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                      <ul className="rounded-lg border border-black/8 bg-white py-2 shadow-xl">
+                        {link.children.map((child) => {
+                          const isChildActive = isRouteActive(child.href)
 
-            <div className="mt-5 grid grid-cols-2 gap-3">
+                          return (
+                            <li key={child.href}>
+                              <Link
+                                href={child.href}
+                                className={`block min-h-11 px-4 py-3 text-base transition-colors hover:bg-black/4 hover:text-black ${
+                                  isChildActive
+                                    ? "bg-black/4 font-semibold text-black"
+                                    : "text-black/80"
+                                }`}
+                                aria-current={isChildActive ? "page" : undefined}
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className={`${navLinkClass} px-2 ${isActive ? `nav-link-active ${activeTextClass}` : ""}`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              })}
+              <button
+                type="button"
+                onClick={() => setSiteSearchOpen(true)}
+                className={`${navLinkClass} gap-2 px-2`}
+                aria-label="Open search"
+              >
+                <Search className="h-4 w-4" aria-hidden="true" />
+                search
+              </button>
+            </nav>
+
+            <div className="flex items-center gap-2 md:gap-3">
               <DialogTrigger asChild>
-                <Button variant="outline" className="h-12 rounded-full gap-2 w-full justify-center border-black/15 text-sm font-bold hover:border-accent hover:text-accent-foreground" onClick={() => setIsMenuOpen(false)}>
-                  <ScanSearch className="w-4 h-4" aria-hidden="true" />
-                  Free audit
-                </Button>
+                <button
+                  type="button"
+                  className={`${navLinkClass} nav-link-compact hidden gap-1.5 px-2 md:inline-flex lg:gap-2`}
+                >
+                  <ScanSearch className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  <span className="hidden lg:inline">free audit</span>
+                  <span className="lg:hidden">audit</span>
+                </button>
               </DialogTrigger>
 
-              <Link href={getNavHref("#contact")} aria-label="Contact Devora for web design services" onClick={() => setIsMenuOpen(false)} className="block">
-                <Button className="h-12 rounded-full gap-2 w-full justify-center bg-foreground text-sm font-bold text-background hover:bg-accent">
-                  Contact
-                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                </Button>
-              </Link>
+              <button
+                type="button"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className={`flex h-11 w-11 items-center justify-center rounded-full border transition-colors md:hidden ${
+                  onHero
+                    ? "border-[#0F1729]/12 bg-white/50 text-[#0F1729]"
+                    : "border-black/10 bg-black/4 text-black"
+                } ${isMenuOpen ? "bg-[#0F1729] text-white border-[#0F1729]" : ""}`}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMenuOpen}
+              >
+                {isMenuOpen ? (
+                  <X className="h-5 w-5" aria-hidden="true" />
+                ) : (
+                  <Menu className="h-5 w-5" aria-hidden="true" />
+                )}
+              </button>
             </div>
-          </nav>
-          )}
-        </div>
-      </header>
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-black/15 bg-card/95 px-4 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 shadow-[0_-18px_50px_rgba(15,23,42,0.12)] backdrop-blur-xl md:hidden">
-        <div className="mx-auto grid max-w-md grid-cols-[0.9fr_1.1fr] gap-3">
-          <DialogTrigger asChild>
-            <Button variant="outline" className="h-12 rounded-full gap-2 border-black/20 bg-card text-sm font-bold hover:border-accent hover:text-accent-foreground">
-              <ScanSearch className="h-4 w-4" aria-hidden="true" />
-              Audit
-            </Button>
-          </DialogTrigger>
+          </div>
 
-          <Link href={getNavHref("#contact")} aria-label="Contact Devora for web design services">
-            <Button className="h-12 w-full rounded-full gap-2 bg-foreground text-sm font-bold text-background hover:bg-accent">
-              Get in touch
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Button>
-          </Link>
-        </div>
-      </div>
-      <DialogContent className="gap-0 max-h-[min(100dvh-1rem,44rem)] overflow-y-auto border-black/20 bg-card p-0 shadow-[0_30px_110px_rgba(15,23,42,0.16)] sm:max-w-[min(100vw-2rem,32rem)] [&_[data-slot=dialog-close]]:top-4 [&_[data-slot=dialog-close]]:right-4 [&_[data-slot=dialog-close]]:flex [&_[data-slot=dialog-close]]:h-9 [&_[data-slot=dialog-close]]:w-9 [&_[data-slot=dialog-close]]:items-center [&_[data-slot=dialog-close]]:justify-center [&_[data-slot=dialog-close]]:rounded-full [&_[data-slot=dialog-close]]:border [&_[data-slot=dialog-close]]:border-black/15 [&_[data-slot=dialog-close]]:bg-background [&_[data-slot=dialog-close]]:text-foreground [&_[data-slot=dialog-close]]:opacity-100 hover:[&_[data-slot=dialog-close]]:bg-muted">
-        <DialogHeader className="sr-only">
-          <DialogTitle>Free Website Audit</DialogTitle>
-          <DialogDescription>
-            Request a free comprehensive audit of your website
-          </DialogDescription>
-        </DialogHeader>
-        <WebsiteAuditForm variant="inline" />
-      </DialogContent>
-    </Dialog>
-    <SiteSearchDialog open={siteSearchOpen} onOpenChange={setSiteSearchOpen} />
+          {isMenuOpen && (
+            <nav
+              className="fixed inset-0 top-[3.25rem] z-40 flex flex-col md:hidden"
+              aria-label="Mobile navigation"
+            >
+              <button
+                type="button"
+                className="absolute inset-0 bg-[#0F1729]/40 backdrop-blur-sm"
+                aria-label="Close menu"
+                onClick={() => setIsMenuOpen(false)}
+              />
+              <div
+                className={`relative flex max-h-[calc(100dvh-3.25rem)] flex-col overflow-y-auto mobile-safe-x mobile-safe-bottom border-t px-5 py-6 ${
+                  onHero
+                    ? "border-[#0F1729]/10 bg-[#F7F4EF]/98 text-[#0F1729] backdrop-blur-xl"
+                    : "border-black/8 bg-white/98 text-black backdrop-blur-xl"
+                }`}
+              >
+                <p className="mobile-section-label mb-4 text-[#0F1729]/50">Menu</p>
+                <ul className="space-y-1">
+                {navLinks.map((link) => {
+                  const isActive = isNavItemActive(link.href)
+
+                  return link.children ? (
+                    <li key={link.label}>
+                      <button
+                        type="button"
+                        onClick={() => setServicesOpen(!servicesOpen)}
+                        className={`flex min-h-12 w-full items-center justify-between rounded-xl px-3 py-3 text-lg font-medium lowercase transition-colors ${
+                          isActive ? "nav-link-active-mobile bg-[#0F1729]/6 font-semibold" : "hover:bg-black/4"
+                        }`}
+                        aria-current={isActive ? "page" : undefined}
+                      >
+                        {link.label}
+                        <ChevronDown
+                          className={`h-5 w-5 transition-transform ${servicesOpen ? "rotate-180" : ""}`}
+                          aria-hidden="true"
+                        />
+                      </button>
+                      {servicesOpen && (
+                        <ul className="mb-2 ml-3 space-y-0.5 border-l border-current/20 pl-4">
+                          {link.children.map((child) => {
+                            const isChildActive = isRouteActive(child.href)
+
+                            return (
+                              <li key={child.href}>
+                                <Link
+                                  href={child.href}
+                                  onClick={() => setIsMenuOpen(false)}
+                                  className={`block min-h-11 rounded-lg px-3 py-2.5 text-base ${
+                                    isChildActive
+                                      ? "bg-[#0F1729]/6 font-semibold text-foreground"
+                                      : "text-muted-navy hover:bg-black/4"
+                                  }`}
+                                  aria-current={isChildActive ? "page" : undefined}
+                                >
+                                  {child.label}
+                                </Link>
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      )}
+                    </li>
+                  ) : (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className={`block min-h-12 rounded-xl px-3 py-3 text-lg font-medium lowercase transition-colors ${
+                          isActive ? "nav-link-active-mobile bg-[#0F1729]/6 font-semibold" : "hover:bg-black/4"
+                        }`}
+                        aria-current={isActive ? "page" : undefined}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  )
+                })}
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSiteSearchOpen(true)
+                      setIsMenuOpen(false)
+                    }}
+                    className="block min-h-12 rounded-xl px-3 py-3 text-lg font-medium lowercase transition-colors hover:bg-black/4"
+                  >
+                    search
+                  </button>
+                </li>
+              </ul>
+
+              <div className="mt-auto pt-8">
+                <DialogTrigger asChild>
+                  <button
+                    type="button"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="btn-touch w-full gap-2 rounded-xl bg-[#CCFF00] text-[#0F1729] transition-colors hover:bg-[#b8e600]"
+                  >
+                    <ScanSearch className="h-4 w-4" aria-hidden="true" />
+                    free website audit
+                  </button>
+                </DialogTrigger>
+              </div>
+              </div>
+            </nav>
+          )}
+        </header>
+
+        <DialogContent className="gap-0 max-h-[min(100dvh-1rem,44rem)] overflow-y-auto border-black/10 bg-white p-0 shadow-2xl sm:max-w-[min(100vw-2rem,32rem)]">
+          <DialogHeader className="sr-only">
+            <DialogTitle>Free Website Audit</DialogTitle>
+            <DialogDescription>Request a free comprehensive audit of your website</DialogDescription>
+          </DialogHeader>
+          <WebsiteAuditForm variant="inline" />
+        </DialogContent>
+      </Dialog>
+      <SiteSearchDialog open={siteSearchOpen} onOpenChange={setSiteSearchOpen} />
     </>
   )
 }

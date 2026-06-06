@@ -1,7 +1,9 @@
 ---
 title: Content Strategy That Converts – A Practical Guide for 2025
 excerpt: >-
-  Create content that converts: Master the art of strategic content planning, creation, and optimisation to drive traffic, engagement, and business growth in 2025.
+  Create content that converts: Master the art of strategic content planning,
+  creation, and optimisation to drive traffic, engagement, and business growth
+  in 2025.
 date: '2025-05-26'
 author: Devora team
 coverImage: /blog/the-ultimate-guide-to-content-strategy-for-busines.jpg
@@ -12,6 +14,7 @@ tags:
   - business advice
   - business growth
   - content marketing
+dateModified: '2025-05-26'
 ---
 
 # Content Strategy That Converts – A Practical Guide for 2025

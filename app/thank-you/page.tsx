@@ -1,7 +1,8 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { CheckCircle, ArrowRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
+import { BrandBadge } from "@/components/brand-badge"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -15,68 +16,58 @@ export const metadata: Metadata = {
 
 export default function ThankYouPage() {
     return (
-        <>
+        <div className="min-h-screen flex flex-col bg-[#0F1729]">
             <Header />
-            <main className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center px-4">
-                <div className="max-w-2xl mx-auto text-center py-24">
-                    {/* Success Icon */}
-                    <div className="mb-8">
-                        <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-lg shadow-green-500/20">
-                            <CheckCircle className="w-10 h-10 text-white" />
-                        </div>
-                    </div>
+            <main className="flex-1 section-cream section-shell-cream page-section">
+                <div className="mx-auto max-w-2xl text-center">
+                    <BrandBadge variant="lime" className="mb-6">
+                        Message received
+                    </BrandBadge>
 
-                    {/* Heading */}
-                    <h1 className="text-4xl md:text-5xl font-light text-white mb-4">
-                        Thank You!
+                    <h1 className="section-heading md:section-heading-tablet text-[#0F1729]">
+                        Thank you for getting in <span className="heading-accent">touch</span>.
                     </h1>
 
-                    {/* Message */}
-                    <p className="text-xl text-gray-300 font-light mb-4">
-                        We've received your enquiry and appreciate you reaching out.
-                    </p>
-                    <p className="text-lg text-gray-400 font-light mb-8">
-                        Our team will review your request and get back to you within <span className="text-white font-medium">24 hours</span>.
+                    <p className="mt-6 text-base leading-8 text-[#0F1729]/60 md:text-lg">
+                        We&apos;ve received your enquiry and appreciate you reaching out. Our team will review your request and get back to you within{" "}
+                        <span className="font-medium text-[#0F1729]">24 hours</span>.
                     </p>
 
-                    {/* What happens next */}
-                    <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 mb-8 text-left">
-                        <h2 className="text-lg font-light text-white mb-4">What happens next?</h2>
-                        <ul className="space-y-3">
-                            <li className="flex items-start gap-3">
-                                <span className="w-6 h-6 bg-gray-700 rounded-full flex items-center justify-center text-sm text-white flex-shrink-0 mt-0.5">1</span>
-                                <span className="text-gray-300 font-light">We'll review your submission and prepare a tailored response</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <span className="w-6 h-6 bg-gray-700 rounded-full flex items-center justify-center text-sm text-white flex-shrink-0 mt-0.5">2</span>
-                                <span className="text-gray-300 font-light">A member of our team will reach out via email</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <span className="w-6 h-6 bg-gray-700 rounded-full flex items-center justify-center text-sm text-white flex-shrink-0 mt-0.5">3</span>
-                                <span className="text-gray-300 font-light">We'll schedule a call to discuss your project in detail</span>
-                            </li>
-                        </ul>
+                    <div className="mt-10 rounded-xl border border-[#0F1729]/8 bg-white/60 p-6 text-left md:tablet-panel-inset lg:rounded-xl lg:border lg:border-[#0F1729]/8 lg:bg-white/60 lg:p-6">
+                        <h2 className="text-base font-medium text-[#0F1729]">What happens next?</h2>
+                        <ol className="mt-4 space-y-4">
+                            {[
+                                "We'll review your submission and prepare a tailored response",
+                                "A member of our team will reach out via email",
+                                "We'll schedule a call to discuss your project in detail",
+                            ].map((step, i) => (
+                                <li key={step} className="flex items-start gap-3 text-sm leading-6 text-[#0F1729]/60">
+                                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0F1729]/8 text-xs font-medium text-[#0F1729]">
+                                        {i + 1}
+                                    </span>
+                                    {step}
+                                </li>
+                            ))}
+                        </ol>
                     </div>
 
-                    {/* Back to Home */}
                     <Link
                         href="/"
-                        className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-lg font-light hover:bg-gray-100 transition-all duration-200"
+                        className="group mt-10 inline-flex items-center gap-1.5 rounded-full bg-[#0F1729] px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-[#162038]"
                     >
-                        Return to Homepage
-                        <ArrowRight className="w-4 h-4" />
+                        return to homepage
+                        <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
                     </Link>
 
-                    {/* Additional contact info */}
-                    <p className="text-sm text-gray-500 mt-8 font-light">
-                        Have an urgent question? Email us directly at{" "}
-                        <a href="mailto:hello@devora.co.uk" className="text-gray-300 hover:text-white transition-colors">
+                    <p className="mt-8 text-sm text-[#0F1729]/45">
+                        Have an urgent question? Email us at{" "}
+                        <a href="mailto:hello@devora.co.uk" className="text-[#0F1729]/70 underline-offset-4 transition-colors hover:text-[#0F1729] hover:underline">
                             hello@devora.co.uk
                         </a>
                     </p>
                 </div>
             </main>
             <Footer />
-        </>
+        </div>
     )
 }

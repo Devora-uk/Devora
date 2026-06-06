@@ -17,6 +17,7 @@ tags:
   - web development
   - seo optimisation
   - business growth
+dateModified: '2026-01-23'
 ---
 
 # Website Performance Optimisation Guide – Boost Speed and Core Web Vitals in 2026

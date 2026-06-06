@@ -1,7 +1,9 @@
 ---
 title: Branding Consistency in Web Design – Your Complete Playbook for 2025
 excerpt: >-
-  Master the art of cohesive branding across all digital touchpoints. Learn how consistent visual identity, messaging, and user experience can transform your brand recognition and customer loyalty in 2025.
+  Master the art of cohesive branding across all digital touchpoints. Learn how
+  consistent visual identity, messaging, and user experience can transform your
+  brand recognition and customer loyalty in 2025.
 date: '2025-05-26'
 author: Devora team
 coverImage: /blog/the-ultimate-guide-to-branding-consistency-in-web-.jpg
@@ -12,6 +14,7 @@ tags:
   - design principles
   - user experience
   - branding
+dateModified: '2025-05-26'
 ---
 
 # Branding Consistency in Web Design – Your Complete Playbook for 2025

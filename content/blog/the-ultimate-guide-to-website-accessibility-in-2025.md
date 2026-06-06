@@ -14,6 +14,7 @@ tags:
   - user experience
   - legal compliance
   - web standards
+dateModified: '2025-10-29'
 ---
 
 # Website Accessibility in 2025 – Building Inclusive Digital Experiences

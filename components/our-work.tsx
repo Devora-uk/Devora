@@ -2,117 +2,176 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ArrowUpRight } from "lucide-react"
+
+const projects = [
+  {
+    name: "Sarah Bartlet Optimal Health",
+    slug: "sarah-bartlet-optimal-health",
+    tags: ["Health & Wellbeing", "Web Design"],
+    image: "/case-studies/sarah-bartlet-optimal-health.png",
+    span: "lg:col-span-2 lg:row-span-2",
+    aspect: "aspect-[4/3] lg:aspect-auto lg:min-h-[28rem]",
+    imageClass: "object-cover object-top",
+    unoptimized: true,
+    priority: true,
+  },
+  {
+    name: "Kickin Kilos",
+    slug: "kickin-kilos",
+    tags: ["Health & Wellbeing", "Web Design"],
+    image: "/case-studies/kickin-kilos.png",
+    span: "lg:col-span-1",
+    aspect: "aspect-[4/3]",
+    imageClass: "object-cover object-top",
+    unoptimized: true,
+  },
+  {
+    name: "AHRK Property Maintenance",
+    slug: "ahrk-property-maintenance",
+    tags: ["Next.js", "Property Services"],
+    image: "/case-studies/ahrk-property-maintenance-thumb.png",
+    span: "lg:col-span-1",
+    aspect: "aspect-[4/3]",
+    imageClass: "object-cover object-top",
+    unoptimized: true,
+  },
+  {
+    name: "The Teacher's Surgery",
+    slug: "teachers-surgery",
+    tags: ["Web Design", "Next.js Development"],
+    image: "/case-studies/teachers-surgery-thumb.png",
+    span: "lg:col-span-1",
+    aspect: "aspect-[4/3]",
+    imageClass: "object-cover object-top",
+    unoptimized: true,
+  },
+  {
+    name: "Luma Education Recruitment",
+    slug: "luma-education",
+    tags: ["Branding", "Web Design"],
+    image: "/case-studies/luma-education-thumb.png",
+    span: "lg:col-span-1",
+    aspect: "aspect-[4/3]",
+    imageClass: "object-cover object-center",
+    unoptimized: true,
+  },
+  {
+    name: "Sandalwood Memorials",
+    slug: "sandalwood-memorials",
+    tags: ["E-commerce", "3D Experience"],
+    image: "/case-studies/sandalwood-memorials-thumb.png",
+    span: "lg:col-span-1",
+    aspect: "aspect-[4/3]",
+    imageClass: "object-cover object-top",
+    unoptimized: true,
+  },
+]
+
+function ProjectCard({
+  project,
+  className = "",
+}: {
+  project: (typeof projects)[number] & { containerClass?: string }
+  className?: string
+}) {
+  return (
+    <Link
+      href={`/case-studies/${project.slug}`}
+      className={`group relative overflow-hidden rounded-2xl border border-[#0F1729]/8 ${project.containerClass ?? "bg-[#0F1729]/5"} ${project.span} ${project.aspect} ${className}`}
+      aria-label={`View ${project.name} case study`}
+    >
+      <Image
+        src={project.image}
+        alt={`${project.name} project`}
+        fill
+        className={`${project.imageClass ?? "object-cover"} transition-transform duration-700 group-hover:scale-[1.03] group-active:scale-[0.98]`}
+        sizes="(max-width: 768px) 85vw, 33vw"
+        quality={85}
+        loading={"priority" in project && project.priority ? "eager" : "lazy"}
+        fetchPriority={"priority" in project && project.priority ? "high" : "auto"}
+        priority={"priority" in project ? project.priority : false}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0F1729]/75 via-[#0F1729]/15 to-transparent transition-opacity duration-500 group-hover:from-[#0F1729]/85" />
+      <div className="absolute inset-x-0 bottom-0 p-4 md:p-6">
+        <div className="mb-2 flex flex-wrap gap-1.5 md:mb-3 md:gap-2">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-white backdrop-blur-sm md:px-3 md:py-1.5 md:text-xs"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <h3 className="text-lg font-normal text-white md:text-2xl">{project.name}</h3>
+      </div>
+    </Link>
+  )
+}
 
 export function OurWork() {
-  const projects = [
-    {
-      name: "The Teacher's Surgery",
-      slug: "teachers-surgery",
-      description: "A warm, conversion-focused Next.js platform helping a charitable education community connect teachers, parents, and families.",
-      image: "/case-studies/teachers-surgery-landing.png",
-      sector: "Charitable education",
-      result: "Growing community",
-    },
-    {
-      name: "Luma Education Recruitment",
-      slug: "luma-education",
-      description: "A polished recruitment platform with CRM-connected vacancies, Google Jobs integration, and a brighter market position.",
-      image: "/case-studies/luma-education-full.png",
-      sector: "Education recruitment",
-      result: "Live vacancy engine",
-    },
-    {
-      name: "Sandalwood Memorials",
-      slug: "sandalwood-memorials",
-      description: "Headless commerce with WordPress product management, Next.js speed, and 3D memorial rendering.",
-      image: "/case-studies/sandalwood-memorials.png",
-      sector: "E-commerce",
-      result: "3D product experience",
-    },
-    {
-      name: "LR Talent",
-      slug: "lr-talent",
-      description: "Brand identity and website for a specialist HR recruitment business serving candidates and employers.",
-      image: "/case-studies/lr-talent.png",
-      sector: "HR recruitment",
-      result: "Brand plus website",
-    },
-    {
-      name: "Rectify International",
-      slug: "rectify",
-      description: "A focused energy recruitment platform with a clearer proposition and sharper credibility cues.",
-      image: "/case-studies/rectify.png",
-      sector: "Energy recruitment",
-      result: "Specialist positioning",
-    },
-  ]
-
   return (
-    <section id="work" className="bg-card px-4 py-20 md:px-6 md:py-28" aria-labelledby="work-heading">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-end">
-          <div>
-            <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">Selected work</p>
-            <h2 id="work-heading" className="text-4xl font-black leading-[0.98] tracking-[-0.045em] md:text-6xl">
-              Proof that the pixels know what they are doing.
+    <section
+      id="work"
+      className="section-cream section-shell-cream mobile-safe-x page-section"
+      aria-labelledby="work-heading"
+    >
+      <div className="page-container">
+        <p className="mobile-section-label lg:hidden" aria-hidden="true">
+          02 · Projects
+        </p>
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-6">
+          <div className="max-w-2xl">
+            <h2 id="work-heading" className="section-heading section-heading-mobile md:section-heading-tablet text-[#0F1729]">
+              Latest and <span className="heading-accent">greatest</span>
             </h2>
           </div>
-          <p className="max-w-2xl text-lg leading-8 text-foreground/76">
-            Recent projects span charitable education, recruitment, commerce, wellbeing, and specialist B2B. Different sectors, same standard: clear proposition, premium interface, fast build.
+          <Link
+            href="/case-studies"
+            className="link-inline group hidden text-muted-navy hover:text-[#0F1729] md:inline-flex"
+          >
+            view all projects
+            <ArrowUpRight
+              className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
+          </Link>
+        </div>
+
+        {/* Mobile: horizontal snap carousel */}
+        <div className="relative mt-8 md:hidden">
+          <div
+            className="mobile-scroll-strip -mx-5 px-5 pb-1"
+            aria-label="Featured projects — swipe to browse"
+          >
+            {projects.map((project) => (
+              <ProjectCard
+                key={`mobile-${project.slug}`}
+                project={project}
+                className="w-[min(85vw,20rem)] aspect-[3/4]"
+              />
+            ))}
+          </div>
+          <p className="mobile-scroll-hint" aria-hidden="true">
+            Swipe for more
           </p>
         </div>
 
-        <div className="mt-14 space-y-px overflow-hidden border border-black/15 bg-black/15">
-          {projects.map((project, index) => (
-            <Link
-              key={project.slug}
-              href={`/case-studies/${project.slug}`}
-              className="group grid bg-card transition-colors hover:bg-background md:grid-cols-[0.8fr_1.1fr_0.9fr]"
-              aria-label={`View ${project.name} case study`}
-            >
-              <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[19rem]">
-                <Image
-                  src={project.image}
-                  alt={`${project.name} website case study`}
-                  fill
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
-                  sizes="(max-width: 768px) 100vw, 32vw"
-                  loading={index === 0 ? "eager" : "lazy"}
-                />
-              </div>
-
-              <div className="flex flex-col justify-between border-y border-black/10 p-6 md:border-x md:border-y-0 md:p-8">
-                <div>
-                  <span className="text-xs font-black uppercase tracking-[0.22em] text-accent">{project.sector}</span>
-                  <h3 className="mt-5 max-w-xl text-3xl font-black leading-none tracking-[-0.035em] md:text-5xl">
-                    {project.name}
-                  </h3>
-                </div>
-                <p className="mt-6 max-w-xl text-base leading-7 text-foreground/72">{project.description}</p>
-              </div>
-
-              <div className="flex flex-col justify-between p-6 md:p-8">
-                <div>
-                  <p className="text-xs font-black uppercase tracking-[0.22em] text-foreground/62">Outcome</p>
-                  <p className="mt-4 text-2xl font-black tracking-[-0.03em]">{project.result}</p>
-                </div>
-                <span className="mt-8 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.16em] text-foreground transition-colors group-hover:text-accent">
-                  View case study
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                </span>
-              </div>
-            </Link>
+        {/* Desktop: masonry grid */}
+        <div className="mt-10 hidden grid-cols-1 gap-3 sm:grid-cols-2 md:grid lg:grid-cols-3 lg:gap-4">
+          {projects.map((project) => (
+            <ProjectCard key={`desktop-${project.slug}`} project={project} />
           ))}
         </div>
 
-        <div className="mt-10 flex justify-center">
-          <Link href="/case-studies" aria-label="View all case studies">
-            <Button size="lg" variant="outline" className="rounded-full border-black/25 bg-card px-7 font-bold shadow-sm hover:border-accent hover:text-accent-foreground">
-              View all case studies
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Button>
+        <div className="mt-8 md:hidden">
+          <Link
+            href="/case-studies"
+            className="btn-touch w-full justify-between rounded-xl border border-[#0F1729]/12 bg-white/70 text-muted-navy backdrop-blur-sm transition-colors hover:bg-white hover:text-[#0F1729]"
+          >
+            view all projects
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
       </div>

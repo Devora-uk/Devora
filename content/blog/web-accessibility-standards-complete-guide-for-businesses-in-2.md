@@ -14,6 +14,7 @@ tags:
   - wcag
   - web development
   - business growth
+dateModified: '2026-01-19'
 ---
 
 # Web Accessibility Standards – Complete Guide for Businesses in 2026

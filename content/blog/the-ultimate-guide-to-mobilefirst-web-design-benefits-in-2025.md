@@ -1,7 +1,9 @@
 ---
 title: Mobile-First Web Design – Why It Matters and How to Implement It in 2025
 excerpt: >-
-  Mobile dominates: Learn why designing for mobile devices first boosts SEO rankings, conversion rates, and user satisfaction by up to 300% in today's mobile-first world.
+  Mobile dominates: Learn why designing for mobile devices first boosts SEO
+  rankings, conversion rates, and user satisfaction by up to 300% in today's
+  mobile-first world.
 date: '2025-05-26'
 author: Devora team
 coverImage: /blog/the-ultimate-guide-to-mobilefirst-web-design-benef.jpg
@@ -12,6 +14,7 @@ tags:
   - mobile-first design
   - responsive web
   - mobile optimisation
+dateModified: '2025-05-26'
 ---
 
 # Mobile-First Web Design – Why It Matters and How to Implement It in 2025

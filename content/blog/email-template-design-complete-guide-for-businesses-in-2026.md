@@ -14,6 +14,7 @@ tags:
   - marketing
   - web development
   - business growth
+dateModified: '2026-01-26'
 ---
 
 # Email Template Design – Complete Guide for Businesses in 2026

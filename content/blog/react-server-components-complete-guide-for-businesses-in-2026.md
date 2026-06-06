@@ -14,6 +14,7 @@ tags:
   - web development
   - web development
   - business growth
+dateModified: '2026-01-01'
 ---
 
 # React Server Components – Complete Guide for Businesses in 2026

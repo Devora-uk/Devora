@@ -16,6 +16,7 @@ tags:
   - react
   - vue
   - angular
+dateModified: '2025-10-29'
 ---
 
 # Modern JavaScript Frameworks – Choosing the Right One for Your Project in 2025

@@ -1,13 +1,21 @@
 ---
-title: "Website Redesign Checklist for UK Businesses"
-date: "2026-05-17"
-excerpt: "A practical redesign checklist for UK businesses covering SEO migration, content, conversion, mobile usability, performance and launch checks."
-author: "Devora"
-coverImage: "/blog/the-ultimate-guide-to-content-strategy-for-busines.jpg"
-readingTime: "8 min read"
-category: "design-and-conversion"
-relatedServices: ["website-redesign", "web-design"]
-tags: ["Website redesign", "SEO", "Conversion optimisation"]
+title: Website Redesign Checklist for UK Businesses
+date: '2026-05-17'
+excerpt: >-
+  A practical redesign checklist for UK businesses covering SEO migration,
+  content, conversion, mobile usability, performance and launch checks.
+author: Devora
+coverImage: /blog/the-ultimate-guide-to-content-strategy-for-busines.jpg
+readingTime: 8 min read
+category: design-and-conversion
+relatedServices:
+  - website-redesign
+  - web-design
+tags:
+  - Website redesign
+  - SEO
+  - Conversion optimisation
+dateModified: '2026-05-17'
 ---
 
 ## Search intent

@@ -1,7 +1,9 @@
 ---
 title: High-Converting Landing Pages – Psychology & Optimisation for 2025
 excerpt: >-
-  Turn visitors into customers: Master the art of high-converting landing pages with proven psychological triggers, optimisation frameworks, and A/B testing strategies for 2025.
+  Turn visitors into customers: Master the art of high-converting landing pages
+  with proven psychological triggers, optimisation frameworks, and A/B testing
+  strategies for 2025.
 date: '2025-07-10'
 author: Devora team
 coverImage: /blog/the-ultimate-guide-to-conversionfocused-landing-pa.jpg
@@ -12,6 +14,7 @@ tags:
   - conversion optimisation
   - business metrics
   - landing pages
+dateModified: '2025-07-10'
 ---
 
 # High-Converting Landing Pages – Psychology & Optimisation for 2025

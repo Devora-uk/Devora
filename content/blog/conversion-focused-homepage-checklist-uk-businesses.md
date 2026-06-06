@@ -1,14 +1,23 @@
 ---
-title: "Conversion-Focused Homepage Checklist for UK Businesses"
-date: "2026-05-19"
-excerpt: "A practical homepage checklist for UK businesses: clarity, proof, speed, accessibility and calls to action that turn visitors into enquiries."
-author: "Devora"
-coverImage: "/blog/the-ultimate-guide-to-conversionfocused-landing-pages-in-2025.jpg"
-readingTime: "9 min read"
-tags: ["Web design", "Conversion optimisation", "UK business growth"]
-category: "design-and-conversion"
+title: Conversion-Focused Homepage Checklist for UK Businesses
+date: '2026-05-19'
+excerpt: >-
+  A practical homepage checklist for UK businesses: clarity, proof, speed,
+  accessibility and calls to action that turn visitors into enquiries.
+author: Devora
+coverImage: /blog/conversion-focused-homepage-checklist-uk-businesses.jpg
+readingTime: 9 min read
+tags:
+  - Web design
+  - Conversion optimisation
+  - UK business growth
+category: design-and-conversion
 featured: true
-relatedServices: ["web-design", "small-business-websites", "website-redesign"]
+relatedServices:
+  - web-design
+  - small-business-websites
+  - website-redesign
+dateModified: '2026-05-19'
 ---
 
 ## The homepage is a sales page

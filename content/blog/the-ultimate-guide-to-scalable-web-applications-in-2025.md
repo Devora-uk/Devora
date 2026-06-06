@@ -1,7 +1,9 @@
 ---
 title: Building Scalable Web Applications – Architecture Best Practices for 2025
 excerpt: >-
-  Scale your web applications to millions of users. Learn modern architecture patterns, database strategies, and performance optimisation techniques that will keep your app fast and reliable as it grows.
+  Scale your web applications to millions of users. Learn modern architecture
+  patterns, database strategies, and performance optimisation techniques that
+  will keep your app fast and reliable as it grows.
 date: '2025-10-29'
 author: Devora team
 coverImage: /blog/the-ultimate-guide-to-scalable-web-applications-in.jpg
@@ -12,6 +14,7 @@ tags:
   - performance
   - backend development
   - system design
+dateModified: '2025-10-29'
 ---
 
 # Building Scalable Web Applications – Architecture Best Practices for 2025

@@ -5,6 +5,7 @@ import matter from 'gray-matter'
 import { getLocationBySlug } from '@/lib/locations'
 import { allAreaLandingSlugs, areaLandingPath } from '@/lib/resolve-area-landing'
 import { industryPages, servicePages } from '@/lib/seo-pages'
+import { caseStudySlugs, caseStudySitemapPriority } from '@/lib/case-studies'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.devora.co.uk'
@@ -34,12 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.88,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9, // Regular content updates
     },
     {
       url: `${baseUrl}/case-studies`,
@@ -123,7 +118,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
         
         blogPosts.push({
           url: `${baseUrl}/blog/${fileName.replace(/\.md$/, '')}`,
-          lastModified: data.date ? new Date(data.date) : new Date(),
+          lastModified: data.dateModified
+            ? new Date(data.dateModified)
+            : data.date
+              ? new Date(data.date)
+              : new Date(),
           changeFrequency: 'monthly',
           priority: 0.8, // Blog posts are important content
         })
@@ -133,81 +132,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     console.error('Error reading blog posts:', error)
   }
 
-  // Case studies with comprehensive list
-  const caseStudies: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/case-studies/teachers-surgery`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/case-studies/luma-education`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/case-studies/envirotech-plumbing`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/case-studies/nl-education`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/case-studies/lr-talent`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/case-studies/rectify`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/case-studies/sandalwood-memorials`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/case-studies/sandalwood-memories`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/case-studies/hv-direct`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/case-studies/rfw`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/case-studies/slush-dating`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/case-studies/sky-limit-travels`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-  ]
+  // Case studies generated from shared content source
+  const caseStudies: MetadataRoute.Sitemap = caseStudySlugs.map((slug) => ({
+    url: `${baseUrl}/case-studies/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: caseStudySitemapPriority(slug),
+  }))
 
   return [...staticPages, ...serviceEntries, ...industryEntries, ...areaEntries, ...blogPosts, ...caseStudies]
 }

@@ -1,14 +1,23 @@
 ---
-title: "How to Choose a Web Design Agency in Sheffield"
-date: "2026-05-17"
-excerpt: "A buyer-focused guide to choosing a Sheffield web design partner, including what to ask, what to avoid and how to judge strategy, SEO and build quality."
-author: "Devora"
-coverImage: "/blog/the-ultimate-guide-to-seo-strategies-for-businesses-i.jpg"
-readingTime: "6 min read"
-tags: ["Sheffield", "Web design", "Local business growth"]
-category: "choosing-a-partner"
+title: How to Choose a Web Design Agency in Sheffield
+date: '2026-05-17'
+excerpt: >-
+  A buyer-focused guide to choosing a Sheffield web design partner, including
+  what to ask, what to avoid and how to judge strategy, SEO and build quality.
+author: Devora
+coverImage: /blog/the-ultimate-guide-to-seo-strategies-for-businesses-i.jpg
+readingTime: 6 min read
+tags:
+  - Sheffield
+  - Web design
+  - Local business growth
+category: choosing-a-partner
 featured: true
-relatedServices: ["web-design", "local-seo", "small-business-websites"]
+relatedServices:
+  - web-design
+  - local-seo
+  - small-business-websites
+dateModified: '2026-05-17'
 ---
 
 ## Search intent

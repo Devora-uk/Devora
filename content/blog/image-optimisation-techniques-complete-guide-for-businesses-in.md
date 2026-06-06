@@ -14,6 +14,7 @@ tags:
   - webp
   - web development
   - business growth
+dateModified: '2026-01-25'
 ---
 
 # Image Optimisation Techniques – Complete Guide for Businesses in 2026

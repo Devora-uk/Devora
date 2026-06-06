@@ -1,13 +1,22 @@
 ---
-title: "Website Maintenance: What UK Businesses Need After Launch"
-date: "2026-05-19"
-excerpt: "What to budget for after your business website goes live: security, updates, content, SEO monitoring and performance checks."
-author: "Devora"
-coverImage: "/blog/web-analytics-setup-complete-guide-for-businesses-in.jpg"
-readingTime: "6 min read"
-tags: ["Web development", "Small business", "UK business growth"]
-category: "cost-and-planning"
-relatedServices: ["web-development", "small-business-websites", "local-seo"]
+title: 'Website Maintenance: What UK Businesses Need After Launch'
+date: '2026-05-19'
+excerpt: >-
+  What to budget for after your business website goes live: security, updates,
+  content, SEO monitoring and performance checks.
+author: Devora
+coverImage: /blog/web-analytics-setup-complete-guide-for-businesses-in.jpg
+readingTime: 6 min read
+tags:
+  - Web development
+  - Small business
+  - UK business growth
+category: cost-and-planning
+relatedServices:
+  - web-development
+  - small-business-websites
+  - local-seo
+dateModified: '2026-05-19'
 ---
 
 ## Launch is the starting line

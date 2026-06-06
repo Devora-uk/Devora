@@ -21,54 +21,63 @@ export function WhyUs() {
   ]
 
   return (
-    <section id="why-us" className="bg-foreground px-4 py-20 text-background md:px-6 md:py-28" aria-labelledby="difference-heading">
+    <section
+      id="why-us"
+      className="bg-[#F5F5F3] px-4 py-20 md:px-6 md:py-28"
+      aria-labelledby="difference-heading"
+    >
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
           <div>
-            <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-background/55">The difference</p>
-            <h2 id="difference-heading" className="text-4xl font-black leading-none tracking-[-0.045em] md:text-6xl">
-              Your site should not whisper.
+            <p className="mb-5 text-sm font-bold uppercase tracking-[0.18em] text-[#5C5C5C]">The difference</p>
+            <h2
+              id="difference-heading"
+              className="text-4xl font-black leading-[0.92] tracking-[-0.04em] text-[#0A0A0A] md:text-6xl"
+            >
+              Your site should not{" "}
+              <span className="relative inline-block whitespace-nowrap">
+                whisper.
+                <span className="absolute -bottom-1 left-0 h-[5px] w-full rounded-full bg-[#CCFF00]" aria-hidden="true" />
+              </span>
             </h2>
           </div>
-          <p className="max-w-2xl text-lg leading-8 text-background/82">
-            A startup-focused web development studio should bring more than just code. We bring taste, urgency, market validation, and the technical judgment to make ambitious ideas feel effortless online.
+          <p className="max-w-2xl text-lg leading-8 text-[#3D3D3D]">
+            A startup-focused web studio should bring more than just code. We bring taste, urgency, market validation, and the technical judgment to make ambitious ideas feel effortless online.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-px overflow-hidden border border-white/15 bg-white/15 md:grid-cols-2">
-          <div className="bg-foreground p-5 md:p-8">
-            <div className="mb-8 flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15">
-                <X className="h-5 w-5 text-background/45" aria-hidden="true" />
-              </span>
-              <h3 className="text-2xl font-black tracking-[-0.02em]">What to avoid</h3>
-            </div>
-            <div className="space-y-px overflow-hidden border border-white/10 bg-white/10">
-              {comparisons.map((item) => (
-                <div key={item.tired} className="flex gap-4 bg-foreground p-5">
-                  <X className="mt-1 h-5 w-5 shrink-0 text-background/55" aria-hidden="true" />
-                  <p className="text-sm leading-6 text-background/82">{item.tired}</p>
+        {/* Comparison table */}
+        <div className="mt-14 divide-y divide-[#0A0A0A]/8 border-y border-[#0A0A0A]/8">
+          {comparisons.map((item) => (
+            <div
+              key={item.tired}
+              className="grid gap-4 py-7 md:grid-cols-2 md:gap-12"
+            >
+              <div className="flex gap-4">
+                <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0A0A0A]/8">
+                  <X className="h-3 w-3 text-[#888]" aria-hidden="true" />
                 </div>
-              ))}
+                <p className="text-base leading-7 text-[#5C5C5C]">{item.tired}</p>
+              </div>
+              <div className="flex gap-4 md:border-l md:border-[#0A0A0A]/8 md:pl-12">
+                <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#CCFF00]">
+                  <Check className="h-3 w-3 text-[#0A0A0A]" aria-hidden="true" />
+                </div>
+                <p className="text-base font-semibold leading-7 text-[#0A0A0A]">{item.devora}</p>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-          <div className="bg-white p-5 text-foreground md:p-8">
-            <div className="mb-8 flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white">
-                <Check className="h-5 w-5" aria-hidden="true" />
-              </span>
-              <h3 className="text-2xl font-black tracking-[-0.02em]">What Devora brings</h3>
-            </div>
-            <div className="space-y-px overflow-hidden border border-black/10 bg-black/10">
-              {comparisons.map((item) => (
-                <div key={item.devora} className="flex gap-4 bg-white p-5">
-                  <Check className="mt-1 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
-                  <p className="text-sm font-semibold leading-6 text-foreground">{item.devora}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="mt-8 flex flex-wrap items-center gap-5 text-sm text-[#5C5C5C]">
+          <span className="inline-flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#CCC]" aria-hidden="true" />
+            What to avoid
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#CCFF00]" aria-hidden="true" />
+            What Devora brings
+          </span>
         </div>
       </div>
     </section>

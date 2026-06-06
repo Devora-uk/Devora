@@ -1,128 +1,141 @@
-"use client"
-
-import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Braces, ChartNoAxesCombined, Layers3, Paintbrush, Search } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
+import { BrandBadge } from "@/components/brand-badge"
 
 export function OurServices() {
   const services = [
     {
-      icon: Paintbrush,
-      title: "Premium website design",
+      title: "Web Design & Development",
       href: "/services/web-design",
-      description: "Positioning, page structure, UI direction, and polished responsive layouts that feel bespoke from the first interaction.",
-      image: "/design-ux.jpg",
-    },
-    {
-      icon: Braces,
-      title: "Next.js development",
-      href: "/services/nextjs-development",
-      description: "Fast, robust websites and web apps built with modern code, maintainable components, and clean deployment workflows.",
       image: "/development.jpg",
     },
     {
-      icon: Search,
-      title: "UK local SEO foundations",
-      href: "/services/local-seo",
-      description: "Location-led content architecture, metadata, technical hygiene, and pages built for discoverability across major UK areas.",
-      image: "/web-dev.png",
-    },
-    {
-      icon: Layers3,
-      title: "Brand systems",
+      title: "Brand Creation & Development",
       href: "/services/branding",
-      description: "Visual identity, typography, colour, content patterns, and reusable design systems for teams that need consistency.",
-      image: "/strategy-planning.jpg",
+      image: "/design-ux.jpg",
     },
     {
-      icon: ChartNoAxesCombined,
-      title: "Conversion refinement",
-      href: "/services/website-redesign",
-      description: "Sharper offers, stronger calls to action, analytics visibility, landing pages, and post-launch iteration.",
+      title: "Next.js Development",
+      href: "/services/nextjs-development",
+      image: "/modern-office-collaboration.png",
+    },
+    {
+      title: "Local SEO",
+      href: "/services/local-seo",
       image: "/growth.jpg",
+    },
+    {
+      title: "Conversion Refinement",
+      href: "/services/website-redesign",
+      image: "/mobile-apps.png",
+    },
+    {
+      title: "Startup Brand Systems",
+      href: "/services/branding",
+      image: "/startup-brand-systems.png",
     },
   ]
 
   return (
-    <section id="services" className="bg-background px-4 py-20 md:px-6 md:py-28" aria-labelledby="services-list-heading">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 md:grid-cols-[1fr_0.65fr] md:items-end">
-          <div>
-            <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">Services</p>
-            <h2 id="services-list-heading" className="max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.045em] md:text-6xl">
-              Everything needed to launch a website people remember.
-            </h2>
-          </div>
-          <p className="text-lg leading-8 text-foreground/76">
-            Strategy, design, development, SEO, and iteration under one roof, so your website feels cohesive instead of assembled.
-          </p>
+    <section
+      id="services"
+      className="section-cream mobile-safe-x page-section"
+      aria-labelledby="services-list-heading"
+    >
+      <div className="page-container">
+        <p className="mobile-section-label lg:hidden" aria-hidden="true">
+          04 · Services
+        </p>
+        <div className="max-w-2xl">
+          <BrandBadge variant="lime" className="mb-5 max-md:mb-4 md:mb-6">
+            What we do
+          </BrandBadge>
+          <h2 id="services-list-heading" className="section-heading section-heading-mobile md:section-heading-tablet text-[#0F1729]">
+            How we can <span className="heading-accent">help you</span>
+          </h2>
         </div>
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            itemListElement: services.map((service, index) => ({
-              "@type": "ListItem",
-              position: index + 1,
-              item: {
-                "@type": "Service",
-                name: service.title,
-                description: service.description,
-                image: service.image,
-              },
-            })),
-          }) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              itemListElement: services.map((s, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                item: { "@type": "Service", name: s.title, url: `https://www.devora.co.uk${s.href}` },
+              })),
+            }),
+          }}
         />
 
-        <div className="mt-14 grid gap-px overflow-hidden border border-black/15 bg-black/15 lg:grid-cols-5">
-          {services.map((service, index) => {
-            const Icon = service.icon
-            return (
-              <article key={service.title} className="group bg-card">
-                <div className="relative aspect-[16/10] overflow-hidden border-b border-black/15">
+        {/* Mobile: compact list rows — distinct from project cards */}
+        <ul className="mt-8 space-y-2 md:hidden">
+          {services.map((service, index) => (
+            <li key={service.title}>
+              <Link
+                href={service.href}
+                className="group flex items-center gap-3.5 rounded-2xl border border-[#0F1729]/8 bg-white/70 p-3 backdrop-blur-sm transition-colors active:bg-white"
+                aria-label={`Find out more about ${service.title}`}
+              >
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-[#0F1729]">
                   <Image
                     src={service.image}
-                    alt={service.title}
+                    alt=""
                     fill
-                    className="object-cover grayscale-[12%] transition-transform duration-700 group-hover:scale-105"
-                    sizes={index === 0 ? "(max-width: 1024px) 100vw, 40vw" : "(max-width: 1024px) 100vw, 20vw"}
-                    loading="lazy"
+                    className="object-cover opacity-80"
+                    sizes="56px"
                   />
+                  <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-white/70">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                 </div>
-                <div className="p-6">
-                  <div className="mb-8 flex items-center justify-between">
-                    <Icon className="h-6 w-6 text-accent" strokeWidth={1.75} aria-hidden="true" />
-                    <span className="font-serif text-4xl italic text-stroke-soft">0{index + 1}</span>
-                  </div>
-                  <h3 className="text-2xl font-black leading-tight tracking-[-0.03em]">
-                    <Link href={service.href} className="hover:text-accent">
-                      {service.title}
-                    </Link>
-                  </h3>
-                  <p className="mt-4 text-sm leading-6 text-foreground/72">{service.description}</p>
-                  <Link href={service.href} className="mt-6 inline-flex items-center gap-2 text-sm font-black text-accent">
-                    View service
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
+                <div className="min-w-0 flex-1">
+                  <h3 className="truncate text-base font-medium text-[#0F1729]">{service.title}</h3>
+                  <span className="mt-0.5 inline-flex items-center gap-1 text-sm lowercase text-muted-navy-subtle group-hover:text-[#0F1729]">
+                    find out more
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </span>
                 </div>
-              </article>
-            )
-          })}
-        </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-black/10 pt-8 md:flex-row md:items-center md:justify-between">
-          <p className="max-w-2xl text-sm font-semibold leading-6 text-foreground/72">
-            Need the whole thing done properly? We can take you from rough idea to a ground-up business website, then keep improving it after launch.
-          </p>
-          <Link href="#contact" aria-label="Discuss a web design project">
-            <Button size="lg" className="w-full rounded-full bg-foreground px-7 font-bold text-background hover:bg-accent md:w-auto">
-              Discuss your project
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Button>
-          </Link>
+        {/* Desktop: image cards grid */}
+        <div className="mt-10 hidden grid-cols-1 gap-3 sm:grid-cols-2 md:grid lg:gap-4">
+          {services.map((service, index) => (
+            <Link
+              key={service.title}
+              href={service.href}
+              className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-[#0F1729]/8 bg-[#0F1729]"
+              aria-label={`Find out more about ${service.title}`}
+            >
+              <Image
+                src={service.image}
+                alt={service.title}
+                fill
+                className="object-cover opacity-75 transition-all duration-500 group-hover:scale-[1.03] group-hover:opacity-90"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F1729]/85 via-[#0F1729]/25 to-transparent" />
+              <div className="absolute left-4 top-4 text-xs font-bold uppercase tracking-[0.16em] text-white/60">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+              <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                <h3 className="text-lg font-normal text-white md:text-xl">{service.title}</h3>
+                <span className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-base lowercase text-muted-light transition-colors group-hover:text-[#CCFF00]">
+                  find out more
+                  <ArrowUpRight
+                    className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

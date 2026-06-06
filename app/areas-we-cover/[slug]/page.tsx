@@ -5,8 +5,10 @@ import { ArrowRight, MapPin } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { Breadcrumbs } from "@/components/Breadcrumbs"
 import { JsonLd } from "@/components/JsonLd"
+import { BrandBadge } from "@/components/brand-badge"
+import { PageHero } from "@/components/page-hero"
+import { PageCta } from "@/components/page-cta"
 import { getServicePage, SITE_URL } from "@/lib/seo-pages"
 import {
   absoluteUrl,
@@ -141,62 +143,60 @@ export default async function AreaLandingPage({ params }: AreaPageProps) {
   ]
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#0F1729]">
       <Header />
       <main className="flex-1">
-        <section className="bg-primary px-4 pb-16 pt-32 text-primary-foreground md:px-6 md:pb-24 md:pt-44">
-          <div className="mx-auto max-w-7xl">
-            <Breadcrumbs items={breadcrumbs} />
-            <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_0.62fr] lg:items-end">
-              <div>
-                <div className="mb-6 inline-flex items-center gap-2 border border-primary-foreground/20 px-3 py-2 text-xs font-bold uppercase tracking-[0.22em]">
-                  <MapPin className="h-4 w-4" aria-hidden="true" />
-                  {area.regionLine}
-                </div>
-                <h1 className="max-w-5xl text-5xl font-black leading-[0.94] tracking-[-0.055em] md:text-7xl">
-                  Web design {area.name}
-                  <span className="block font-serif font-normal italic tracking-[-0.06em] text-primary-foreground/80">built to win trust.</span>
-                </h1>
-              </div>
-              <div className="border-l border-primary-foreground/20 pl-6">
-                <p className="text-lg leading-8 text-primary-foreground/85">{area.intro}</p>
-                <Link href="/#contact" className="mt-7 inline-flex">
-                  <Button size="lg" className="rounded-full bg-background px-7 font-bold text-foreground hover:bg-background/90">
-                    Request a free website audit
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        <PageHero
+          breadcrumbs={breadcrumbs}
+          badge={
+            <>
+              <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
+              {area.regionLine}
+            </>
+          }
+          title={
+            <>
+              Web design {area.name}{" "}
+              <span className="heading-accent">built to win trust</span>.
+            </>
+          }
+          aside={area.intro}
+          actions={
+            <Link href="/#contact">
+              <Button size="lg" className="rounded-full bg-[#0F1729] px-7 font-medium text-white hover:bg-[#162038] transition-colors">
+                Request a free website audit
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Button>
+            </Link>
+          }
+        />
 
-        <section className="bg-background px-4 py-16 md:px-6 md:py-24">
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1fr]">
+        <section className="section-cream section-shell-cream page-section">
+          <div className="page-container page-grid-aside gap-10">
             <div>
-              <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">Local context</p>
-              <h2 className="text-4xl font-black leading-[0.98] tracking-[-0.045em] md:text-6xl">Why the website has to work harder.</h2>
+              <BrandBadge variant="lime" className="mb-6">Local context</BrandBadge>
+              <h2 className="section-heading md:section-heading-tablet text-[#0F1729]">Why the website has to work <span className="heading-accent">harder</span>.</h2>
             </div>
-            <div className="space-y-6 text-lg leading-8 text-muted-foreground">
+            <div className="space-y-6 text-base leading-8 text-[#0F1729]/60 md:text-lg">
               <p>{area.localContext}</p>
               <p>
                 We build pages around service intent, area relevance, proof, internal links and clear calls to action. That gives visitors a better buying journey and gives search engines a cleaner understanding of what the business does and where it works.
               </p>
               <p>
                 For {area.name}, useful internal routes include{" "}
-                <Link href="/services/web-design" className="font-bold text-foreground underline underline-offset-4">
+                <Link href="/services/web-design" className="font-medium text-[#0F1729] underline underline-offset-4">
                   web design
                 </Link>
                 ,{" "}
-                <Link href="/services/web-development" className="font-bold text-foreground underline underline-offset-4">
+                <Link href="/services/web-development" className="font-medium text-[#0F1729] underline underline-offset-4">
                   web development
                 </Link>
                 ,{" "}
-                <Link href="/services/local-seo" className="font-bold text-foreground underline underline-offset-4">
+                <Link href="/services/local-seo" className="font-medium text-[#0F1729] underline underline-offset-4">
                   local SEO
                 </Link>{" "}
                 and{" "}
-                <Link href="/case-studies" className="font-bold text-foreground underline underline-offset-4">
+                <Link href="/case-studies" className="font-medium text-[#0F1729] underline underline-offset-4">
                   case studies
                 </Link>
                 .
@@ -205,46 +205,46 @@ export default async function AreaLandingPage({ params }: AreaPageProps) {
           </div>
         </section>
 
-        <section className="bg-muted/35 px-4 py-16 md:px-6 md:py-24">
-          <div className="mx-auto max-w-7xl">
+        <section className="section-dark section-shell-dark page-section">
+          <div className="page-container">
             <div className="mb-10 max-w-3xl">
-              <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">Services in {area.name}</p>
-              <h2 className="text-4xl font-black leading-[0.98] tracking-[-0.045em] md:text-6xl">Search-ready website services.</h2>
+              <BrandBadge variant="navy" className="mb-6 border-white/10 bg-white/8 text-white">Services in {area.name}</BrandBadge>
+              <h2 className="section-heading md:section-heading-tablet text-white">Search-ready website <span className="heading-accent after:bg-[#CCFF00]">services</span>.</h2>
             </div>
-            <div className="grid gap-px overflow-hidden border border-black/10 bg-black/10 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
               {services.map((service) => (
-                <Link key={service.slug} href={`/services/${service.slug}`} className="group bg-white p-6 hover:bg-foreground">
-                  <h3 className="text-2xl font-black tracking-[-0.03em] group-hover:text-background">{service.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground group-hover:text-background/75">{service.intro}</p>
+                <Link key={service.slug} href={`/services/${service.slug}`} className="group rounded-xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-white/20 hover:bg-white/8">
+                  <h3 className="text-lg font-medium text-white">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-white/55">{service.intro}</p>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="bg-background px-4 py-16 md:px-6 md:py-24">
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2">
+        <section className="section-cream section-shell-cream page-section">
+          <div className="page-container page-grid-2 gap-10">
             <div>
-              <h2 className="text-4xl font-black leading-[0.98] tracking-[-0.045em]">Businesses we serve in {area.name}</h2>
-              <div className="mt-8 grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-2">
+              <h2 className="section-heading md:section-heading-tablet text-[#0F1729]">Businesses we serve in {area.name}</h2>
+              <div className="mt-8 grid gap-2 sm:grid-cols-2">
                 {area.businessTypes.map((type) => (
-                  <div key={type} className="bg-white p-5 text-sm font-bold text-foreground">
+                  <div key={type} className="rounded-lg border border-[#0F1729]/8 bg-white/60 p-4 text-sm font-medium text-[#0F1729]">
                     {type}
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <h2 className="text-4xl font-black leading-[0.98] tracking-[-0.045em]">Nearby areas</h2>
-              <div className="mt-8 grid gap-px overflow-hidden border border-black/10 bg-black/10 sm:grid-cols-2">
+              <h2 className="section-heading md:section-heading-tablet text-[#0F1729]">Nearby areas</h2>
+              <div className="mt-8 grid gap-2 sm:grid-cols-2">
                 {nearbyItems.map((nearbyArea) => (
                   <Link
                     key={nearbyArea.slug}
                     href={areaLandingPath(nearbyArea.slug)}
-                    className="group bg-white p-5 hover:bg-foreground"
+                    className="group rounded-lg border border-[#0F1729]/8 bg-white/60 p-4 transition-colors hover:border-[#0F1729]/15 hover:bg-white"
                   >
-                    <span className="font-bold group-hover:text-background">{nearbyArea.name}</span>
-                    <span className="block pt-1 text-xs text-muted-foreground group-hover:text-background/70">{nearbyArea.regionLine}</span>
+                    <span className="font-medium text-[#0F1729]">{nearbyArea.name}</span>
+                    <span className="block pt-1 text-xs text-[#0F1729]/45">{nearbyArea.regionLine}</span>
                   </Link>
                 ))}
               </div>
@@ -252,22 +252,28 @@ export default async function AreaLandingPage({ params }: AreaPageProps) {
           </div>
         </section>
 
-        <section className="bg-muted/35 px-4 py-16 md:px-6 md:py-24">
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.72fr_1fr]">
+        <section className="section-dark section-shell-dark page-section">
+          <div className="page-container page-grid-aside gap-10">
             <div>
-              <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">FAQs</p>
-              <h2 className="text-4xl font-black leading-[0.98] tracking-[-0.045em] md:text-6xl">Local SEO questions.</h2>
+              <BrandBadge variant="navy" className="mb-6 border-white/10 bg-white/8 text-white">FAQs</BrandBadge>
+              <h2 className="section-heading md:section-heading-tablet text-white">Local SEO <span className="heading-accent after:bg-[#CCFF00]">questions</span>.</h2>
             </div>
-            <div className="space-y-px overflow-hidden border border-black/10 bg-black/10">
+            <div className="space-y-3">
               {faqs.map((faq) => (
-                <details key={faq.question} className="bg-white p-6">
-                  <summary className="cursor-pointer text-lg font-black tracking-[-0.02em]">{faq.question}</summary>
-                  <p className="mt-4 leading-7 text-muted-foreground">{faq.answer}</p>
+                <details key={faq.question} className="rounded-xl border border-white/10 bg-white/5 p-6">
+                  <summary className="cursor-pointer text-base font-medium text-white">{faq.question}</summary>
+                  <p className="mt-4 leading-7 text-white/60">{faq.answer}</p>
                 </details>
               ))}
             </div>
           </div>
         </section>
+
+        <PageCta
+          title={<>Ready to grow in <span className="heading-accent after:bg-[#CCFF00]">{area.name}</span>?</>}
+          description="Tell us about your business and current website. We will outline the strongest local SEO and conversion gains."
+          linkLabel="request a website audit"
+        />
       </main>
       <JsonLd
         data={graphSchema([

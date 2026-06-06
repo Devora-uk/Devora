@@ -14,6 +14,7 @@ tags:
   - ethics
   - web development
   - business growth
+dateModified: '2026-01-27'
 ---
 
 # Web Scraping Ethics – Complete Guide for Businesses in 2026

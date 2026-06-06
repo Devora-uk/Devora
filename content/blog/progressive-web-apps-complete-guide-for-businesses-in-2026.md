@@ -13,6 +13,7 @@ tags:
   - mobile development
   - web development
   - business growth
+dateModified: '2026-01-07'
 ---
 
 # Progressive Web Apps – Complete Guide for Businesses in 2026

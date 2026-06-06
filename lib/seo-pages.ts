@@ -309,7 +309,7 @@ export const industryPages: SeoPage[] = [
     process: ["Map services and regions", "Design quote routes", "Build service templates", "Optimise local signals"],
     faqs: [{ question: "Can you show multiple services without clutter?", answer: "Yes. We use a clear service hierarchy and internal links so users can move quickly to the right page." }],
     relatedServices: ["local-seo", "web-design", "small-business-websites"],
-    caseStudies: ["envirotech-plumbing", "hv-direct"],
+    caseStudies: ["ahrk-property-maintenance", "envirotech-plumbing", "hv-direct"],
     body: ["Property maintenance websites have to make breadth feel manageable. Buyers want to know whether you cover the service, the area and the urgency level they need.", "We build maintenance websites with clear service architecture, proof, quote routes and location content that supports local search."],
   },
   {

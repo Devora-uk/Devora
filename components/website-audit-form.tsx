@@ -218,13 +218,13 @@ function AuditFormContent({
 
       <div className="relative space-y-5 bg-card px-5 py-5 sm:px-6 sm:py-6">
         <div className="border border-black/15 bg-background/60 p-4">
-          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-accent">
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#006677]">
             What you receive
           </p>
           <ul className="mt-3 space-y-2.5">
             {auditIncludes.map((item) => (
               <li key={item} className="flex items-start gap-2.5 text-sm leading-snug text-foreground/85">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#006677]" aria-hidden="true" />
                 {item}
               </li>
             ))}
@@ -330,7 +330,7 @@ function AuditFormContent({
           <Button
             type="submit"
             size="lg"
-            className="h-12 w-full rounded-full bg-foreground text-base font-bold text-background hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
+            className="h-12 w-full rounded-full bg-foreground text-base font-bold text-background hover:bg-accent hover:text-accent-foreground disabled:cursor-not-allowed disabled:opacity-50"
             disabled={isLoading}
             onClick={(e) => {
               if (isLoading) {
@@ -384,7 +384,7 @@ export default function WebsiteAuditForm({
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <div className="flex h-12 w-12 items-center justify-center border border-black/15 bg-background">
-                    <ScanSearch className="h-5 w-5 text-accent" aria-hidden="true" />
+                    <ScanSearch className="h-5 w-5 text-[#006677]" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="text-lg font-black tracking-[-0.02em] text-foreground">
@@ -396,7 +396,7 @@ export default function WebsiteAuditForm({
                   </div>
                 </div>
                 <ArrowRight
-                  className="h-5 w-5 text-foreground/50 transition-transform group-hover:translate-x-0.5 group-hover:text-accent"
+                  className="h-5 w-5 text-foreground/50 transition-transform group-hover:translate-x-0.5 group-hover:text-[#006677]"
                   aria-hidden="true"
                 />
               </div>

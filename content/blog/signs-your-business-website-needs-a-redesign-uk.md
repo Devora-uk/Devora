@@ -1,14 +1,24 @@
 ---
-title: "7 Signs Your Business Website Needs a Redesign (UK)"
-date: "2026-05-19"
-excerpt: "Practical warning signs that your UK business website is holding back enquiries, from mobile usability and speed to outdated messaging and weak service pages."
-author: "Devora"
-coverImage: "/blog/the-ultimate-guide-to-seo-strategies-for-businesses-i.jpg"
-readingTime: "8 min read"
-tags: ["Website redesign", "Web design", "UK business growth"]
-category: "design-and-conversion"
+title: 7 Signs Your Business Website Needs a Redesign (UK)
+date: '2026-05-19'
+excerpt: >-
+  Practical warning signs that your UK business website is holding back
+  enquiries, from mobile usability and speed to outdated messaging and weak
+  service pages.
+author: Devora
+coverImage: /blog/the-ultimate-guide-to-seo-strategies-for-businesses-i.jpg
+readingTime: 8 min read
+tags:
+  - Website redesign
+  - Web design
+  - UK business growth
+category: design-and-conversion
 featured: true
-relatedServices: ["website-redesign", "web-design", "web-development"]
+relatedServices:
+  - website-redesign
+  - web-design
+  - web-development
+dateModified: '2026-05-19'
 ---
 
 ## Why this matters

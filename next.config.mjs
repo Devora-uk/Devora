@@ -112,6 +112,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/blog',
+        destination: '/guides',
+        permanent: true,
+      },
+      {
         source: '/:path*',
         has: [{ type: 'host', value: 'devora.co.uk' }],
         destination: 'https://www.devora.co.uk/:path*',

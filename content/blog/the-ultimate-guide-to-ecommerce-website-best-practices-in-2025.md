@@ -1,7 +1,9 @@
 ---
 title: E-Commerce Excellence – Best Practices to Drive Sales in 2025
 excerpt: >-
-  Dominate online retail: Master proven e-commerce strategies, from seamless checkout flows to advanced personalisation, that boost conversions and customer lifetime value in 2025.
+  Dominate online retail: Master proven e-commerce strategies, from seamless
+  checkout flows to advanced personalisation, that boost conversions and
+  customer lifetime value in 2025.
 date: '2025-07-10'
 author: Devora team
 coverImage: /blog/the-ultimate-guide-to-ecommerce-website-best-pract.jpg
@@ -11,6 +13,7 @@ tags:
   - digital strategy
   - e-commerce website best practices
   - online retail
+dateModified: '2025-07-10'
 ---
 
 # E-Commerce Excellence – Best Practices to Drive Sales in 2025

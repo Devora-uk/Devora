@@ -1,11 +1,13 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, CheckCircle2 } from "lucide-react"
+import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { Breadcrumbs } from "@/components/Breadcrumbs"
 import { JsonLd } from "@/components/JsonLd"
+import { BrandBadge } from "@/components/brand-badge"
+import { PageHero } from "@/components/page-hero"
+import { PageCta } from "@/components/page-cta"
 import { servicePages, SITE_URL } from "@/lib/seo-pages"
 import { breadcrumbSchema, graphSchema, serviceSchema, webPageSchema } from "@/lib/schema"
 
@@ -36,48 +38,70 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#0F1729]">
       <Header />
       <main className="flex-1">
-        <section className="bg-background px-4 pb-16 pt-32 md:px-6 md:pb-24 md:pt-44">
-          <div className="mx-auto max-w-7xl">
-            <Breadcrumbs items={breadcrumbs} />
-            <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_0.62fr] lg:items-end">
-              <div>
-                <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">Services</p>
-                <h1 className="max-w-5xl text-5xl font-black leading-[0.94] tracking-[-0.055em] md:text-7xl">
-                  Web design and development services for serious businesses.
-                </h1>
-              </div>
-              <div className="border-l border-black/10 pl-6">
-                <p className="text-lg leading-8 text-muted-foreground">
-                  Devora plans, designs, builds and improves websites that need to look sharper, load faster, rank better and generate more useful enquiries.
-                </p>
-                <Link href="/#contact" className="mt-7 inline-flex">
-                  <Button size="lg" className="rounded-full bg-foreground px-7 font-bold text-background hover:bg-accent">
-                    Discuss your website
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Button>
+        <PageHero
+          breadcrumbs={breadcrumbs}
+          badge="Services"
+          title={
+            <>
+              Web design and development for{" "}
+              <span className="heading-accent">serious businesses</span>.
+            </>
+          }
+          aside="Devora plans, designs, builds and improves websites that need to look sharper, load faster, rank better and generate more useful enquiries."
+          actions={
+            <Link href="/#contact">
+              <Button size="lg" className="rounded-full bg-[#0F1729] px-7 font-medium text-white hover:bg-[#162038] transition-colors">
+                Discuss your website
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Button>
+            </Link>
+          }
+        />
+
+        <section className="section-cream section-shell-cream page-section">
+          <div className="page-container">
+            <BrandBadge variant="lime" className="mb-6">
+              What we offer
+            </BrandBadge>
+            <h2 className="section-heading md:section-heading-tablet max-w-2xl text-[#0F1729]">
+              Services built for <span className="heading-accent">growth</span>
+            </h2>
+
+            <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {servicePages.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className="group flex h-full flex-col rounded-xl border border-[#0F1729]/8 bg-white/60 p-6 transition-all hover:border-[#0F1729]/15 hover:bg-white"
+                >
+                  <div className="mb-6 flex items-center justify-between">
+                    <CheckCircle2 className="h-4 w-4 text-[#0F1729]/35" aria-hidden="true" />
+                    <ArrowUpRight
+                      className="h-4 w-4 text-[#0F1729]/35 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#0F1729]"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <h3 className="text-lg font-medium tracking-[-0.02em] text-[#0F1729]">{service.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-6 text-[#0F1729]/55">{service.intro}</p>
                 </Link>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="bg-muted/35 px-4 py-16 md:px-6 md:py-24">
-          <div className="mx-auto grid max-w-7xl gap-px overflow-hidden border border-black/10 bg-black/10 md:grid-cols-2 lg:grid-cols-4">
-            {servicePages.map((service) => (
-              <Link key={service.slug} href={`/services/${service.slug}`} className="group bg-white p-6 transition-colors hover:bg-foreground">
-                <div className="mb-8 flex items-center justify-between">
-                  <CheckCircle2 className="h-5 w-5 text-accent" aria-hidden="true" />
-                  <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-background" aria-hidden="true" />
-                </div>
-                <h2 className="text-2xl font-black leading-tight tracking-[-0.03em] group-hover:text-background">{service.title}</h2>
-                <p className="mt-4 text-sm leading-6 text-muted-foreground group-hover:text-background/75">{service.intro}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
+        <PageCta
+          title={
+            <>
+              Ready to build something{" "}
+              <span className="heading-accent after:bg-[#CCFF00]">properly</span>?
+            </>
+          }
+          description="Send over the current site, the business goal and the pages you think matter. We will tell you where the strongest gains are likely to be."
+          linkLabel="get a website quote"
+        />
       </main>
       <JsonLd
         data={graphSchema([

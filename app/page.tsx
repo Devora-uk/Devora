@@ -1,17 +1,15 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { ClientLogos } from "@/components/client-logos"
-import { About } from "@/components/about"
-import { WhyUs } from "@/components/why-us"
-import { OurServices } from "@/components/our-services"
+import { WhoWeAre } from "@/components/who-we-are"
 import { OurWork } from "@/components/our-work"
+import { About } from "@/components/about"
+import { OurServices } from "@/components/our-services"
 import { SuccessStories } from "@/components/success-stories"
-import { HomeInsights } from "@/components/home-insights"
-import { FAQ } from "@/components/faq"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/JsonLd"
+import { resolveTitle } from "@/lib/seo-metadata"
 import {
   breadcrumbSchema,
   faqSchema,
@@ -24,7 +22,7 @@ import {
 } from "@/lib/schema"
 
 export const metadata: Metadata = {
-  title: "Bespoke Web Design, Development & Branding for Startups | Devora",
+  title: resolveTitle("Bespoke Web Design, Development & Branding for Startups | Devora"),
   description: "Devora builds bespoke, fast, and conversion-focused websites for startups and growing UK brands that need to stand out, explain their offer, and scale intelligently.",
   keywords: [
     "startup web design UK",
@@ -105,17 +103,14 @@ export default function Home() {
         ])}
       />
 
-      <main className="min-h-screen">
+      <main className="min-h-screen bg-[#0F1729]">
         <Header />
         <Hero />
-        <ClientLogos />
-        <About />
-        <WhyUs />
-        <OurServices />
+        <WhoWeAre />
         <OurWork />
+        <About />
+        <OurServices />
         <SuccessStories />
-        <HomeInsights />
-        <FAQ />
         <Contact />
         <Footer />
       </main>

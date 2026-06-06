@@ -12,6 +12,7 @@ import type { BlogCategory } from './blog-clusters';
 interface PostMeta {
   title: string;
   date: string;
+  dateModified?: string;
   excerpt: string;
   slug: string;
   author: string;
@@ -71,6 +72,7 @@ export function getPostBySlug(slug: string | undefined): Post | null {
       slug: realSlug,
       title: data.title || '',
       date: data.date || '',
+      dateModified: data.dateModified || data.date || '',
       excerpt: data.excerpt || '',
       author: data.author || 'Devora Team',
       coverImage: data.coverImage || '/blog/default-cover.jpg',
@@ -112,10 +114,11 @@ export function getAllPosts(): PostMeta[] {
       .filter((post): post is Post => post !== null)
       .sort((post1, post2) => (new Date(post2.date) > new Date(post1.date) ? 1 : -1));
     
-    return posts.map(({ slug, title, date, excerpt, author, coverImage, readingTime, tags, category, featured, relatedServices }) => ({
+    return posts.map(({ slug, title, date, dateModified, excerpt, author, coverImage, readingTime, tags, category, featured, relatedServices }) => ({
       slug,
       title,
       date,
+      dateModified,
       excerpt,
       author,
       coverImage,

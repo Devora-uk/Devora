@@ -14,6 +14,7 @@ tags:
   - multilingual
   - web development
   - business growth
+dateModified: '2026-01-28'
 ---
 
 # Internationalisation (i18n) – Complete Guide for Businesses in 2026

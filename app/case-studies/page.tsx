@@ -1,13 +1,16 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, ArrowLeft } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { BrandBadge } from "@/components/brand-badge"
+import { PageHero } from "@/components/page-hero"
+import { PageCta } from "@/components/page-cta"
 import type { Metadata } from "next"
+import { resolveTitle } from "@/lib/seo-metadata"
 
 export const metadata: Metadata = {
-  title: "Case Studies | Devora - Web Design & Development Portfolio",
+  title: resolveTitle("Case Studies | Devora | Web Design & Development Portfolio"),
   description: "Explore our portfolio of successful web design and development projects. See how we've transformed businesses with bespoke websites, custom platforms, and digital solutions.",
   keywords: [
     "case studies",
@@ -21,7 +24,7 @@ export const metadata: Metadata = {
     canonical: "https://www.devora.co.uk/case-studies",
   },
   openGraph: {
-    title: "Case Studies | Devora - Web Design & Development Portfolio",
+    title: "Case Studies | Devora | Web Design & Development Portfolio",
     description: "Explore our portfolio of successful web design and development projects.",
     url: "https://www.devora.co.uk/case-studies",
     type: "website",
@@ -30,7 +33,7 @@ export const metadata: Metadata = {
         url: "/devora-office.png",
         width: 1200,
         height: 630,
-        alt: "Devora - Case Studies & Portfolio",
+        alt: "Devora | Case Studies & Portfolio",
       },
     ],
   },
@@ -38,11 +41,35 @@ export const metadata: Metadata = {
 
 const allProjects = [
   {
+    name: "AHRK Property Maintenance",
+    slug: "ahrk-property-maintenance",
+    description:
+      "A conversion-focused property maintenance platform for landlords, letting agents, managing agents and developers across North London and Hertfordshire. Built with Next.js in three weeks, the site features a multi-step enquiry form, clear service pathways for reactive repairs and planned maintenance, and proof points that helped AHRK win bids and secure maintenance contracts.",
+    image: "/case-studies/ahrk-property-maintenance-thumb.png",
+    tags: ["Next.js", "Property Services", "Conversion"],
+  },
+  {
+    name: "Sarah Bartlet Optimal Health",
+    slug: "sarah-bartlet-optimal-health",
+    description:
+      "A calming nutritional therapy website for a qualified practitioner in Aberdeenshire. We created a warm, trust-building digital home with clear consultation pathways, specialist messaging for autoimmune and allergy support, and WhatsApp contact — helping visitors feel reassured and book a free consultation with confidence.",
+    image: "/case-studies/sarah-bartlet-optimal-health.png",
+    tags: ["Health & Wellbeing", "Web Design", "Conversion"],
+  },
+  {
+    name: "Kickin Kilos",
+    slug: "kickin-kilos",
+    description:
+      "A conversion-focused weight loss coaching website built on lived experience. We created an authentic digital home featuring an interactive before-and-after transformation slider, health marker proof, a food-first plate system, and clear coaching call pathways — helping visitors who want sustainable results book with confidence.",
+    image: "/case-studies/kickin-kilos.png",
+    tags: ["Health & Wellbeing", "Web Design", "Conversion"],
+  },
+  {
     name: "The Teacher's Surgery",
     slug: "teachers-surgery",
     description:
       "A charitable community platform empowering educators and supporting families. Built with Next.js in one month at theteachersurgery.com, the full landing experience combines warm branding with video, podcast, and community sections, driving strong conversion and steady growth beyond 7,000 members.",
-    image: "/case-studies/teachers-surgery-landing.png",
+    image: "/case-studies/teachers-surgery-thumb.png",
     tags: ["Next.js", "Charitable", "Community"],
   },
   {
@@ -50,7 +77,7 @@ const allProjects = [
     slug: "luma-education",
     description:
       "A specialist education recruitment platform connecting bright talent with bright futures. We created a modern, conversion-focused website featuring seamless HelloEduN CRM integration for real-time vacancy display and Google Jobs integration to maximise visibility. The platform showcases expertise across eight educational sectors, addressing the specific challenges that keep school leaders up at night whilst building trust with both schools and educators.",
-    image: "/case-studies/luma-education.png",
+    image: "/case-studies/luma-education-thumb.png",
     tags: ["Recruitment Platform", "Web Design"],
   },
   {
@@ -90,7 +117,7 @@ const allProjects = [
     slug: "sandalwood-memorials",
     description:
       "Hybrid headless platform combining Next.js for speed and SSR, WordPress/WooCommerce for product management, Three.js for 3D memorial rendering, and GraphQL for seamless data flow. A compassionate, performant storefront that gives the sales team full control.",
-    image: "/case-studies/sandalwood-memorials.png",
+    image: "/case-studies/sandalwood-memorials-thumb.png",
     tags: ["Headless Commerce", "Three.js", "GraphQL"],
   },
   {
@@ -137,72 +164,84 @@ const allProjects = [
 
 export default function AllCaseStudiesPage() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-[#0F1729]">
       <Header />
-      <main className="min-h-screen flex flex-col">
-        <section className="py-12 md:py-24 px-4 md:px-6 pt-32 md:pt-48 bg-gradient-to-br from-background via-background to-secondary/5">
-          <div className="container mx-auto">
-            <div className="mb-8 md:mb-16">
-              <div className="inline-block bg-primary text-primary-foreground px-3 md:px-4 py-1 rounded-full text-xs font-semibold mb-3 md:mb-6">
-                <span aria-hidden="true">★</span> OUR PORTFOLIO
-              </div>
+      <main className="flex-1">
+        <PageHero
+          badge="Our portfolio"
+          title={
+            <>
+              Work that{" "}
+              <span className="heading-accent">speaks</span> for itself.
+            </>
+          }
+          description="From early-stage startups to established brands, we've helped clients across the UK transform their digital presence with bespoke design and powerful development."
+        />
 
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-balance max-w-2xl mb-4">
-                <span className="font-serif italic font-normal">Case Studies</span>
-              </h1>
-              <p className="text-sm md:text-base lg:text-lg text-muted-foreground max-w-2xl">
-                Explore our complete portfolio of successful projects. From growing businesses to established brands, we've helped clients transform their digital presence with thoughtful design and powerful development.
-              </p>
-            </div>
+        <section className="section-cream section-shell-cream page-section">
+          <div className="page-container">
+            <BrandBadge variant="lime" className="mb-6">
+              Selected work
+            </BrandBadge>
+            <h2 className="section-heading md:section-heading-tablet text-[#0F1729]">
+              All <span className="heading-accent">projects</span>
+            </h2>
 
-            {/* Case Studies Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-              {allProjects.map((project, i) => (
+            <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {allProjects.map((project) => (
                 <Link
-                  key={i}
+                  key={project.slug}
                   href={`/case-studies/${project.slug}`}
                   aria-label={`View ${project.name} case study`}
                   className="group"
                 >
-                  <div
-                    className="bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl h-full flex flex-col cursor-pointer"
-                  >
-                    <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-secondary/20 to-secondary/5">
+                  <div className="flex h-full flex-col overflow-hidden rounded-xl border border-[#0F1729]/8 bg-white/60 transition-all hover:border-[#0F1729]/15 hover:bg-white">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-[#F4F4F2]">
                       <Image
                         src={project.image || "/placeholder.svg"}
-                        alt={`${project.name} - Web design and development case study showcase`}
+                        alt={`${project.name} case study`}
                         fill
-                        className={`${project.slug === 'sky-limit-travels' || project.slug === 'teachers-surgery' ? 'object-cover object-top' : 'object-contain'} group-hover:scale-105 transition-transform duration-500`}
+                        className={`${project.slug === "sky-limit-travels" || project.slug === "teachers-surgery" || project.slug === "sarah-bartlet-optimal-health" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" ? "object-cover object-top" : project.slug === "luma-education" ? "object-cover object-center" : "object-contain"} transition-transform duration-500 group-hover:scale-[1.02]`}
+                        quality={100}
+                        unoptimized={project.slug === "sarah-bartlet-optimal-health" || project.slug === "luma-education" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" || project.slug === "teachers-surgery"}
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     </div>
-                    <article className="p-6 flex flex-col h-full">
-                      <h3 className="text-lg md:text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.name}</h3>
-                      <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6 flex-grow">{project.description}</p>
-                      <div className="flex items-center text-primary font-medium gap-2 group-hover:gap-3 transition-all">
-                        View Case Study
-                        <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                    <article className="flex flex-1 flex-col p-5">
+                      <div className="mb-3 flex flex-wrap gap-1.5">
+                        {project.tags.map((tag) => (
+                          <span key={tag} className="rounded-full bg-[#0F1729]/6 px-2.5 py-0.5 text-xs font-medium text-[#0F1729]/55">
+                            {tag}
+                          </span>
+                        ))}
                       </div>
+                      <h3 className="text-base font-medium tracking-[-0.02em] text-[#0F1729] md:text-lg">{project.name}</h3>
+                      <p className="mt-2 flex-1 text-sm leading-6 text-[#0F1729]/55 line-clamp-3">{project.description}</p>
+                      <span className="mt-4 inline-flex items-center gap-1 text-sm lowercase text-[#0F1729]/55 transition-colors group-hover:text-[#0F1729]">
+                        view case study
+                        <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                      </span>
                     </article>
                   </div>
                 </Link>
               ))}
             </div>
-
-            {/* Back to Home */}
-            <div className="flex justify-center pt-8">
-              <Link href="/#work" className="inline-block">
-                <Button variant="outline" className="gap-2 min-h-[44px] touch-manipulation w-full sm:w-auto justify-center">
-                  <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-                  Back to Home
-                </Button>
-              </Link>
-            </div>
           </div>
         </section>
+
+        <PageCta
+          title={
+            <>
+              Want results like{" "}
+              <span className="heading-accent after:bg-[#CCFF00]">these</span>?
+            </>
+          }
+          description="Tell us about your business and we will outline how a bespoke website could work for you."
+          linkLabel="start a project"
+        />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }

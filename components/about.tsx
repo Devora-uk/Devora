@@ -1,78 +1,69 @@
 import Link from "next/link"
-import Image from "next/image"
-import { ArrowRight, Building2, Gauge, PenTool } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ArrowUpRight } from "lucide-react"
+import { BrandBadge } from "@/components/brand-badge"
 
 export function About() {
-  const points = [
-    {
-      icon: PenTool,
-      title: "Brand-led web design",
-      copy: "Distinctive layouts, crisp copy, and visual systems that make your business feel established from the first scroll.",
-    },
-    {
-      icon: Gauge,
-      title: "Performance-first builds",
-      copy: "Next.js, clean architecture, fast pages, and SEO foundations that help startups compete and dominate search results.",
-    },
-    {
-      icon: Building2,
-      title: "Startup commercial instinct",
-      copy: "We understand the gap between smart scaling, brand presentation, and earning customers in competitive markets.",
-    },
-  ]
-
   return (
-    <section id="about" className="bg-card px-4 py-20 md:px-6 md:py-28" aria-labelledby="about-heading">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div className="lg:sticky lg:top-28">
-            <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-accent">Bespoke Web Design & Brand Development</p>
-            <h2 id="about-heading" className="max-w-2xl text-4xl font-black leading-[0.98] tracking-[-0.045em] md:text-6xl">
-              Bespoke design. High-performance development. Engineered to earn.
-            </h2>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-foreground/76">
-              Devora is a web design and development partner for startups that cannot afford to blend in. We turn early ideas, custom brand identities, and underperforming digital presences into premium web experiences, handled in-house from strategy to launch.
+    <section
+      id="about"
+      className="section-dark relative overflow-hidden page-section text-white"
+      aria-labelledby="about-heading"
+    >
+      <div
+        className="pointer-events-none absolute -left-20 bottom-0 h-56 w-56 rounded-full bg-[#CCFF00]/5 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto grid max-w-[90rem] gap-10 md:grid-cols-2 md:gap-12 lg:gap-20">
+        <div>
+          <p className="mobile-section-label text-white/50 lg:hidden" aria-hidden="true">
+            03 · About
+          </p>
+          <BrandBadge variant="navy" className="mb-5 max-md:mb-4 border-white/10 bg-white/8 text-white md:mb-6">
+            About us
+          </BrandBadge>
+
+          <h2 id="about-heading" className="section-heading section-heading-mobile md:section-heading-tablet max-w-xl text-balance">
+            We exceed expectations because we{" "}
+            <span className="heading-accent">care</span>.
+          </h2>
+
+          <p className="mt-8 max-w-xl text-base leading-8 text-white/75 md:text-lg md:leading-9">
+            Whether you&apos;re an early-stage startup or a growing business, we work to the
+            very highest standards and specialise in building websites that earn trust and
+            drive enquiries.
+          </p>
+          <p className="mt-6 max-w-xl text-base leading-8 text-white/75 md:text-lg md:leading-9">
+            Interested in starting a project? We&apos;re always happy to discuss your requirements.
+          </p>
+        </div>
+
+        <div className="flex flex-col justify-center lg:pl-8">
+          <div className="mobile-panel-dark rounded-2xl border-[#CCFF00]/20 p-5 md:tablet-panel-inset-dark md:border-[#CCFF00]/25 lg:rounded-xl lg:border-white/10 lg:bg-white/5 lg:p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-light-subtle">
+              Get in touch
             </p>
-            <Link href="#contact" aria-label="Get started with Devora web design services">
-              <Button className="mt-8 rounded-full bg-foreground px-7 font-bold text-background hover:bg-accent" size="lg">
-                Get a sharper website
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Button>
-            </Link>
-          </div>
-
-          <div>
-            <div className="relative mb-5 overflow-hidden border border-black/20 shadow-sm">
-              <Image
-                src="/modern-office-collaboration.png"
-                alt="Devora web design team collaborating on a premium website project"
-                width={1000}
-                height={720}
-                className="aspect-[4/3] w-full object-cover"
-                loading="lazy"
+            <p className="mt-4">
+              <Link
+                href="mailto:hello@devora.co.uk"
+                className="text-xl text-white underline-offset-4 transition-colors hover:underline md:text-2xl"
+              >
+                hello@devora.co.uk
+              </Link>
+            </p>
+            <p className="mt-3 text-base text-muted-light">
+              United Kingdom · Remote-first studio
+            </p>
+            <Link
+              href="#contact"
+              className="btn-touch group mt-6 w-full gap-2 rounded-xl bg-[#CCFF00] px-6 text-[#0F1729] transition-colors hover:bg-[#b8e600] md:mt-8 md:w-auto md:rounded-full"
+            >
+              start a conversation
+              <ArrowUpRight
+                className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden="true"
               />
-              <div className="absolute bottom-0 left-0 right-0 grid grid-cols-3 border-t border-black/20 bg-card/95 backdrop-blur">
-                {["Strategy", "Design", "Development"].map((label) => (
-                  <div key={label} className="border-r border-black/15 px-4 py-4 text-sm font-black uppercase tracking-[0.14em] last:border-r-0">
-                    {label}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid gap-px overflow-hidden border border-black/15 bg-black/15 md:grid-cols-3">
-              {points.map((point) => {
-                const Icon = point.icon
-                return (
-                  <article key={point.title} className="bg-card p-6">
-                    <Icon className="mb-7 h-6 w-6 text-accent" strokeWidth={1.75} aria-hidden="true" />
-                    <h3 className="text-xl font-black tracking-[-0.02em]">{point.title}</h3>
-                    <p className="mt-3 text-sm leading-6 text-foreground/72">{point.copy}</p>
-                  </article>
-                )
-              })}
-            </div>
+            </Link>
           </div>
         </div>
       </div>

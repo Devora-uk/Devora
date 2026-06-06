@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Inter, Playfair_Display } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { CookieBanner } from "@/components/cookie-banner"
+import { SkipLink } from "@/components/skip-link"
+import { WebVitals } from "@/components/web-vitals"
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
@@ -81,9 +83,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: "https://www.devora.co.uk",
-  },
   category: "technology",
   icons: {
     icon: [
@@ -100,7 +99,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  manifest: '/manifest.json',
+  manifest: '/manifest.webmanifest',
 }
 
 export default function RootLayout({
@@ -134,7 +133,9 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
-        {children}
+        <SkipLink />
+        <WebVitals />
+        <div id="main-content">{children}</div>
         {/* Analytics loaded with defer for non-critical performance impact */}
         <Analytics />
         {/* Cookie banner loads after content */}

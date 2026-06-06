@@ -1,14 +1,23 @@
 ---
-title: "Local SEO Checklist for Sheffield Businesses"
-date: "2026-05-17"
-excerpt: "A practical local SEO checklist for Sheffield businesses covering service pages, area pages, schema, internal links, Google Business Profile and content quality."
-author: "Devora"
-coverImage: "/blog/the-ultimate-guide-to-seo-strategies-for-businesses-.jpg"
-readingTime: "7 min read"
-tags: ["Local SEO", "Sheffield", "SEO"]
-category: "local-sheffield"
+title: Local SEO Checklist for Sheffield Businesses
+date: '2026-05-17'
+excerpt: >-
+  A practical local SEO checklist for Sheffield businesses covering service
+  pages, area pages, schema, internal links, Google Business Profile and content
+  quality.
+author: Devora
+coverImage: /blog/the-ultimate-guide-to-seo-strategies-for-businesses-.jpg
+readingTime: 7 min read
+tags:
+  - Local SEO
+  - Sheffield
+  - SEO
+category: local-sheffield
 featured: true
-relatedServices: ["local-seo", "web-design"]
+relatedServices:
+  - local-seo
+  - web-design
+dateModified: '2026-05-17'
 ---
 
 ## Search intent

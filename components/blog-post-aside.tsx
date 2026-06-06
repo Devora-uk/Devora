@@ -1,12 +1,12 @@
 import Link from "next/link"
-import { ArrowRight, BookOpen, MapPin, ScanSearch } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ArrowUpRight, BookOpen, MapPin, ScanSearch } from "lucide-react"
 import {
   getClusterForSlug,
   getServiceLinksForPost,
   type BlogCategory,
 } from "@/lib/blog-clusters"
 import { getServicePage } from "@/lib/seo-pages"
+import { BrandBadge } from "@/components/brand-badge"
 
 type BlogPostAsideProps = {
   slug: string
@@ -29,28 +29,29 @@ export function BlogPostAside({
   })
 
   return (
-    <aside className="space-y-8 lg:sticky lg:top-28" aria-label="Article resources">
-      <div className="border border-border bg-card p-6 rounded-2xl">
-        <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">
+    <aside className="space-y-5 md:sticky md:top-28 md:space-y-6" aria-label="Article resources">
+      <div className="rounded-xl border border-[#0F1729]/8 bg-white/60 p-6">
+        <BrandBadge variant="lime" className="mb-4">
           Free website review
-        </p>
-        <h2 className="text-lg font-semibold text-foreground mb-2 leading-snug">
+        </BrandBadge>
+        <h2 className="text-base font-medium text-[#0F1729] mb-2 leading-snug">
           Not sure where to start?
         </h2>
-        <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+        <p className="text-sm text-[#0F1729]/55 leading-relaxed mb-5">
           Request a practical audit of your current site: structure, speed, SEO and conversion gaps.
         </p>
-        <Link href="/#contact" className="block">
-          <Button className="w-full rounded-full gap-2 font-medium" size="sm">
-            <ScanSearch className="h-4 w-4" aria-hidden="true" />
-            Request an audit
-          </Button>
+        <Link
+          href="/#contact"
+          className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0F1729] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#162038]"
+        >
+          <ScanSearch className="h-4 w-4" aria-hidden="true" />
+          Request an audit
         </Link>
       </div>
 
       {servicesWithMeta.length > 0 && (
-        <div className="border border-border bg-muted/30 p-6 rounded-2xl">
-          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+        <div className="rounded-xl border border-[#0F1729]/8 bg-white/40 p-6">
+          <p className="text-xs font-medium uppercase tracking-wider text-[#0F1729]/45 mb-4">
             Related services
           </p>
           <ul className="space-y-4">
@@ -58,13 +59,13 @@ export function BlogPostAside({
               <li key={service.href}>
                 <Link
                   href={service.href}
-                  className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg"
+                  className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0F1729]/20 rounded-lg"
                 >
-                  <span className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                  <span className="font-medium text-[#0F1729] transition-colors group-hover:underline">
                     {service.title}
                   </span>
                   {service.description ? (
-                    <span className="mt-1 block text-xs text-muted-foreground leading-relaxed">
+                    <span className="mt-1 block text-xs text-[#0F1729]/45 leading-relaxed">
                       {service.description}
                     </span>
                   ) : null}
@@ -76,36 +77,36 @@ export function BlogPostAside({
       )}
 
       {cluster ? (
-        <div className="border border-border bg-card p-6 rounded-2xl">
-          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 flex items-center gap-2">
+        <div className="rounded-xl border border-[#0F1729]/8 bg-white/60 p-6">
+          <p className="text-xs font-medium uppercase tracking-wider text-[#0F1729]/45 mb-2 flex items-center gap-2">
             <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
             Topic guide
           </p>
-          <h2 className="text-base font-semibold text-foreground mb-2">{cluster.title}</h2>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+          <h2 className="text-base font-medium text-[#0F1729] mb-2">{cluster.title}</h2>
+          <p className="text-sm text-[#0F1729]/55 leading-relaxed mb-4">
             {cluster.description}
           </p>
           <Link
             href={`/guides#${cluster.id}`}
-            className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline underline-offset-4"
+            className="group inline-flex items-center gap-1 text-sm lowercase text-[#0F1729]/55 transition-colors hover:text-[#0F1729] hover:underline underline-offset-4"
           >
-            View all guides
-            <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+            view all guides
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>
         </div>
       ) : null}
 
-      <div className="border border-dashed border-border/80 p-6 rounded-2xl bg-gradient-to-br from-secondary/5 to-transparent">
-        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 flex items-center gap-2">
+      <div className="rounded-xl border border-dashed border-[#0F1729]/15 bg-white/30 p-6">
+        <p className="text-xs font-medium uppercase tracking-wider text-[#0F1729]/45 mb-2 flex items-center gap-2">
           <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
-          Sheffield studio
+          UK studio
         </p>
-        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-          Based in Sheffield, working with businesses across South Yorkshire and the UK.
+        <p className="text-sm text-[#0F1729]/55 leading-relaxed mb-4">
+          Remote-first across the UK, with roots in Sheffield and South Yorkshire.
         </p>
         <Link
           href="/areas-we-cover/sheffield"
-          className="text-sm font-medium text-foreground hover:text-primary underline underline-offset-4 transition-colors"
+          className="text-sm font-medium text-[#0F1729] underline underline-offset-4 transition-colors hover:text-[#0F1729]/70"
         >
           Web design in Sheffield
         </Link>

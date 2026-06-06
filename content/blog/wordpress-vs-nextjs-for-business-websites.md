@@ -1,14 +1,22 @@
 ---
-title: "WordPress vs Next.js for Business Websites"
-date: "2026-05-17"
-excerpt: "A plain-English comparison of WordPress and Next.js for business websites, including SEO, speed, editing workflows, cost and long-term maintainability."
-author: "Devora"
-coverImage: "/blog/react-server-components-complete-guide-for-business.jpg"
-readingTime: "7 min read"
-tags: ["Next.js", "Web development", "Technical SEO"]
-category: "technical-build"
+title: WordPress vs Next.js for Business Websites
+date: '2026-05-17'
+excerpt: >-
+  A plain-English comparison of WordPress and Next.js for business websites,
+  including SEO, speed, editing workflows, cost and long-term maintainability.
+author: Devora
+coverImage: /blog/react-server-components-complete-guide-for-business.jpg
+readingTime: 7 min read
+tags:
+  - Next.js
+  - Web development
+  - Technical SEO
+category: technical-build
 featured: true
-relatedServices: ["nextjs-development", "web-development"]
+relatedServices:
+  - nextjs-development
+  - web-development
+dateModified: '2026-05-17'
 ---
 
 ## Search intent

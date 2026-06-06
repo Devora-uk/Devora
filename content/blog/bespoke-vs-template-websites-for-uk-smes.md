@@ -1,14 +1,23 @@
 ---
-title: "Bespoke vs Template Websites for UK SMEs: An Honest Comparison"
-date: "2026-05-19"
-excerpt: "When a template website is enough for a UK small business, and when bespoke web design pays for itself through SEO, conversion and brand fit."
-author: "Devora"
-coverImage: "/blog/the-ultimate-guide-to-mobilefirst-web-design-benefits-in-2025.jpg"
-readingTime: "8 min read"
-tags: ["Web design", "Small business", "UK business growth"]
-category: "choosing-a-partner"
+title: 'Bespoke vs Template Websites for UK SMEs: An Honest Comparison'
+date: '2026-05-19'
+excerpt: >-
+  When a template website is enough for a UK small business, and when bespoke
+  web design pays for itself through SEO, conversion and brand fit.
+author: Devora
+coverImage: /blog/the-ultimate-guide-to-mobilefirst-web-design-benefits-in-2025.jpg
+readingTime: 8 min read
+tags:
+  - Web design
+  - Small business
+  - UK business growth
+category: choosing-a-partner
 featured: true
-relatedServices: ["web-design", "small-business-websites", "web-development"]
+relatedServices:
+  - web-design
+  - small-business-websites
+  - web-development
+dateModified: '2026-05-19'
 ---
 
 ## There is no single right answer

@@ -10,6 +10,7 @@
     "start": "next start",
     "generate-blog-images": "node lib/generate-blog-images.js",
     "update-blog-metadata": "node lib/update-blog-metadata.js",
+    "sync:blog-dates": "node lib/sync-blog-dates.mjs",
     "generate:locations": "node scripts/generate-uk-locations-extra.mjs"
   },
   "dependencies": {
@@ -41,6 +42,7 @@
     "@radix-ui/react-toggle": "1.1.1",
     "@radix-ui/react-toggle-group": "1.1.1",
     "@radix-ui/react-tooltip": "1.1.6",
+    "@splinetool/react-spline": "^4.1.0",
     "@vercel/analytics": "latest",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",

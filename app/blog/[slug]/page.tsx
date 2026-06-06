@@ -1,15 +1,17 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Clock, ArrowRight, User } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, User } from 'lucide-react';
 import { getPostWithHtml, getAllPosts } from '@/lib/markdown';
 import { getRelatedPostsForSlug } from '@/lib/blog-clusters';
 import { BlogPostAside } from '@/components/blog-post-aside';
 import type { Metadata } from 'next';
-import { Button } from '@/components/ui/button';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { JsonLd } from '@/components/JsonLd';
+import { BrandBadge } from '@/components/brand-badge';
+import { PageHero } from '@/components/page-hero';
+import { PageCta } from '@/components/page-cta';
 import { absoluteUrl, breadcrumbSchema, graphSchema, webPageSchema } from '@/lib/schema';
 import { SITE_URL } from '@/lib/seo-pages';
 
@@ -43,7 +45,10 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: post.excerpt,
       url: absoluteUrl(`/blog/${post.slug}`),
       type: 'article',
+      locale: 'en_GB',
+      siteName: 'Devora',
       publishedTime: post.date,
+      modifiedTime: post.dateModified || post.date,
       authors: [post.author],
       tags: post.tags,
       images: [{ url: post.coverImage, width: 1200, height: 630, alt: post.title }],
@@ -54,6 +59,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: post.excerpt,
       images: [post.coverImage],
     },
+    robots: { index: true, follow: true },
   };
 }
 
@@ -89,7 +95,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       description: post.excerpt,
       image: absoluteUrl(post.coverImage),
       datePublished: post.date,
-      dateModified: post.date,
+      dateModified: post.dateModified || post.date,
+      inLanguage: "en-GB",
+      isAccessibleForFree: true,
       author: { "@type": "Organization", name: "Devora", url: SITE_URL },
       publisher: { "@id": `${SITE_URL}/#organization` },
       mainEntityOfPage: { "@id": `${articleUrl}#webpage` },
@@ -97,129 +105,102 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
     breadcrumbSchema([
       { name: "Home", url: SITE_URL },
-      { name: "Blog", url: `${SITE_URL}/blog` },
+      { name: "Guides", url: `${SITE_URL}/guides` },
       { name: post.title, url: articleUrl },
     ]),
   ])
   
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#0F1729]">
       <Header />
       
       <main className="flex-1">
-        {/* Hero Section with Background Image */}
-        <section className="relative min-h-[50vh] bg-primary text-primary-foreground py-12 md:py-16 px-6 mt-20 overflow-hidden">
-          {/* Background Image */}
-          <Image
-            src={post.coverImage}
-            alt={post.title}
-            fill
-            className="object-cover absolute inset-0"
-            priority
-          />
-          
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/50"></div>
-          
-          {/* Content Container */}
-          <div className="relative z-10 container mx-auto">
-            <div className="max-w-6xl mx-auto">
-              {/* Back button */}
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors font-light mb-8 group"
-                aria-label="Back to blog"
-              >
-                <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                <span>Back to blog</span>
-              </Link>
+        <PageHero
+          breadcrumbs={[
+            { name: "Home", href: "/" },
+            { name: "Guides", href: "/guides" },
+            { name: post.title, href: `/blog/${post.slug}` },
+          ]}
+          badge={post.category || "Guide"}
+          title={post.title}
+          description={post.excerpt}
+          actions={
+            <Link
+              href="/guides"
+              className="inline-flex items-center gap-2 text-sm lowercase text-[#0F1729]/55 transition-colors hover:text-[#0F1729] hover:underline"
+            >
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              back to guides
+            </Link>
+          }
+        />
 
-              {/* Article metadata */}
-              <div className="mb-8">
-                <div className="flex items-center gap-6 text-primary-foreground/70 font-light text-sm mb-6 flex-wrap">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
-                    <span>{post.date}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4" />
-                    <span>{post.readingTime}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <User className="h-4 w-4" />
-                    <span>{post.author}</span>
-                  </div>
-                </div>
-                
-                {/* Tags */}
-                <div className="flex flex-wrap gap-3 mb-8">
-                  {post.tags.slice(0, 3).map((tag, i) => (
-                    <span 
-                      key={i} 
-                      className="text-xs text-primary-foreground/70 uppercase tracking-wider font-light px-3 py-1 border border-primary-foreground/30 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              
-              {/* Main headline in semi-transparent container */}
-              <div className="bg-black/30 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-primary-foreground/20">
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-light leading-[1.1] tracking-tighter mb-4 text-primary-foreground">
-                  {post.title}
-                </h1>
-                
-                <p className="text-base md:text-lg text-primary-foreground/90 max-w-3xl font-light leading-relaxed">
-                  {post.excerpt}
-                </p>
-              </div>
+        <section className="section-cream section-shell-cream page-section page-section-compact">
+          <div className="page-container">
+            <div className="mb-10 flex flex-wrap items-center gap-4 text-sm text-[#0F1729]/45">
+              <span className="flex items-center gap-1.5">
+                <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
+                {post.date}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5" aria-hidden="true" />
+                {post.readingTime}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <User className="h-3.5 w-3.5" aria-hidden="true" />
+                {post.author}
+              </span>
             </div>
-          </div>
-        </section>
-        
-        {/* Article Content */}
-        <section className="py-16 md:py-24 bg-background">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid gap-12 lg:grid-cols-[1fr_320px] lg:gap-16 items-start">
+
+            <div className="relative mb-12 aspect-[16/9] overflow-hidden rounded-xl border border-[#0F1729]/8">
+              <Image
+                src={post.coverImage}
+                alt={post.title}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 1280px) 100vw, 90rem"
+              />
+            </div>
+
+            <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(240px,280px)] md:items-start md:gap-12 lg:grid-cols-[1fr_320px] lg:gap-16">
             <article className="max-w-none min-w-0">
               <div 
                 dangerouslySetInnerHTML={{ __html: post.contentHtml }} 
                 className="
                   prose-sm md:prose-base lg:prose-lg max-w-none
                   prose prose-neutral
-                  dark:prose-invert
                   
-                  [&_h1]:text-3xl md:[&_h1]:text-4xl [&_h1]:font-bold [&_h1]:text-foreground [&_h1]:mt-12 [&_h1]:mb-6 [&_h1]:leading-tight
-                  [&_h2]:text-2xl md:[&_h2]:text-3xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h2]:mt-10 [&_h2]:mb-5 [&_h2]:leading-tight
-                  [&_h3]:text-xl md:[&_h3]:text-2xl [&_h3]:font-semibold [&_h3]:text-foreground [&_h3]:mt-8 [&_h3]:mb-4
-                  [&_h4]:text-lg [&_h4]:font-semibold [&_h4]:text-foreground [&_h4]:mt-6 [&_h4]:mb-3
+                  [&_h1]:text-3xl md:[&_h1]:text-4xl [&_h1]:font-medium [&_h1]:text-[#0F1729] [&_h1]:mt-12 [&_h1]:mb-6 [&_h1]:leading-tight
+                  [&_h2]:text-2xl md:[&_h2]:text-3xl [&_h2]:font-medium [&_h2]:text-[#0F1729] [&_h2]:mt-10 [&_h2]:mb-5 [&_h2]:leading-tight
+                  [&_h3]:text-xl md:[&_h3]:text-2xl [&_h3]:font-medium [&_h3]:text-[#0F1729] [&_h3]:mt-8 [&_h3]:mb-4
+                  [&_h4]:text-lg [&_h4]:font-medium [&_h4]:text-[#0F1729] [&_h4]:mt-6 [&_h4]:mb-3
                   
-                  [&_p]:text-foreground [&_p]:leading-relaxed [&_p]:mb-6 [&_p]:text-base md:[&_p]:text-lg [&_p]:font-light
+                  [&_p]:text-[#0F1729]/70 [&_p]:leading-relaxed [&_p]:mb-6 [&_p]:text-base md:[&_p]:text-lg
                   
                   [&_ul]:my-6 [&_ul]:ml-6 [&_ul]:space-y-3
                   [&_ol]:my-6 [&_ol]:ml-6 [&_ol]:space-y-3
-                  [&_li]:text-foreground [&_li]:leading-relaxed [&_li]:font-light
-                  [&_li]:marker:text-primary
+                  [&_li]:text-[#0F1729]/70 [&_li]:leading-relaxed
+                  [&_li]:marker:text-[#0F1729]/35
                   
-                  [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-6 [&_blockquote]:py-4 [&_blockquote]:my-8 [&_blockquote]:italic [&_blockquote]:text-foreground/80 [&_blockquote]:bg-muted/50 [&_blockquote]:rounded-r-lg [&_blockquote]:pr-6
+                  [&_blockquote]:border-l-4 [&_blockquote]:border-[#CCFF00] [&_blockquote]:pl-6 [&_blockquote]:py-4 [&_blockquote]:my-8 [&_blockquote]:italic [&_blockquote]:text-[#0F1729]/65 [&_blockquote]:bg-white/60 [&_blockquote]:rounded-r-lg [&_blockquote]:pr-6
                   
-                  [&_code]:bg-muted [&_code]:text-primary [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:font-mono
-                  [&_pre]:bg-slate-900 [&_pre]:text-slate-50 [&_pre]:p-6 [&_pre]:my-8 [&_pre]:rounded-2xl [&_pre]:overflow-x-auto [&_pre]:border [&_pre]:border-slate-800
+                  [&_code]:bg-white/80 [&_code]:text-[#0F1729] [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:font-mono
+                  [&_pre]:bg-[#0F1729] [&_pre]:text-white [&_pre]:p-6 [&_pre]:my-8 [&_pre]:rounded-xl [&_pre]:overflow-x-auto
                   [&_pre_code]:bg-transparent [&_pre_code]:text-inherit [&_pre_code]:p-0 [&_pre_code]:font-mono [&_pre_code]:text-sm
                   
-                  [&_a]:text-primary [&_a]:hover:text-primary/80 [&_a]:underline [&_a]:underline-offset-4 [&_a]:transition-colors [&_a]:font-medium
+                  [&_a]:text-[#0F1729] [&_a]:hover:text-[#0F1729]/70 [&_a]:underline [&_a]:underline-offset-4 [&_a]:transition-colors [&_a]:font-medium
                   
-                  [&_img]:my-8 [&_img]:border [&_img]:border-border [&_img]:rounded-2xl [&_img]:w-full [&_img]:h-auto [&_img]:shadow-lg
+                  [&_img]:my-8 [&_img]:border [&_img]:border-[#0F1729]/8 [&_img]:rounded-xl [&_img]:w-full [&_img]:h-auto
                   
                   [&_table]:my-8 [&_table]:w-full [&_table]:border-collapse
-                  [&_th]:bg-muted [&_th]:text-foreground [&_th]:font-semibold [&_th]:px-4 [&_th]:py-3 [&_th]:text-left [&_th]:border [&_th]:border-border
-                  [&_td]:px-4 [&_td]:py-3 [&_td]:border [&_td]:border-border [&_td]:text-foreground
+                  [&_th]:bg-white/80 [&_th]:text-[#0F1729] [&_th]:font-medium [&_th]:px-4 [&_th]:py-3 [&_th]:text-left [&_th]:border [&_th]:border-[#0F1729]/8
+                  [&_td]:px-4 [&_td]:py-3 [&_td]:border [&_td]:border-[#0F1729]/8 [&_td]:text-[#0F1729]/70
                   
-                  [&_hr]:my-12 [&_hr]:border-border
+                  [&_hr]:my-12 [&_hr]:border-[#0F1729]/8
                   
-                  [&_strong]:font-semibold [&_strong]:text-foreground
-                  [&_em]:italic [&_em]:text-foreground/90
+                  [&_strong]:font-medium [&_strong]:text-[#0F1729]
+                  [&_em]:italic [&_em]:text-[#0F1729]/80
                 "
               />
             </article>
@@ -232,69 +213,64 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </section>
         
-        {/* Author Section */}
-        <section className="py-16 bg-muted border-t border-border">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-primary text-primary-foreground flex items-center justify-center font-light text-xl mx-auto mb-6 rounded-full">
-                {post.author.substring(0, 1)}
-              </div>
-              <h3 className="text-2xl font-light text-foreground mb-3 tracking-wide">
-                Written by {post.author}
-              </h3>
-              <p className="text-muted-foreground font-light leading-relaxed mb-6 max-w-2xl mx-auto">
-                Professional web developer at Devora specialising in building high-performance websites for established, growing, and ambitious businesses.
-              </p>
+        <section className="section-dark section-shell-dark page-section page-section-compact">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-lg font-medium text-white">
+              {post.author.substring(0, 1)}
             </div>
+            <h3 className="section-heading md:section-heading-tablet text-white">
+              Written by {post.author}
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-white/60">
+              Web developer at Devora specialising in building high-performance websites for established, growing, and ambitious businesses.
+            </p>
           </div>
         </section>
         
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
-          <section className="py-16 bg-background border-t border-border">
-            <div className="max-w-6xl mx-auto px-6">
-              <div className="mb-12">
-                <div className="text-xs text-muted-foreground uppercase tracking-wider font-light mb-6">Continue reading</div>
-                <h2 className="text-4xl md:text-5xl font-light text-foreground leading-tight tracking-tight">
-                  Related articles
-                </h2>
-              </div>
+          <section className="section-cream section-shell-cream page-section">
+            <div className="page-container">
+              <BrandBadge variant="lime" className="mb-6">Continue reading</BrandBadge>
+              <h2 className="section-heading md:section-heading-tablet text-[#0F1729]">
+                Related <span className="heading-accent">articles</span>
+              </h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {relatedPosts.map((relatedPost) => (
                   <Link 
                     key={relatedPost.slug}
                     href={`/blog/${relatedPost.slug}`}
                     className="group block"
                   >
-                    <article className="space-y-4">
-                      <div className="relative aspect-[16/9] overflow-hidden border border-border rounded-2xl">
+                    <article className="flex h-full flex-col overflow-hidden rounded-xl border border-[#0F1729]/8 bg-white/60 transition-all hover:border-[#0F1729]/15 hover:bg-white">
+                      <div className="relative aspect-[16/9] overflow-hidden">
                         <Image
                           src={relatedPost.coverImage}
                           alt={relatedPost.title}
                           fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
-                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                          sizes="(max-width: 768px) 100vw, 33vw"
                         />
                       </div>
                       
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-4 text-muted-foreground text-xs font-light">
-                          <div className="flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            <span>{relatedPost.date}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Clock className="h-3 w-3" />
-                            <span>{relatedPost.readingTime}</span>
-                          </div>
+                      <div className="flex flex-1 flex-col p-5">
+                        <div className="mb-3 flex items-center gap-4 text-xs text-[#0F1729]/45">
+                          <span className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3" aria-hidden="true" />
+                            {relatedPost.date}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="h-3 w-3" aria-hidden="true" />
+                            {relatedPost.readingTime}
+                          </span>
                         </div>
                         
-                        <h3 className="text-xl md:text-2xl font-light text-foreground group-hover:text-primary transition-colors leading-tight tracking-tight">
+                        <h3 className="text-base font-medium tracking-[-0.02em] text-[#0F1729] line-clamp-2">
                           {relatedPost.title}
                         </h3>
                         
-                        <p className="text-muted-foreground font-light leading-relaxed">
+                        <p className="mt-2 flex-1 text-sm leading-6 text-[#0F1729]/55 line-clamp-3">
                           {relatedPost.excerpt}
                         </p>
                       </div>
@@ -306,25 +282,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </section>
         )}
         
-        {/* Newsletter CTA */}
-        <section className="py-20 bg-primary text-primary-foreground px-6">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="mb-12">
-              <h2 className="text-4xl md:text-5xl font-light text-primary-foreground mb-6 leading-tight tracking-tight">
-                Ready to work together?
-              </h2>
-              <p className="text-lg text-primary-foreground/90 font-light leading-relaxed max-w-2xl mx-auto">
-                Let's discuss how we can help your business grow with a ground-up website design and development project.
-              </p>
-            </div>
-            
-            <Link href="/#contact">
-              <Button size="lg" className="rounded-full bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-light gap-2">
-                Get in touch <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
-        </section>
+        <PageCta
+          title={<>Ready to work <span className="heading-accent after:bg-[#CCFF00]">together</span>?</>}
+          description="Let's discuss how we can help your business grow with a ground-up website design and development project."
+          linkLabel="get in touch"
+        />
       </main>
       <JsonLd data={structuredData} />
       

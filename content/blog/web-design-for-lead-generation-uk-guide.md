@@ -1,14 +1,23 @@
 ---
-title: "Web Design for Lead Generation: A UK Business Guide"
-date: "2026-05-19"
-excerpt: "How UK businesses structure websites to generate leads: service pages, proof, SEO, forms and follow-up paths that turn traffic into enquiries."
-author: "Devora"
-coverImage: "/blog/the-ultimate-guide-to-seo-strategies-for-businesses-i.jpg"
-readingTime: "10 min read"
-tags: ["Web design", "SEO", "Lead generation"]
-category: "seo-and-growth"
+title: 'Web Design for Lead Generation: A UK Business Guide'
+date: '2026-05-19'
+excerpt: >-
+  How UK businesses structure websites to generate leads: service pages, proof,
+  SEO, forms and follow-up paths that turn traffic into enquiries.
+author: Devora
+coverImage: /blog/the-ultimate-guide-to-seo-strategies-for-businesses-i.jpg
+readingTime: 10 min read
+tags:
+  - Web design
+  - SEO
+  - Lead generation
+category: seo-and-growth
 featured: true
-relatedServices: ["web-design", "local-seo", "small-business-websites"]
+relatedServices:
+  - web-design
+  - local-seo
+  - small-business-websites
+dateModified: '2026-05-19'
 ---
 
 ## Lead generation is a system

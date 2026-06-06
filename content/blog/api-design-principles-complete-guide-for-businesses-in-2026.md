@@ -14,6 +14,7 @@ tags:
   - rest api
   - web development
   - business growth
+dateModified: '2026-01-03'
 ---
 
 # API Design Principles – Complete Guide for Businesses in 2026

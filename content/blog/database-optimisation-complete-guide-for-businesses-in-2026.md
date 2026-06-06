@@ -14,6 +14,7 @@ tags:
   - backend
   - web development
   - business growth
+dateModified: '2026-01-05'
 ---
 
 # Database Optimisation – Complete Guide for Businesses in 2026
