@@ -243,27 +243,28 @@ export function Header() {
               </button>
             </div>
           </div>
+        </header>
 
-          {isMenuOpen && (
-            <nav
-              className="fixed inset-0 top-[3.25rem] z-40 flex flex-col md:hidden"
-              aria-label="Mobile navigation"
+        {isMenuOpen && (
+          <nav
+            className="fixed inset-x-0 top-[3.25rem] z-40 flex h-[calc(100dvh-3.25rem)] flex-col md:hidden"
+            aria-label="Mobile navigation"
+          >
+            <button
+              type="button"
+              className="absolute inset-0 bg-[#0F1729]/40 backdrop-blur-sm"
+              aria-label="Close menu"
+              onClick={() => setIsMenuOpen(false)}
+            />
+            <div
+              className={`relative z-10 flex h-full max-h-full flex-col overflow-y-auto mobile-safe-x mobile-safe-bottom border-t px-5 py-6 ${
+                onHero
+                  ? "border-[#0F1729]/10 bg-[#F7F4EF]/98 text-[#0F1729] backdrop-blur-xl"
+                  : "border-black/8 bg-white/98 text-black backdrop-blur-xl"
+              }`}
             >
-              <button
-                type="button"
-                className="absolute inset-0 bg-[#0F1729]/40 backdrop-blur-sm"
-                aria-label="Close menu"
-                onClick={() => setIsMenuOpen(false)}
-              />
-              <div
-                className={`relative flex max-h-[calc(100dvh-3.25rem)] flex-col overflow-y-auto mobile-safe-x mobile-safe-bottom border-t px-5 py-6 ${
-                  onHero
-                    ? "border-[#0F1729]/10 bg-[#F7F4EF]/98 text-[#0F1729] backdrop-blur-xl"
-                    : "border-black/8 bg-white/98 text-black backdrop-blur-xl"
-                }`}
-              >
-                <p className="mobile-section-label mb-4 text-[#0F1729]/50">Menu</p>
-                <ul className="space-y-1">
+              <p className="mobile-section-label mb-4 text-[#0F1729]/50">Menu</p>
+              <ul className="space-y-1">
                 {navLinks.map((link) => {
                   const isActive = isNavItemActive(link.href)
 
@@ -349,10 +350,9 @@ export function Header() {
                   </button>
                 </DialogTrigger>
               </div>
-              </div>
-            </nav>
-          )}
-        </header>
+            </div>
+          </nav>
+        )}
 
         <DialogContent className="gap-0 max-h-[min(100dvh-1rem,44rem)] overflow-y-auto border-black/10 bg-white p-0 shadow-2xl sm:max-w-[min(100vw-2rem,32rem)]">
           <DialogHeader className="sr-only">
