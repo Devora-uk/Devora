@@ -11,9 +11,10 @@ const projects = [
     name: "Sarah Bartlet Optimal Health",
     tags: ["Health", "Web Design", "Wellbeing"],
     year: "2026",
-    image: "/case-studies/sarah-bartlet-optimal-health.png",
-    alt: "Sarah Bartlet Optimal Health nutritional therapy website built by Devora",
-    imageClass: "object-cover object-top",
+    image: "/case-studies/sarah-bartlet-optimal-health-nutritional-therapy-website.jpg",
+    alt: "Sarah Bartlet Optimal Health nutritional therapy website designed by Devora — Aberdeenshire practice homepage on laptop mockup",
+    imageClass: "object-contain object-center p-4 sm:p-6",
+    imageBg: "#F4F6F1",
     unoptimized: true,
   },
   {
@@ -152,15 +153,17 @@ export function HeroShowcase() {
               className={`absolute inset-0 transition-opacity duration-700 ease-out ${
                 index === active ? "opacity-100" : "opacity-0"
               }`}
+              style={"imageBg" in item && item.imageBg ? { backgroundColor: item.imageBg } : undefined}
               aria-hidden={index !== active}
             >
               <Image
                 src={item.image}
                 alt={item.alt}
                 fill
-                className={`${item.imageClass ?? "object-cover object-top"} transition-transform duration-700 group-hover:scale-[1.03]`}
-                sizes="(min-width: 1024px) 48vw, 100vw"
-                quality={85}
+                className={`${item.imageClass ?? "object-cover object-top"} ${item.slug === "sarah-bartlet-optimal-health" ? "" : "transition-transform duration-700 group-hover:scale-[1.03]"}`}
+                sizes="(min-width: 1280px) 640px, (min-width: 1024px) 48vw, 100vw"
+                quality={100}
+                unoptimized={item.unoptimized ?? false}
                 loading={index === 0 ? "eager" : "lazy"}
                 fetchPriority={index === 0 ? "high" : "auto"}
                 priority={index === 0}

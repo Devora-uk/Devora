@@ -35,6 +35,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       : `${study.title}: ${study.subtitle}`
   const description = `${study.client || study.title} case study covering the problem, strategy, design approach, development stack and outcome.`
 
+  const heroImageAlt =
+    study.heroImageAlt || `${study.title} ${study.subtitle.toLowerCase()} case study by Devora`
+
   return {
     title,
     description,
@@ -46,7 +49,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description,
       url: absoluteUrl(`/case-studies/${slug}`),
       type: "article",
-      images: [{ url: study.heroImage || `/case-studies/${slug}.png`, width: 1200, height: 630, alt: `${study.title} case study` }],
+      images: [
+        {
+          url: study.heroImage || `/case-studies/${slug}.png`,
+          width: study.heroImageWidth ?? 1200,
+          height: study.heroImageHeight ?? 630,
+          alt: heroImageAlt,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
@@ -156,7 +166,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
             <div className="absolute inset-0" style={caseStudy.heroImageBg ? { backgroundColor: caseStudy.heroImageBg } : undefined}>
               <Image
                 src={heroImage}
-                alt={`${caseStudy.title} case study hero`}
+                alt={caseStudy.heroImageAlt || `${caseStudy.title} case study hero`}
                 fill
                 className={caseStudy.heroImageClass ?? "object-cover"}
                 quality={100}

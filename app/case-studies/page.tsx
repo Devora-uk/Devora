@@ -53,7 +53,9 @@ const allProjects = [
     slug: "sarah-bartlet-optimal-health",
     description:
       "A calming nutritional therapy website for a qualified practitioner in Aberdeenshire. We created a warm, trust-building digital home with clear consultation pathways, specialist messaging for autoimmune and allergy support, and WhatsApp contact — helping visitors feel reassured and book a free consultation with confidence.",
-    image: "/case-studies/sarah-bartlet-optimal-health.png",
+    image: "/case-studies/sarah-bartlet-optimal-health-nutritional-therapy-website.jpg",
+    imageAlt:
+      "Sarah Bartlet Optimal Health nutritional therapy website designed by Devora — Aberdeenshire practice homepage on laptop mockup",
     tags: ["Health & Wellbeing", "Web Design", "Conversion"],
   },
   {
@@ -196,14 +198,14 @@ export default function AllCaseStudiesPage() {
                   className="group"
                 >
                   <div className="flex h-full flex-col overflow-hidden rounded-xl border border-[#0F1729]/8 bg-white/60 transition-all hover:border-[#0F1729]/15 hover:bg-white">
-                    <div className="relative aspect-[4/3] overflow-hidden bg-[#F4F4F2]">
+                    <div className={`relative aspect-[4/3] overflow-hidden ${project.slug === "sarah-bartlet-optimal-health" ? "bg-[#F4F6F1]" : "bg-[#F4F4F2]"}`}>
                       <Image
                         src={project.image || "/placeholder.svg"}
-                        alt={`${project.name} case study`}
+                        alt={"imageAlt" in project && project.imageAlt ? project.imageAlt : `${project.name} case study`}
                         fill
-                        className={`${project.slug === "sky-limit-travels" || project.slug === "teachers-surgery" || project.slug === "sarah-bartlet-optimal-health" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" ? "object-cover object-top" : project.slug === "luma-education" ? "object-cover object-center" : "object-contain"} transition-transform duration-500 group-hover:scale-[1.02]`}
+                        className={`${project.slug === "sky-limit-travels" || project.slug === "teachers-surgery" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" || project.slug === "envirotech-plumbing" || project.slug === "nl-education" ? "object-cover object-top" : project.slug === "sarah-bartlet-optimal-health" ? "object-contain object-center p-4 sm:p-6" : project.slug === "luma-education" ? "object-cover object-center" : "object-contain"} transition-transform duration-500 group-hover:scale-[1.02]`}
                         quality={100}
-                        unoptimized={project.slug === "sarah-bartlet-optimal-health" || project.slug === "luma-education" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" || project.slug === "teachers-surgery"}
+                        unoptimized={project.slug === "sarah-bartlet-optimal-health" || project.slug === "luma-education" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" || project.slug === "teachers-surgery" || project.slug === "envirotech-plumbing" || project.slug === "nl-education"}
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />

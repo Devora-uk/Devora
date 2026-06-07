@@ -862,8 +862,13 @@ export const caseStudies: Record<string, CaseStudy> = {
     category: "Health & Wellbeing",
     duration: "3 weeks",
     year: "2026",
-    heroImage: "/case-studies/sarah-bartlet-optimal-health.png",
-    heroImageClass: "object-contain object-center",
+    heroImage: "/case-studies/sarah-bartlet-optimal-health-nutritional-therapy-website.jpg",
+    heroImageAlt:
+      "Sarah Bartlet Optimal Health nutritional therapy website designed by Devora — laptop mockup showing the Aberdeenshire practice homepage with consultation booking and wellbeing messaging",
+    heroImageWidth: 2048,
+    heroImageHeight: 1162,
+    heroImageClass: "object-contain object-center p-6 sm:p-10 md:p-14 lg:p-16",
+    heroImageBg: "#F4F6F1",
     heroImageUnoptimized: true,
     challenge:
       "Sarah Bartlet, a qualified nutritional therapist based in Aberdeenshire, needed a website that reflected the calm, trustworthy tone of her practice. Her previous online presence did not clearly explain who she helps — people with ongoing symptoms, autoimmune conditions, allergies, digestive issues and long-term health concerns — nor did it make booking a free consultation straightforward. Visitors searching for nutritional therapy support in Scotland needed to feel reassured quickly, understand her approach, and take the next step without friction.",

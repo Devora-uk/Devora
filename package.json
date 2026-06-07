@@ -5,7 +5,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "dev:clean": "rm -rf .next && npm run dev",
+    "dev:clean": "pkill -f 'devora-website.*next dev' 2>/dev/null || true; rm -rf .next && next dev",
     "lint": "eslint .",
     "start": "next start",
     "generate-blog-images": "node lib/generate-blog-images.js",
@@ -54,7 +54,7 @@
     "gray-matter": "^4.0.3",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
-    "next": "16.0.10",
+    "next": "16.2.7",
     "next-themes": "^0.4.6",
     "nodemailer": "^6.10.0",
     "react": "19.2.0",

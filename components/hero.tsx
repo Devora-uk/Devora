@@ -55,7 +55,7 @@ export function Hero() {
           <div className="animate-hero-rise mt-7 flex flex-col gap-3 max-md:mt-6 md:flex-row md:flex-wrap md:items-center md:gap-x-7 md:gap-y-3 [animation-delay:0.24s]">
             <Link
               href="/case-studies"
-              className="btn-touch group w-full justify-between rounded-xl border border-[#0F1729]/12 bg-white/60 text-[#0F1729] backdrop-blur-sm transition-colors hover:bg-white/90 md:w-auto md:justify-center md:rounded-none md:border-0 md:bg-transparent md:backdrop-blur-none link-inline md:hover:underline"
+              className="btn-touch group w-full justify-between rounded-xl border border-[#0F1729]/12 bg-white/60 text-[#0F1729] backdrop-blur-sm transition-colors hover:bg-white/90 md:w-auto md:justify-center md:rounded-none md:border-0 md:bg-transparent md:backdrop-blur-none md:hover:bg-transparent link-inline md:hover:underline"
             >
               view our work
               <ArrowUpRight
@@ -66,7 +66,7 @@ export function Hero() {
             <span className="hidden h-3 w-px bg-[#0F1729]/15 md:block" aria-hidden="true" />
             <Link
               href="#contact"
-              className="btn-touch w-full justify-center rounded-xl bg-[#0F1729] text-white transition-colors hover:bg-[#162038] md:w-auto md:rounded-none md:bg-transparent md:text-muted-navy md:hover:text-[#0F1729] link-inline md:hover:underline"
+              className="btn-touch w-full justify-center rounded-xl bg-[#CCFF00] font-medium text-[#0F1729] transition-colors hover:bg-[#b8e600] md:w-auto md:rounded-none md:bg-transparent md:font-normal md:text-[#0F1729] md:hover:bg-transparent link-inline md:hover:underline"
             >
               start a project
             </Link>

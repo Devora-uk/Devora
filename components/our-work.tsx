@@ -3,18 +3,22 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import { BrandBadge } from "@/components/brand-badge"
 
 const projects = [
   {
     name: "Sarah Bartlet Optimal Health",
     slug: "sarah-bartlet-optimal-health",
     tags: ["Health & Wellbeing", "Web Design"],
-    image: "/case-studies/sarah-bartlet-optimal-health.png",
+    image: "/case-studies/sarah-bartlet-optimal-health-nutritional-therapy-website.jpg",
+    imageAlt:
+      "Sarah Bartlet Optimal Health nutritional therapy website designed by Devora — Aberdeenshire practice homepage on laptop mockup",
     span: "lg:col-span-2 lg:row-span-2",
     aspect: "aspect-[4/3] lg:aspect-auto lg:min-h-[28rem]",
-    imageClass: "object-cover object-top",
+    imageClass: "object-cover object-center",
     unoptimized: true,
     priority: true,
+    sizes: "(max-width: 768px) 85vw, (max-width: 1024px) 50vw, 66vw",
   },
   {
     name: "Kickin Kilos",
@@ -83,11 +87,12 @@ function ProjectCard({
     >
       <Image
         src={project.image}
-        alt={`${project.name} project`}
+        alt={"imageAlt" in project && project.imageAlt ? project.imageAlt : `${project.name} project`}
         fill
         className={`${project.imageClass ?? "object-cover"} transition-transform duration-700 group-hover:scale-[1.03] group-active:scale-[0.98]`}
-        sizes="(max-width: 768px) 85vw, 33vw"
-        quality={85}
+        sizes={"sizes" in project && project.sizes ? project.sizes : "(max-width: 768px) 85vw, 33vw"}
+        quality={100}
+        unoptimized={"unoptimized" in project ? project.unoptimized : false}
         loading={"priority" in project && project.priority ? "eager" : "lazy"}
         fetchPriority={"priority" in project && project.priority ? "high" : "auto"}
         priority={"priority" in project ? project.priority : false}
@@ -118,25 +123,16 @@ export function OurWork() {
       aria-labelledby="work-heading"
     >
       <div className="page-container">
-        <p className="mobile-section-label lg:hidden" aria-hidden="true">
-          02 · Projects
-        </p>
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-6">
-          <div className="max-w-2xl">
-            <h2 id="work-heading" className="section-heading section-heading-mobile md:section-heading-tablet text-[#0F1729]">
-              Latest and <span className="heading-accent">greatest</span>
-            </h2>
-          </div>
-          <Link
-            href="/case-studies"
-            className="link-inline group hidden text-muted-navy hover:text-[#0F1729] md:inline-flex"
-          >
-            view all projects
-            <ArrowUpRight
-              className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </Link>
+        <BrandBadge variant="lime" className="mb-5 md:mb-6">
+          Selected work
+        </BrandBadge>
+        <div className="max-w-2xl">
+          <h2 id="work-heading" className="section-heading section-heading-mobile md:section-heading-tablet text-[#0F1729]">
+            Some of our <span className="heading-accent">work</span>
+          </h2>
+          <p className="mt-4 max-w-lg text-base leading-7 text-muted-navy md:mt-5 md:text-lg md:leading-8">
+            Recent builds across health, education, property and e-commerce.
+          </p>
         </div>
 
         {/* Mobile: horizontal snap carousel */}
@@ -165,13 +161,16 @@ export function OurWork() {
           ))}
         </div>
 
-        <div className="mt-8 md:hidden">
+        <div className="mt-10 border-t border-[#0F1729]/8 pt-8 md:mt-12 md:pt-10">
           <Link
             href="/case-studies"
-            className="btn-touch w-full justify-between rounded-xl border border-[#0F1729]/12 bg-white/70 text-muted-navy backdrop-blur-sm transition-colors hover:bg-white hover:text-[#0F1729]"
+            className="link-inline group text-muted-navy hover:text-[#0F1729] hover:underline"
           >
             view all projects
-            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            <ArrowUpRight
+              className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
           </Link>
         </div>
       </div>
