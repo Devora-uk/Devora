@@ -21,26 +21,26 @@ export function BrandBadge({
       case "lime":
       case "default":
         return {
-          bg: "bg-[#CCFF00]/15 border border-[#CCFF00]/25",
-          dot: "bg-[#CCFF00]",
-          text: "text-[#0F1729]",
+          bg: "bg-[color-mix(in_oklab,var(--lime)_14%,var(--background))] border border-[color-mix(in_oklab,var(--lime)_30%,var(--border))]",
+          dot: "bg-[var(--lime)]",
+          text: "text-[var(--navy)]",
         }
       case "cyan":
         return {
-          bg: "bg-[#00C8E8]/12 border border-[#00C8E8]/20",
-          dot: "bg-[#00C8E8]",
-          text: "text-[#0F1729]",
+          bg: "bg-[color-mix(in_oklab,var(--cyan)_12%,var(--background))] border border-[color-mix(in_oklab,var(--cyan)_22%,var(--border))]",
+          dot: "bg-[var(--cyan)]",
+          text: "text-[var(--navy)]",
         }
       case "pink":
         return {
-          bg: "bg-[#FF5CB4]/12 border border-[#FF5CB4]/20",
-          dot: "bg-[#FF5CB4]",
-          text: "text-[#0F1729]",
+          bg: "bg-[color-mix(in_oklab,var(--pink)_12%,var(--background))] border border-[color-mix(in_oklab,var(--pink)_22%,var(--border))]",
+          dot: "bg-[var(--pink)]",
+          text: "text-[var(--navy)]",
         }
       case "navy":
         return {
-          bg: "bg-[#0F1729] border border-[#0F1729]/10",
-          dot: "bg-[#CCFF00]",
+          bg: "bg-[var(--navy)] border border-white/10",
+          dot: "bg-[var(--lime)]",
           text: "text-white",
         }
     }
@@ -51,7 +51,7 @@ export function BrandBadge({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-black uppercase tracking-[0.18em] shadow-xs select-none",
+        "inline-flex items-center gap-1.5 rounded-full px-3.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] select-none",
         colors.bg,
         colors.text,
         className
@@ -59,7 +59,7 @@ export function BrandBadge({
       {...props}
     >
       {showDot && (
-        <span className={cn("h-1.5 w-1.5 rounded-full shrink-0", colors.dot)} aria-hidden="true" />
+        <span className={cn("h-1 w-1 rounded-full shrink-0", colors.dot)} aria-hidden="true" />
       )}
       {children}
     </span>

@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: "article",
       images: [
         {
-          url: study.heroImage || `/case-studies/${slug}.png`,
+          url: study.heroImage || study.heroVideoPoster || `/case-studies/${slug}.png`,
           width: study.heroImageWidth ?? 1200,
           height: study.heroImageHeight ?? 630,
           alt: heroImageAlt,
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: "summary_large_image",
       title,
       description,
-      images: [study.heroImage || `/case-studies/${slug}.png`],
+      images: [study.heroImage || study.heroVideoPoster || `/case-studies/${slug}.png`],
     },
   }
 }
@@ -93,7 +93,9 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
   }
 
   const heroImage = caseStudy.heroImage ?? null
-  const projectImage = heroImage ?? `/case-studies/${resolvedParams.slug}.png`
+  const heroVideo = caseStudy.heroVideo ?? null
+  const heroVideoPoster = caseStudy.heroVideoPoster ?? null
+  const projectImage = heroImage ?? heroVideoPoster ?? `/case-studies/${resolvedParams.slug}.png`
   const caseStudyUrl = absoluteUrl(`/case-studies/${resolvedParams.slug}`)
   const structuredData = graphSchema([
     webPageSchema({
@@ -161,20 +163,40 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
     <div className="min-h-screen flex flex-col bg-[#0F1729]">
       <Header />
       <main className="flex-1">
-        {heroImage ? (
+        {heroImage || heroVideo ? (
           <section className="relative flex min-h-[75vh] flex-col justify-end overflow-hidden md:min-h-[85vh]">
             <div className="absolute inset-0" style={caseStudy.heroImageBg ? { backgroundColor: caseStudy.heroImageBg } : undefined}>
-              <Image
-                src={heroImage}
-                alt={caseStudy.heroImageAlt || `${caseStudy.title} case study hero`}
-                fill
-                className={caseStudy.heroImageClass ?? "object-cover"}
-                quality={100}
-                unoptimized={caseStudy.heroImageUnoptimized ?? false}
-                priority
-                sizes="100vw"
-              />
+              {heroImage ? (
+                <Image
+                  src={heroImage}
+                  alt={caseStudy.heroImageAlt || `${caseStudy.title} case study hero`}
+                  fill
+                  className={caseStudy.heroImageClass ?? "object-cover"}
+                  quality={100}
+                  unoptimized={caseStudy.heroImageUnoptimized ?? false}
+                  priority
+                  sizes="100vw"
+                />
+              ) : heroVideo ? (
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  poster={heroVideoPoster || undefined}
+                  className={caseStudy.heroImageClass ?? "absolute inset-0 w-full h-full object-cover"}
+                  aria-label={`${caseStudy.title} hero background video`}
+                >
+                  <source src={heroVideo} type="video/mp4" />
+                </video>
+              ) : null}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F1729] via-[#0F1729]/50 to-[#0F1729]/20" aria-hidden="true" />
+              {heroVideo && !heroImage && (
+                <div className="absolute top-4 right-4 z-10 rounded-full bg-white/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-white/70 backdrop-blur-sm" aria-hidden="true">
+                  Video
+                </div>
+              )}
             </div>
 
             <div className="relative z-10 px-5 pb-14 pt-28 md:px-8 md:pb-16 md:pt-32 lg:px-10 lg:pb-20 lg:pt-40">
@@ -240,7 +262,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
 
         <section className="section-cream section-shell-cream page-section page-section-compact">
           <div className="page-container">
-            {!heroImage && (
+            {!heroImage && !heroVideo && (
               <div className="mb-12 grid gap-6">
                 <MetaDetails />
                 {caseStudy.website && (
@@ -255,7 +277,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
               </div>
             )}
 
-            {!heroImage && (
+            {!heroImage && !heroVideo && (
               <div className="relative mb-14 aspect-[16/9] overflow-hidden rounded-xl border border-[#0F1729]/8 bg-[#F4F4F2]">
                 <Image
                   src={projectImage}
@@ -301,6 +323,37 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
             </div>
           </div>
         </section>
+
+        {heroVideo && (
+          <section className="section-cream section-shell-cream page-section">
+            <div className="page-container">
+              <BrandBadge variant="lime" className="mb-6">Design detail</BrandBadge>
+              <div className="max-w-3xl">
+                <h2 className="section-heading md:section-heading-tablet text-[#0F1729]">
+                  The <span className="heading-accent">video hero</span>
+                </h2>
+                <p className="mt-4 text-base leading-7 text-[#0F1729]/70 md:text-lg md:leading-8">
+                  A cinematic, looping video background sets the tone from the first second and makes the experience feel alive and considered.
+                </p>
+              </div>
+              <div className="mt-8 overflow-hidden rounded-2xl border border-[#0F1729]/8 bg-[#F4F4F2]">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  poster={heroVideoPoster || undefined}
+                  className="block w-full h-auto"
+                  aria-label={`${caseStudy.title} hero video background`}
+                >
+                  <source src={heroVideo} type="video/mp4" />
+                </video>
+              </div>
+              <p className="mt-3 text-xs uppercase tracking-[0.14em] text-[#0F1729]/45">Actual video background used on the live site</p>
+            </div>
+          </section>
+        )}
 
         {caseStudy.solutionPhases && (
           <section className="section-dark section-shell-dark page-section">

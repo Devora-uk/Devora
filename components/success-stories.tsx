@@ -7,7 +7,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { BrandBadge } from "@/components/brand-badge"
 
 const testimonials = [
   {
@@ -55,21 +54,21 @@ function TestimonialCard({
 }) {
   return (
     <article className="flex h-full flex-col px-1">
-      <div className="flex flex-1 flex-col rounded-2xl border border-[#0F1729]/8 bg-white/80 p-5 backdrop-blur-sm max-md:shadow-[0_8px_32px_rgba(15,23,41,0.08)] md:rounded-xl md:bg-white/70 md:p-7">
-        <p className="text-base leading-7 text-[#0F1729]/85 md:text-lg md:leading-8">
+      <div className="flex flex-1 flex-col rounded-2xl border border-white/12 p-5 md:rounded-xl md:p-7">
+        <p className="text-base font-medium leading-7 text-white md:text-lg md:leading-8">
           &ldquo;{testimonial.quote}&rdquo;
         </p>
       </div>
       <div className="mt-5 flex items-center gap-3 pl-1">
         <div
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#CCFF00] text-sm font-bold text-[#0F1729]"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-sm font-semibold text-white"
           aria-hidden="true"
         >
           {testimonial.name[0]}
         </div>
         <div>
-          <p className="text-base font-medium text-[#0F1729]">{testimonial.name}</p>
-          <p className="text-sm text-muted-navy-subtle">{testimonial.role}</p>
+          <p className="text-base font-medium text-white">{testimonial.name}</p>
+          <p className="text-sm font-medium text-white/65">{testimonial.role}</p>
         </div>
       </div>
     </article>
@@ -80,15 +79,10 @@ export function SuccessStories() {
   return (
     <section
       id="testimonials"
-      className="section-dark section-shell-dark relative overflow-hidden mobile-safe-x page-section"
+      className="bg-black page-section mobile-safe-x text-white"
       aria-labelledby="testimonials-heading"
     >
-      <div
-        className="pointer-events-none absolute -right-16 top-0 h-64 w-64 rounded-full bg-[#CCFF00]/5 blur-3xl"
-        aria-hidden="true"
-      />
-
-      <div className="relative page-container">
+      <div className="page-container">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -101,17 +95,12 @@ export function SuccessStories() {
           }}
         />
 
-        <div className="max-w-2xl">
-          <p className="mobile-section-label text-white/50 lg:hidden" aria-hidden="true">
-            05 · Voices
-          </p>
-          <BrandBadge variant="navy" className="mb-5 max-md:mb-4 border-white/10 bg-white/8 text-white md:mb-6">
-            Client voices
-          </BrandBadge>
-          <h2 id="testimonials-heading" className="section-heading section-heading-mobile md:section-heading-tablet text-white">
-            What our clients <span className="heading-accent">say</span>
-          </h2>
-        </div>
+        <h2
+          id="testimonials-heading"
+          className="max-w-[18ch] text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.12] tracking-tight text-white"
+        >
+          What our clients say
+        </h2>
 
         <Carousel
           opts={{ align: "start", loop: true, dragFree: true }}
@@ -127,10 +116,10 @@ export function SuccessStories() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-0 hidden border border-white/15 bg-white/10 text-white hover:bg-[#CCFF00] hover:text-[#0F1729] md:flex" />
-          <CarouselNext className="right-0 hidden border border-white/15 bg-white/10 text-white hover:bg-[#CCFF00] hover:text-[#0F1729] md:flex" />
+          <CarouselPrevious className="left-0 hidden border border-white/20 bg-white/10 text-white hover:bg-white hover:text-black md:flex" />
+          <CarouselNext className="right-0 hidden border border-white/20 bg-white/10 text-white hover:bg-white hover:text-black md:flex" />
         </Carousel>
-        <p className="mobile-scroll-hint mobile-scroll-hint-light mt-4 md:hidden" aria-hidden="true">
+        <p className="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-white/45 md:hidden" aria-hidden="true">
           Swipe testimonials
         </p>
       </div>

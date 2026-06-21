@@ -25,38 +25,38 @@ export type SeoPage = {
 export const servicePages: SeoPage[] = [
   {
     slug: "web-design",
-    title: "Web Design Sheffield",
-    metaTitle: "Web Design Sheffield | Bespoke Business Websites",
+    title: "Web Design",
+    metaTitle: "Web Design | Bespoke Business Websites UK",
     metaDescription:
-      "Devora designs bespoke, fast and conversion-led websites for Sheffield and UK businesses that need to look sharper, rank better and generate more enquiries.",
-    h1: "Web Design Sheffield",
+      "Bespoke web design for UK businesses. We create fast, conversion-led websites that communicate clearly, build trust and generate better enquiries.",
+    h1: "Web Design",
     intro:
-      "Bespoke web design for Sheffield businesses that need a sharper first impression, clearer sales journey and a website customers can trust before they enquire.",
-    audience: ["Service businesses competing locally", "Recruiters and professional firms", "Trades and property maintenance companies", "Education and training providers", "Established businesses planning a serious redesign"],
-    included: ["Discovery around buyers, offer and search intent", "Responsive page design for core commercial journeys", "Copy structure, wireframes and conversion planning", "Accessibility-aware UI and mobile layouts", "Design handover into a clean Next.js build"],
-    why: ["Design is treated as a commercial system, not a decorative layer.", "Pages are structured around how buyers compare businesses.", "The visual direction is bespoke to the offer, sector and proof available.", "SEO, speed and conversion are planned before the first layout is polished."],
-    process: ["Clarify the offer, market and priority enquiries", "Map the sitemap, landing pages and customer journey", "Design page sections around proof, objections and next steps", "Build responsive components and test across devices", "Launch with analytics, metadata, schema and internal links in place"],
+      "Bespoke web design for businesses that need a stronger first impression, clearer customer journeys and a website that earns trust before the first enquiry.",
+    audience: ["Service businesses competing for high-value work", "Recruiters and professional services firms", "Trades and property companies", "Education and training providers", "Established businesses investing in a serious website"],
+    included: ["Discovery to understand buyers, offer and search behaviour", "Responsive design focused on commercial journeys", "Content structure, wireframes and conversion planning", "Accessibility-conscious layouts across devices", "Design direction ready for clean development"],
+    why: ["Design decisions are driven by commercial outcomes, not decoration.", "Page structure reflects how buyers research and compare options.", "Visual direction is tailored to the sector, positioning and available proof.", "SEO foundations, performance and conversion are planned from the start."],
+    process: ["Define the offer, market position and priority outcomes", "Plan sitemap, key pages and buyer pathways", "Design sections that address questions, objections and next steps", "Create responsive components and validate across devices", "Prepare for development with clear specifications and assets"],
     faqs: [
-      { question: "Do you only work with Sheffield businesses?", answer: "No. Devora is Sheffield based and works with South Yorkshire businesses regularly, but we also design websites for UK-wide clients." },
-      { question: "Is the design custom or template based?", answer: "The page structure, copy direction and visual system are planned around the business. We do not force serious commercial websites into generic templates." },
-      { question: "Can web design help enquiries?", answer: "Yes, when it clarifies the offer, reduces doubt and gives users a simple path to contact. Design alone is not enough, so we connect it with SEO, speed and content structure." },
+      { question: "Do you work only with businesses in one location?", answer: "No. We are based in Sheffield with strong experience across South Yorkshire, but we work with clients throughout the UK." },
+      { question: "Is the design custom or based on templates?", answer: "We plan the structure, messaging direction and visual approach around the specific business. Serious commercial websites are not forced into generic templates." },
+      { question: "Can good web design increase enquiries?", answer: "When design clarifies the offer, reduces uncertainty and provides a straightforward path to contact, yes. Design works best when combined with strong content structure, SEO and performance." },
     ],
     relatedServices: ["web-development", "local-seo", "website-redesign", "branding"],
     relatedIndustries: ["trades-web-design", "professional-services-websites", "recruitment-websites"],
     caseStudies: ["teachers-surgery", "sandalwood-memorials", "luma-education"],
     body: [
-      "Good web design makes a business easier to understand and easier to choose. For Sheffield companies, that matters because buyers are often comparing several local options in the same search result. Your website has to show what you do, why it is credible and what action the visitor should take without making them work for it.",
-      "Devora designs websites around commercial intent: service pages that answer buyer questions, case study routes that build confidence, content blocks that handle objections and calls to action that feel natural rather than desperate. The aim is a website that looks premium because it is structured properly underneath.",
-      "We pay particular attention to mobile journeys, section hierarchy, trust signals, internal links and page speed. Those details affect both users and search engines. A site can look beautiful in a design file and still underperform if the headings, content, images and calls to action are weak.",
+      "Effective web design helps a business become easier to understand and easier to choose. In competitive markets, buyers routinely compare several options from a single search. The website must convey what you do, why you are credible and what the visitor should do next — without friction.",
+      "We design around commercial intent: service pages that answer real questions, case study pathways that build confidence, content that handles objections and calls to action that feel natural. The result is a site that earns its premium appearance through sound structure rather than surface styling.",
+      "Particular attention is paid to mobile experience, heading hierarchy, trust indicators, internal linking and page speed. These elements influence both user behaviour and search visibility. A design can appear polished in a static file and still underperform if the underlying organisation of content and actions is weak.",
     ],
   },
   {
     slug: "web-development",
-    title: "Web Development Sheffield",
-    metaTitle: "Web Development Sheffield | Fast Business Websites",
+    title: "Web Development",
+    metaTitle: "Web Development | Fast Business Websites UK",
     metaDescription:
-      "Next.js web development in Sheffield for fast, secure and maintainable business websites built for SEO, performance and conversion.",
-    h1: "Web Development Sheffield",
+      "Modern web development for UK businesses. We build fast, secure and maintainable websites in Next.js that support strong SEO, performance and conversion.",
+    h1: "Web Development",
     intro:
       "Modern web development for businesses that need a fast, reliable website built cleanly rather than patched together with bloated themes and fragile plugins.",
     audience: ["Businesses replacing slow legacy websites", "Teams needing custom functionality", "Companies moving beyond template builders", "Agencies needing a technical build partner"],
@@ -73,8 +73,8 @@ export const servicePages: SeoPage[] = [
     caseStudies: ["sandalwood-memorials", "teachers-surgery", "envirotech-plumbing"],
     body: [
       "Development quality affects rankings, conversions and day-to-day maintainability. Slow templates, layout shifts, unclear routing and plugin-heavy builds make it harder for users to trust the site and harder for search engines to crawl it efficiently.",
-      "Devora builds with a performance-first approach: clean components, readable routes, sensible image handling, server-rendered SEO data and lightweight interactions. The goal is not technical theatre. It is a stable website that loads quickly, communicates clearly and can be improved without starting again.",
-      "For Sheffield and UK businesses, this is especially useful when the website has to support service pages, area pages, case studies, blog content and future conversion experiments. The technical foundation should make growth easier, not more expensive.",
+      "We build with a performance-first approach: clean components, readable routes, sensible image handling, server-rendered SEO data and lightweight interactions. The goal is not technical theatre. It is a stable website that loads quickly, communicates clearly and can be improved without starting again.",
+      "This approach is especially useful when the website must support service pages, area content, case studies, blog resources and future conversion experiments. The technical foundation should make growth easier, not more expensive.",
     ],
   },
   {
@@ -82,7 +82,7 @@ export const servicePages: SeoPage[] = [
     title: "Branding for Business Websites",
     metaTitle: "Branding for Business Websites",
     metaDescription:
-      "Brand identity, messaging and visual systems for businesses that need their website to look more credible, consistent and commercially focused.",
+      "Brand identity, messaging and visual systems for UK businesses that need their website to look more credible, consistent and commercially focused.",
     h1: "Branding for Business Websites",
     intro:
       "Branding support for businesses that need a clearer identity before investing in a sharper, more persuasive website.",
@@ -99,24 +99,24 @@ export const servicePages: SeoPage[] = [
     caseStudies: ["lr-talent", "teachers-surgery", "rfw"],
     body: [
       "A website exposes weak branding quickly. If the message, visual hierarchy, tone and proof do not line up, users feel the gap even if they cannot name it. Strong web-ready branding gives every page a clearer job.",
-      "Devora focuses on identity decisions that survive real use: readable typography, flexible colours, strong CTA styles, recognisable layouts and language that matches the buyer’s expectations. The result is a brand system that works across service pages, case studies, blogs and sales conversations.",
+      "We focus on identity decisions that survive real use: readable typography, flexible colours, strong CTA styles, recognisable layouts and language that matches the buyer’s expectations. The result is a brand system that works across service pages, case studies, blogs and sales conversations.",
     ],
   },
   {
     slug: "local-seo",
-    title: "Local SEO Sheffield",
-    metaTitle: "Local SEO Sheffield | Search-Ready Business Websites",
+    title: "Local SEO",
+    metaTitle: "Local SEO | Search Optimisation for UK Business Websites",
     metaDescription:
-      "Local SEO in Sheffield for businesses that need stronger service pages, area pages, metadata, schema, internal links and conversion-focused search visibility.",
-    h1: "Local SEO Sheffield",
+      "Local SEO for UK businesses. We strengthen service pages, area content, metadata, schema and internal links to improve visibility in relevant local searches and generate better enquiries.",
+    h1: "Local SEO",
     intro:
-      "Local SEO for Sheffield businesses that need to be found by better-fit customers, not just appear online with a thin brochure site.",
-    audience: ["Local service businesses", "Trades and maintenance companies", "Recruiters and consultants", "Businesses expanding across South Yorkshire", "Companies with weak local landing pages"],
-    included: ["Local keyword and intent mapping", "Service and area page structure", "Metadata, canonicals and schema", "Internal linking improvements", "Technical checks for crawlability and indexability"],
-    why: ["We connect local SEO to the website architecture, not a bolt-on checklist.", "Pages are written for buyers first and search engines second.", "Area content is built to be useful rather than doorway-style.", "Calls to action and proof are included so rankings can become enquiries."],
-    process: ["Audit current visibility and page structure", "Map Sheffield, South Yorkshire and UK-wide opportunities", "Improve commercial pages and internal links", "Add schema, sitemap coverage and metadata", "Review search performance and iterate"],
+      "Local search optimisation for businesses that want to be found by the right customers in the areas they serve, rather than relying on a thin brochure site.",
+    audience: ["Local and regional service businesses", "Trades and maintenance companies", "Recruiters and consultants with defined catchment areas", "Businesses with multiple service locations", "Companies with underperforming location pages"],
+    included: ["Local search and intent analysis", "Service and area page planning", "Metadata, schema and technical foundations", "Internal linking to support visibility", "Crawlability and indexation improvements"],
+    why: ["Local SEO is integrated with site architecture rather than treated as a separate checklist.", "Content is written for buyers first, with search visibility as a natural outcome.", "Area pages are built to be genuinely useful, avoiding thin or duplicated content.", "Conversion elements are included so visibility can translate into enquiries."],
+    process: ["Review current visibility, structure and content", "Identify priority locations and service opportunities", "Strengthen commercial pages and linking", "Implement schema, metadata and supporting technical elements", "Monitor performance and refine"],
     faqs: [
-      { question: "Do you create area pages?", answer: "Yes, but they need to be genuinely useful. We include services, local context, nearby areas, FAQs and relevant internal links rather than swapping city names into duplicated copy." },
+      { question: "Do you create location-specific pages?", answer: "Yes, when they add value. Useful area pages include relevant services, local context, nearby coverage, FAQs and purposeful internal links rather than simple name swaps." },
       { question: "Can local SEO work without a Google Business Profile?", answer: "Organic pages can still improve, but a complete Google Business Profile is important for local pack visibility and trust." },
       { question: "How soon does local SEO work?", answer: "Technical and content fixes can be implemented quickly, but ranking movement depends on competition, authority, content quality and external signals." },
     ],
@@ -124,18 +124,18 @@ export const servicePages: SeoPage[] = [
     relatedIndustries: ["trades-web-design", "property-maintenance-websites", "professional-services-websites"],
     caseStudies: ["envirotech-plumbing", "sandalwood-memorials", "luma-education"],
     body: [
-      "Local SEO is often won or lost in the structure of the website. If a business has one generic services page, weak internal links and no clear location signals, Google has little to work with and visitors have little reason to enquire.",
-      "For Sheffield businesses, we focus on a clean hierarchy: homepage, priority services, Sheffield and South Yorkshire area content, relevant industries, case studies and articles that answer real buying questions. Metadata and schema support that structure, but the content still has to be useful.",
-      "We avoid spammy over-optimisation. The aim is to make your expertise, service area and value obvious, while creating enough crawlable depth for Google to understand the business properly.",
+      "Local search performance often depends on the underlying structure of the website. A single generic services page, weak internal links and unclear location signals give search engines little to work with and visitors little reason to contact you.",
+      "We help businesses establish a clear hierarchy: homepage, priority services, dedicated area content where relevant, industry pages, case studies and articles that address genuine buyer questions. Technical elements support the structure, but the content must remain useful and specific.",
+      "We avoid aggressive over-optimisation. The goal is to make your expertise, service coverage and value proposition clear, while providing sufficient depth for search engines to understand the business accurately.",
     ],
   },
   {
     slug: "website-redesign",
-    title: "Website Redesign for Businesses",
-    metaTitle: "Website Redesign for Businesses",
+    title: "Website Redesign",
+    metaTitle: "Website Redesign for UK Businesses",
     metaDescription:
-      "Website redesign for UK businesses with slow, dated or underperforming websites. Improve structure, speed, SEO, trust and enquiry quality.",
-    h1: "Website Redesign for Businesses",
+      "Website redesign for UK businesses with slow, dated or underperforming websites. We improve structure, speed, SEO, trust and enquiry quality through considered rebuilds.",
+    h1: "Website Redesign",
     intro:
       "A commercially focused redesign for businesses whose current website looks dated, loads slowly, ranks poorly or fails to turn visitors into enquiries.",
     audience: ["Established companies with old websites", "Businesses with traffic but weak enquiries", "Teams rebranding or changing offer", "Companies moving from WordPress themes to custom builds"],
@@ -150,17 +150,17 @@ export const servicePages: SeoPage[] = [
     relatedIndustries: ["professional-services-websites", "education-websites", "property-maintenance-websites"],
     caseStudies: ["sandalwood-memorials", "rectify", "hv-direct"],
     body: [
-      "A redesign should not be a cosmetic reset. It should improve the way buyers understand your offer, the way Google crawls your pages and the way your team uses the website after launch.",
-      "Devora starts redesign projects by auditing the existing site: what ranks, what converts, what is thin, what is duplicated and what should be redirected. From there we plan a cleaner structure, stronger content and a visual system that supports the new positioning.",
+      "A redesign should not be a cosmetic reset. It should improve the way buyers understand your offer, the way search engines crawl your pages and the way your team uses the website after launch.",
+      "We start by auditing the existing site: what ranks, what converts, what is thin, what is duplicated and what should be redirected. From there we plan a cleaner structure, stronger content and a visual system that supports the new positioning.",
     ],
   },
   {
     slug: "nextjs-development",
-    title: "Next.js Website Development UK",
-    metaTitle: "Next.js Website Development UK",
+    title: "Next.js Development",
+    metaTitle: "Next.js Development | Modern Websites for UK Businesses",
     metaDescription:
-      "Next.js website development for UK businesses that need fast, scalable, SEO-ready websites with clean code and strong technical foundations.",
-    h1: "Next.js Website Development UK",
+      "Next.js development for UK businesses that need fast, scalable, SEO-ready websites with clean code, strong technical foundations and long-term maintainability.",
+    h1: "Next.js Development",
     intro:
       "Next.js development for businesses that want the speed, structure and flexibility of a modern web stack without sacrificing SEO or maintainability.",
     audience: ["Businesses rebuilding slow websites", "Companies needing custom routes and content", "Teams that care about Core Web Vitals", "E-commerce and headless CMS projects"],
@@ -176,16 +176,16 @@ export const servicePages: SeoPage[] = [
     caseStudies: ["sandalwood-memorials", "teachers-surgery", "sky-limit-travels"],
     body: [
       "Next.js can be excellent for SEO when pages are rendered with proper metadata, internal links, structured data and fast-loading assets. It can also be poor if every important signal is pushed into client-only code. Implementation matters.",
-      "Devora uses Next.js for websites that need clean routing, reusable components, flexible content structures and strong performance. That makes it a good fit for service businesses, recruiters, education providers and businesses with complex case studies or area-led SEO strategies.",
+      "We use Next.js for websites that need clean routing, reusable components, flexible content structures and strong performance. That makes it a good fit for service businesses, recruiters, education providers and businesses with complex case studies or area-led SEO strategies.",
     ],
   },
   {
     slug: "ecommerce-websites",
-    title: "Ecommerce Website Development UK",
+    title: "Ecommerce Websites",
     metaTitle: "Ecommerce Website Development UK",
     metaDescription:
       "Ecommerce website development for UK businesses needing fast product journeys, SEO-friendly category pages and conversion-focused storefronts.",
-    h1: "Ecommerce Website Development UK",
+    h1: "Ecommerce Websites",
     intro:
       "Ecommerce websites for businesses that need product pages, category structure, speed and trust signals to work together.",
     audience: ["Product-led businesses", "Companies moving from slow stores", "Headless commerce projects", "Teams needing custom product journeys"],
@@ -201,16 +201,16 @@ export const servicePages: SeoPage[] = [
     caseStudies: ["sandalwood-memorials", "sky-limit-travels"],
     body: [
       "Ecommerce SEO is not only about product keywords. The site needs clean categories, useful product information, fast images, strong internal links and reassurance at the point of decision.",
-      "Devora builds ecommerce experiences with a focus on commercial clarity: what the product is, who it is for, how to choose, what happens next and why the buyer should trust the business.",
+      "We build ecommerce experiences with a focus on commercial clarity: what the product is, who it is for, how to choose, what happens next and why the buyer should trust the business.",
     ],
   },
   {
     slug: "small-business-websites",
-    title: "Small Business Web Design UK",
+    title: "Small Business Websites",
     metaTitle: "Small Business Web Design UK",
     metaDescription:
       "Small business web design for UK companies that need a professional, fast and search-ready website without looking generic or underbuilt.",
-    h1: "Small Business Web Design UK",
+    h1: "Small Business Websites",
     intro:
       "Professional websites for small businesses that need to look credible, explain their offer clearly and create a simple route to enquiry.",
     audience: ["Local service businesses", "Start-ups with a serious offer", "Owner-led firms", "Businesses replacing DIY sites"],
@@ -226,7 +226,7 @@ export const servicePages: SeoPage[] = [
     caseStudies: ["lr-talent", "envirotech-plumbing", "rfw"],
     body: [
       "A small business website still needs strategy. Buyers want to know what you do, where you work, whether you are credible and how to start a conversation. Missing those basics costs enquiries.",
-      "Devora keeps small business websites focused: a strong homepage, clear service information, trust signals, simple contact routes and enough SEO structure to support local visibility from the beginning.",
+      "We keep small business websites focused: a strong homepage, clear service information, trust signals, simple contact routes and enough SEO structure to support local visibility from the beginning.",
     ],
   },
 ]

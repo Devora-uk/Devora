@@ -94,15 +94,21 @@ export function Header() {
   ]
 
   const onHero = isHomePage && !scrolled
-  const textClass = onHero ? "text-[#0F1729]" : "text-black"
+  const onDarkPageTop =
+    !scrolled &&
+    (pathname.startsWith("/services") ||
+      pathname.startsWith("/industries") ||
+      pathname.startsWith("/areas-we-cover"))
+  const useLightHeaderText = onDarkPageTop
+  const textClass = useLightHeaderText ? "text-white" : "text-[var(--navy)]"
   const activeTextClass = textClass
-  const mutedClass = onHero
-    ? "text-[#0F1729]/78 hover:text-[#0F1729]"
-    : "text-black/78 hover:text-black"
+  const mutedClass = useLightHeaderText
+    ? "text-white/75 hover:text-white"
+    : "text-[var(--navy)]/70 hover:text-[var(--navy)]"
   const navLinkClass = `nav-link transition-colors ${mutedClass}`
-  const headerBg = onHero
-    ? "border-transparent bg-[#F0EBE3]/40 backdrop-blur-sm"
-    : "border-black/8 bg-white/95 shadow-[0_1px_12px_rgba(0,0,0,0.06)] backdrop-blur-md"
+  const headerBg = useLightHeaderText
+    ? "border-transparent bg-transparent"
+    : "border-[var(--border)] bg-white/95 shadow-sm backdrop-blur-xl"
 
   return (
     <>
@@ -166,8 +172,8 @@ export function Header() {
                       {link.label}
                       <ChevronDown className="h-4 w-4 opacity-70" aria-hidden="true" />
                     </Link>
-                    <div className="invisible absolute left-0 top-full z-50 min-w-[16rem] pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                      <ul className="rounded-lg border border-black/8 bg-white py-2 shadow-xl">
+                    <div className="invisible absolute left-0 top-full z-50 min-w-[15rem] pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                      <ul className="surface rounded-xl py-1.5 shadow-lg">
                         {link.children.map((child) => {
                           const isChildActive = isRouteActive(child.href)
 
@@ -175,10 +181,10 @@ export function Header() {
                             <li key={child.href}>
                               <Link
                                 href={child.href}
-                                className={`block min-h-11 px-4 py-3 text-base transition-colors hover:bg-black/4 hover:text-black ${
+                                className={`block min-h-10 px-4 py-2.5 text-[0.95rem] transition-colors hover:bg-[var(--secondary)] rounded-lg mx-1 ${
                                   isChildActive
-                                    ? "bg-black/4 font-semibold text-black"
-                                    : "text-black/80"
+                                    ? "bg-[var(--secondary)] font-semibold text-[var(--navy)]"
+                                    : "text-[var(--navy)]/80"
                                 }`}
                                 aria-current={isChildActive ? "page" : undefined}
                               >
@@ -229,9 +235,9 @@ export function Header() {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className={`flex h-11 w-11 items-center justify-center rounded-full border transition-colors md:hidden ${
                   onHero
-                    ? "border-[#0F1729]/12 bg-white/50 text-[#0F1729]"
-                    : "border-black/10 bg-black/4 text-black"
-                } ${isMenuOpen ? "bg-[#0F1729] text-white border-[#0F1729]" : ""}`}
+                    ? "border-[#0F1729]/15 bg-white/70 text-[var(--navy)]"
+                    : "border-[var(--border)] bg-[var(--secondary)] text-[var(--navy)]"
+                } ${isMenuOpen ? "bg-[var(--navy)] text-white border-[var(--navy)]" : ""}`}
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMenuOpen}
               >
@@ -257,13 +263,11 @@ export function Header() {
               onClick={() => setIsMenuOpen(false)}
             />
             <div
-              className={`relative z-10 flex h-full max-h-full flex-col overflow-y-auto mobile-safe-x mobile-safe-bottom border-t px-5 py-6 ${
-                onHero
-                  ? "border-[#0F1729]/10 bg-[#F7F4EF]/98 text-[#0F1729] backdrop-blur-xl"
-                  : "border-black/8 bg-white/98 text-black backdrop-blur-xl"
+              className={`relative z-10 flex h-full max-h-full flex-col overflow-y-auto mobile-safe-x mobile-safe-bottom border-t px-5 py-6 bg-white/98 text-[var(--navy)] backdrop-blur-xl ${
+                onHero ? "border-[#0F1729]/10" : "border-[var(--border)]"
               }`}
             >
-              <p className="mobile-section-label mb-4 text-[#0F1729]/50">Menu</p>
+              <p className="mobile-section-label mb-4 text-[var(--navy)]/50">Menu</p>
               <ul className="space-y-1">
                 {navLinks.map((link) => {
                   const isActive = isNavItemActive(link.href)
@@ -274,7 +278,7 @@ export function Header() {
                         type="button"
                         onClick={() => setServicesOpen(!servicesOpen)}
                         className={`flex min-h-12 w-full items-center justify-between rounded-xl px-3 py-3 text-lg font-medium lowercase transition-colors ${
-                          isActive ? "nav-link-active-mobile bg-[#0F1729]/6 font-semibold" : "hover:bg-black/4"
+                          isActive ? "nav-link-active-mobile bg-[var(--secondary)] font-semibold" : "hover:bg-[var(--secondary)]"
                         }`}
                         aria-current={isActive ? "page" : undefined}
                       >
@@ -315,7 +319,7 @@ export function Header() {
                         href={link.href}
                         onClick={() => setIsMenuOpen(false)}
                         className={`block min-h-12 rounded-xl px-3 py-3 text-lg font-medium lowercase transition-colors ${
-                          isActive ? "nav-link-active-mobile bg-[#0F1729]/6 font-semibold" : "hover:bg-black/4"
+                          isActive ? "nav-link-active-mobile bg-[var(--secondary)] font-semibold" : "hover:bg-[var(--secondary)]"
                         }`}
                         aria-current={isActive ? "page" : undefined}
                       >
@@ -331,7 +335,7 @@ export function Header() {
                       setSiteSearchOpen(true)
                       setIsMenuOpen(false)
                     }}
-                    className="block min-h-12 rounded-xl px-3 py-3 text-lg font-medium lowercase transition-colors hover:bg-black/4"
+                    className="block min-h-12 rounded-xl px-3 py-3 text-lg font-medium lowercase transition-colors hover:bg-[var(--secondary)]"
                   >
                     search
                   </button>
@@ -343,7 +347,7 @@ export function Header() {
                   <button
                     type="button"
                     onClick={() => setIsMenuOpen(false)}
-                    className="btn-touch w-full gap-2 rounded-xl bg-[#CCFF00] text-[#0F1729] transition-colors hover:bg-[#b8e600]"
+                    className="btn-touch w-full gap-2 rounded-xl bg-[var(--lime)] text-[var(--navy)] font-medium transition-colors active:brightness-95"
                   >
                     <ScanSearch className="h-4 w-4" aria-hidden="true" />
                     free website audit

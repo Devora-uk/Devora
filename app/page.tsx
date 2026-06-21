@@ -103,7 +103,7 @@ export default function Home() {
         ])}
       />
 
-      <main className="min-h-screen bg-[#0F1729]">
+      <main className="min-h-screen">
         <Header />
         <Hero />
         <WhoWeAre />

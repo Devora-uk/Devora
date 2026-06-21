@@ -4,7 +4,6 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { BrandBadge } from "@/components/brand-badge"
 import { PageHero } from "@/components/page-hero"
 import { PageCta } from "@/components/page-cta"
 import { areaPages } from "@/lib/area-pages"
@@ -128,28 +127,32 @@ export default function AreasWeCoverPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#0F1729]">
+    <div className="flex min-h-screen flex-col bg-black">
       <Header />
 
       <main className="flex-1">
         <PageHero
-          badge="UK coverage"
-          title={
-            <>
-              Areas we <span className="heading-accent">cover</span>.
-            </>
-          }
+          category="UK coverage"
+          title="Areas we cover."
+          tagline="Web design, development and local SEO for businesses across the UK."
           description="We work remotely with businesses across the UK. Pick your city or region. Each page explains how we approach web design, development and local SEO for that area."
           actions={
             <>
               <Link href="/#contact">
-                <Button size="lg" className="rounded-full bg-[#0F1729] px-7 font-medium text-white hover:bg-[#162038] transition-colors">
+                <Button
+                  size="lg"
+                  className="rounded-full bg-white px-7 font-medium text-black hover:bg-white/90"
+                >
                   Start a project
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Button>
               </Link>
               <Link href="/areas-we-cover/sheffield">
-                <Button size="lg" variant="outline" className="rounded-full border-[#0F1729]/20 bg-transparent font-medium text-[#0F1729] hover:border-[#0F1729]/40 transition-all">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full border-white/25 bg-transparent font-medium text-white hover:border-white/45 hover:bg-white/5"
+                >
                   Sheffield
                   <MapPin className="h-4 w-4" aria-hidden="true" />
                 </Button>
@@ -158,35 +161,32 @@ export default function AreasWeCoverPage() {
           }
         />
 
-        <section className="section-cream section-shell-cream page-section">
+        <section className="bg-[var(--cream)] page-section text-[var(--navy)]">
           <div className="page-container">
-            <BrandBadge variant="lime" className="mb-6">
-              UK regions
-            </BrandBadge>
-            <h2 className="section-heading md:section-heading-tablet text-[#0F1729]">
-              Broader <span className="heading-accent">coverage</span>
+            <h2 className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.12] tracking-tight">
+              Broader coverage
             </h2>
-            <p className="mt-4 max-w-2xl text-sm leading-6 text-[#0F1729]/55">
-              Regional and national service-area pages for broader searches.
-            </p>
-            <p className="mt-6 text-sm text-[#0F1729]/55">
-              <span className="font-medium text-[#0F1729]">{cityCount + regionalAreaPages.length}</span> cities and regions listed below.
+            <p className="mt-4 max-w-2xl text-base font-medium leading-7 text-[var(--navy)]/80">
+              Regional and national service-area pages for broader searches.{" "}
+              <span className="text-[var(--navy)]">{cityCount + regionalAreaPages.length}</span> cities
+              and regions listed below.
             </p>
 
-            <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {regionalAreaPages.map((location) => (
-                <Link
-                  key={location.slug}
-                  href={`/areas-we-cover/${location.slug}`}
-                  className="group rounded-lg border border-[#0F1729]/8 bg-white/60 px-4 py-3 text-sm transition-colors hover:border-[#0F1729]/15 hover:bg-white"
-                >
-                  <span className="font-medium text-[#0F1729]">{location.name}</span>
-                  <span className="mt-0.5 block text-xs text-[#0F1729]/45">
-                    {location.region}
-                  </span>
-                </Link>
+                <li key={location.slug}>
+                  <Link
+                    href={`/areas-we-cover/${location.slug}`}
+                    className="group font-medium transition-colors hover:underline"
+                  >
+                    {location.name}
+                    <span className="mt-0.5 block text-sm text-[var(--navy)]/55">
+                      {location.region}
+                    </span>
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
@@ -197,45 +197,37 @@ export default function AreasWeCoverPage() {
           return (
             <section
               key={country}
-              className={isDark ? "section-dark section-shell-dark page-section" : "section-cream section-shell-cream page-section"}
+              className={isDark ? "bg-black page-section text-white" : "bg-[var(--cream)] page-section text-[var(--navy)]"}
             >
               <div className="page-container">
-                <h2 className={`section-heading ${isDark ? "text-white" : "text-[#0F1729]"}`}>
+                <h2 className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.12] tracking-tight">
                   {countryHeading[country]}
                 </h2>
 
-                <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                <ul className="mt-8 columns-2 gap-x-8 sm:columns-3 md:columns-4 lg:columns-5 xl:columns-6">
                   {locations.map((location) => (
-                    <Link
-                      key={location.slug}
-                      href={hrefForLocation(location.slug)}
-                      className={`group rounded-lg border px-4 py-3 text-sm transition-colors ${
-                        isDark
-                          ? "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/8"
-                          : "border-[#0F1729]/8 bg-white/60 hover:border-[#0F1729]/15 hover:bg-white"
-                      }`}
-                    >
-                      <span className={`font-medium ${isDark ? "text-white" : "text-[#0F1729]"}`}>
+                    <li key={location.slug} className="mb-3 break-inside-avoid">
+                      <Link
+                        href={hrefForLocation(location.slug)}
+                        className="group font-medium transition-colors hover:underline"
+                      >
                         {location.name}
-                      </span>
-                      <span className={`mt-0.5 block text-xs ${isDark ? "text-white/45" : "text-[#0F1729]/45"}`}>
-                        {location.region}
-                      </span>
-                    </Link>
+                        <span
+                          className={`mt-0.5 block text-sm ${isDark ? "text-white/55" : "text-[var(--navy)]/55"}`}
+                        >
+                          {location.region}
+                        </span>
+                      </Link>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </section>
           )
         })}
 
         <PageCta
-          title={
-            <>
-              Can&apos;t find your{" "}
-              <span className="heading-accent after:bg-[#CCFF00]">area</span>?
-            </>
-          }
+          title="Can't find your area?"
           description="We work remotely across the UK. Get in touch and we will confirm we can help."
           linkLabel="contact us"
         />

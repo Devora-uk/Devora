@@ -162,11 +162,27 @@ const allProjects = [
     image: "/case-studies/sky-limit-travels.png",
     tags: ["Booking Platform", "Web App", "Development"],
   },
+  {
+    name: "Thai Grace Massage & Wellbeing",
+    slug: "thai-grace",
+    description:
+      "A serene, video-led website for an authentic Thai massage and wellbeing sanctuary in Amersham. We created an immersive experience with a signature looping hero video, clear treatment and package journeys, and gentle booking pathways that feel as calm as the studio itself.",
+    image: "/case-studies/thai-grace-hero-poster.jpg",
+    tags: ["Wellness", "Video Hero", "Web Design"],
+  },
+  {
+    name: "Rolletic Massage London",
+    slug: "rolletic-massage-london",
+    description:
+      "A confident, results-focused platform for a specialist massage and body-shaping studio in North Finchley. Cinematic video hero, scannable treatment filters, transparent pricing, and strong WhatsApp pathways help clients find the right treatment and book with trust.",
+    image: "/case-studies/rolletic-hero-poster.jpg",
+    tags: ["Wellness", "Video Hero", "Conversion"],
+  },
 ]
 
 export default function AllCaseStudiesPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#0F1729]">
+    <div className="min-h-screen flex flex-col bg-[var(--navy)]">
       <Header />
       <main className="flex-1">
         <PageHero
@@ -197,15 +213,15 @@ export default function AllCaseStudiesPage() {
                   aria-label={`View ${project.name} case study`}
                   className="group"
                 >
-                  <div className="flex h-full flex-col overflow-hidden rounded-xl border border-[#0F1729]/8 bg-white/60 transition-all hover:border-[#0F1729]/15 hover:bg-white">
+                  <div className="flex h-full flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-white/70 transition-all hover:border-[var(--lime)]/30 hover:bg-white">
                     <div className={`relative aspect-[4/3] overflow-hidden ${project.slug === "sarah-bartlet-optimal-health" ? "bg-[#F4F6F1]" : "bg-[#F4F4F2]"}`}>
                       <Image
                         src={project.image || "/placeholder.svg"}
                         alt={"imageAlt" in project && project.imageAlt ? project.imageAlt : `${project.name} case study`}
                         fill
-                        className={`${project.slug === "sky-limit-travels" || project.slug === "teachers-surgery" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" || project.slug === "envirotech-plumbing" || project.slug === "nl-education" ? "object-cover object-top" : project.slug === "sarah-bartlet-optimal-health" ? "object-contain object-center p-4 sm:p-6" : project.slug === "luma-education" ? "object-cover object-center" : "object-contain"} transition-transform duration-500 group-hover:scale-[1.02]`}
+                        className={`${project.slug === "sky-limit-travels" || project.slug === "teachers-surgery" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" || project.slug === "envirotech-plumbing" || project.slug === "nl-education" || project.slug === "thai-grace" || project.slug === "rolletic-massage-london" ? "object-cover object-center" : project.slug === "sarah-bartlet-optimal-health" ? "object-contain object-center p-4 sm:p-6" : project.slug === "luma-education" ? "object-cover object-center" : "object-contain"} transition-transform duration-500 group-hover:scale-[1.02]`}
                         quality={100}
-                        unoptimized={project.slug === "sarah-bartlet-optimal-health" || project.slug === "luma-education" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" || project.slug === "teachers-surgery" || project.slug === "envirotech-plumbing" || project.slug === "nl-education"}
+                        unoptimized={project.slug === "sarah-bartlet-optimal-health" || project.slug === "luma-education" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" || project.slug === "teachers-surgery" || project.slug === "envirotech-plumbing" || project.slug === "nl-education" || project.slug === "thai-grace" || project.slug === "rolletic-massage-london"}
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />

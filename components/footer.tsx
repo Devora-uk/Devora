@@ -10,14 +10,14 @@ export function Footer() {
 
   return (
     <footer
-      className="section-dark border-t border-white/10 mobile-safe-x px-5 py-8 text-white max-md:pb-[max(2rem,env(safe-area-inset-bottom))] md:px-8 md:py-10 lg:px-10"
+      className="section-dark border-t border-white/10 mobile-safe-x px-5 py-9 text-white max-md:pb-[max(2rem,env(safe-area-inset-bottom))] md:px-8 md:py-10 lg:px-10"
       role="contentinfo"
     >
       <div className="page-container">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between md:gap-6 md:text-left">
           <div className="text-center md:text-left">
-            <p className="text-xl font-bold tracking-[-0.03em] md:text-lg">devora.</p>
-            <p className="mt-2 text-sm leading-relaxed text-muted-light-subtle md:text-base">
+            <p className="text-xl font-semibold tracking-[-0.025em] md:text-lg">devora.</p>
+            <p className="mt-2 text-sm leading-relaxed text-white/55 md:text-[0.95rem]">
               © {new Date().getFullYear()} Devora. All rights reserved.{" "}
               <Link href="/privacy" className="underline-offset-4 transition-colors hover:text-white hover:underline">
                 Privacy
@@ -26,7 +26,7 @@ export function Footer() {
           </div>
 
           <nav aria-label="Social media navigation">
-            <ul className="grid grid-cols-2 gap-2 md:flex md:flex-wrap md:justify-end md:gap-4">
+            <ul className="grid grid-cols-2 gap-2 md:flex md:flex-wrap md:justify-end md:gap-5">
               {socials.map((social) => (
                 <li key={social.label}>
                   <Link
@@ -34,9 +34,9 @@ export function Footer() {
                     target="_blank"
                     rel="me noopener noreferrer"
                     aria-label={`Follow Devora on ${social.label}`}
-                    className="inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 text-sm lowercase text-muted-light transition-colors hover:border-[#CCFF00]/30 hover:bg-white/10 hover:text-[#CCFF00] max-md:w-full md:w-auto md:rounded-none md:border-0 md:bg-transparent md:px-0 md:text-base"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-lg px-4 text-sm text-white/70 transition-colors hover:text-[var(--lime)] md:w-auto md:rounded-none md:px-0 md:text-[0.95rem] hover:underline underline-offset-4"
                   >
-                    {social.label.toLowerCase()}
+                    {social.label}
                   </Link>
                 </li>
               ))}

@@ -1082,6 +1082,152 @@ export const caseStudies: Record<string, CaseStudy> = {
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Responsive Design", "Performance Optimisation", "Accessible UI"],
     variant: "tech",
   },
+  "thai-grace": {
+    title: "Thai Grace Massage & Wellbeing",
+    subtitle: "Immersive video sanctuary for authentic Thai massage in Amersham",
+    client: "Thai Grace",
+    website: "https://thai-grace.vercel.app/",
+    category: "Wellness & Hospitality",
+    duration: "3 weeks",
+    year: "2025",
+    heroImage: "/case-studies/thai-grace-hero-poster.jpg",
+    heroImageAlt: "Thai Grace Massage & Wellbeing hero — full designed hero with looping video background, headline, and primary booking actions",
+    heroVideo: "/case-studies/videos/thai-grace-hero.mp4",
+    heroVideoPoster: "/case-studies/thai-grace-hero-poster.jpg",
+    challenge:
+      "Thai Grace delivers traditional Thai massage and therapeutic treatments from a calm, considered space in Amersham. Their previous website felt generic and didn't convey the warmth, ritual, or premium experience clients receive in the studio. Visitors struggled to understand the range of treatments, compare packages, and take the next step to book. In a competitive local wellness scene, they needed a digital presence that felt like a sanctuary from the first moment and made choosing and booking feel effortless and inviting.",
+    challenges: [
+      "Previous site didn't capture the serene, authentic atmosphere of the studio",
+      "Treatment options and packages were hard to compare and understand",
+      "No clear, low-friction path from inspiration to booking",
+      "Mobile experience needed to feel as calm and considered as the space itself",
+      "Strong local competition required a distinctive, memorable first impression",
+    ],
+    solution:
+      "We designed and built a tranquil, video-led Next.js experience that puts the feeling of Thai Grace front and centre. A full-bleed, looping hero video sets an immediate tone of calm and presence. The treatment menu is presented with clarity and generosity — durations, benefits, and starting prices are easy to scan, while deeper details unfold gently. Packages are positioned as immersive journeys rather than upsells. WhatsApp integration and prominent booking prompts appear throughout without ever feeling pushy. The design uses warm, earthy tones, generous spacing, and refined typography to mirror the studio's philosophy of ancient wisdom in a modern sanctuary. Everything was built mobile-first so stressed or curious visitors can explore and book comfortably on any device.",
+    solutionPhases: [
+      {
+        title: "Discovery & Atmosphere",
+        points: [
+          "Explored the rituals, treatments, and client journey in the physical space",
+          "Defined a visual language that feels warm, grounded, and premium",
+          "Prioritised a hero that immediately transports visitors into the experience",
+        ],
+      },
+      {
+        title: "Design & Storytelling",
+        points: [
+          "Created a calm, scannable treatment and package structure",
+          "Designed clear pathways for first-time visitors and returning clients",
+          "Crafted gentle, confident copy that honours Thai traditions",
+        ],
+      },
+      {
+        title: "Video Hero & Build",
+        points: [
+          "Integrated the signature looping video background as the emotional anchor",
+          "Built fast, accessible pages with strong local SEO foundations",
+          "Added WhatsApp and booking CTAs that feel natural, not salesy",
+        ],
+      },
+      {
+        title: "Launch & Refinement",
+        points: [
+          "Optimised for Core Web Vitals and mobile calm",
+          "Tested booking flows across devices",
+          "Delivered a site that feels like an extension of the studio itself",
+        ],
+      },
+    ],
+    results: {
+      "First Impressions": "Video hero creates instant calm and differentiation",
+      "Booking Clarity": "Treatments and packages now easy to compare and choose",
+      "Mobile Experience": "Full journeys work beautifully on phones and tablets",
+      "Enquiry Quality": "Warmer, more qualified conversations via WhatsApp and forms",
+      "Brand Alignment": "Digital presence finally matches the serenity of the physical space",
+    },
+    testimonial: {
+      quote: "The site feels exactly like our studio — calm, beautiful, and easy to be in. People tell us they booked because it felt right from the first scroll. We couldn't be happier.",
+      author: "Thai Grace Team",
+      role: "Thai Grace Massage & Wellbeing, Amersham",
+    },
+    services: ["Bespoke Web Design", "Video Hero Experience", "Conversion-Focused UX", "Wellness Branding", "Mobile-First Development", "WhatsApp Integration"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Optimised Video", "SEO", "Accessible Design"],
+    variant: "warm",
+  },
+  "rolletic-massage-london": {
+    title: "Rolletic Massage London",
+    subtitle: "Results-driven wellness studio site with cinematic video hero in North Finchley",
+    client: "Rolletic Massage London",
+    website: "https://www.rolleticmassagelondon.co.uk/",
+    category: "Wellness & Bodywork",
+    duration: "3 weeks",
+    year: "2025",
+    heroImage: "/case-studies/rolletic-hero-poster.jpg",
+    heroImageAlt: "Rolletic Massage London hero — full designed hero with cinematic video background, branding and treatment pathways",
+    heroVideo: "/case-studies/videos/rolletic-hero.mp4",
+    heroVideoPoster: "/case-studies/rolletic-hero-poster.jpg",
+    challenge:
+      "Rolletic Massage London offers specialist manual massage and body-shaping treatments, including lymphatic drainage, wood therapy, vacuum cupping, and their signature Rolletic mechanical rolling treatment. Their previous online presence didn't showcase the breadth of expertise or the visible results clients achieve. Prospective clients needed to quickly understand the range of treatments, see clear pricing, and feel confident booking with a focused, clinical-yet-warm practitioner in North Finchley.",
+    challenges: [
+      "Hard to communicate the variety of manual and sculpting treatments at a glance",
+      "Results-focused audience wanted proof and clear expectations before enquiring",
+      "Previous site didn't feel premium or distinctive in a crowded London massage market",
+      "Need for strong mobile booking paths and WhatsApp contact",
+      "Location and one-to-one studio experience needed to come across clearly",
+    ],
+    solution:
+      "We created a confident, modern platform anchored by a rich video hero that hints at the focused, transformative work that happens in the studio. Treatments are organised with helpful filters (Manual, Sculpting) and clear cards showing duration options and pricing. The design balances clinical trust with personal warmth — deep navy, soft neutrals, and crisp typography. A dedicated studio story section explains the one-to-one approach opposite Finchley Memorial Hospital. Strong, repeated calls to message on WhatsApp or view treatments reduce friction. The entire experience was built to help people who are serious about results find the right treatment and book without hesitation.",
+    solutionPhases: [
+      {
+        title: "Positioning & Research",
+        points: [
+          "Mapped the full treatment menu and client goals (recovery, toning, post-op, etc.)",
+          "Clarified what makes Rolletic different: measured technique + visible results",
+          "Defined a visual system that feels quietly clinical and warmly personal",
+        ],
+      },
+      {
+        title: "Information Architecture",
+        points: [
+          "Grouped treatments into Manual Massage and Cellulite & Toning",
+          "Made pricing transparent with easy-to-scan duration tiers",
+          "Added search and filters so visitors find what they need fast",
+        ],
+      },
+      {
+        title: "Video-Led Design & Build",
+        points: [
+          "Crafted a cinematic yet restrained hero video experience",
+          "Designed conversion-focused sections: studio story, testimonials, treatments",
+          "Integrated WhatsApp as the primary, low-friction contact method",
+        ],
+      },
+      {
+        title: "Polish & Performance",
+        points: [
+          "Optimised for fast loads on mobile where most bookings begin",
+          "Tested accessibility and contrast for a calm, trustworthy feel",
+          "Delivered a site that elevates the studio's reputation and results focus",
+        ],
+      },
+    ],
+    results: {
+      "Clarity for Clients": "Visitors quickly find the right treatment for their goal",
+      "Trust Signals": "Studio story, reviews, and transparent pricing build confidence",
+      "Contact Ease": "WhatsApp-first approach matches how clients prefer to book",
+      "Differentiation": "Video and refined design set them apart locally",
+      "Professional Presence": "Site now matches the quality of the in-person experience",
+    },
+    testimonial: {
+      quote: "Our new site finally shows the level of care and results we deliver. Clients say they knew it was the right place before they even messaged. It's professional, warm, and brings in the right people.",
+      author: "Dorothy",
+      role: "Rolletic Massage London, North Finchley",
+    },
+    services: ["Bespoke Web Design", "Cinematic Video Hero", "Treatment Filtering & UX", "Conversion Optimisation", "Local SEO", "WhatsApp Integration"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Video Backgrounds", "Accessible UI", "Performance Optimisation"],
+    variant: "tech",
+  },
 }
 
 export const caseStudySlugs = Object.keys(caseStudies)
