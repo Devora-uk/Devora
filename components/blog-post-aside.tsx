@@ -102,7 +102,7 @@ export function BlogPostAside({
           UK studio
         </p>
         <p className="text-sm text-[#0F1729]/55 leading-relaxed mb-4">
-          Remote-first across the UK, with roots in Sheffield and South Yorkshire.
+          Based at Sheffield Technology Park in Sheffield, working with clients across the UK.
         </p>
         <Link
           href="/areas-we-cover/sheffield"

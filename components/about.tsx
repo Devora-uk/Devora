@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import { STUDIO_ADDRESS } from "@/lib/seo-pages"
 
 export function About() {
   return (
@@ -41,7 +42,7 @@ export function About() {
               </Link>
             </p>
             <p className="mt-3 text-base font-medium text-white/80">
-              United Kingdom · Remote-first studio
+              {STUDIO_ADDRESS.name}, {STUDIO_ADDRESS.locality}
             </p>
             <Link
               href="#contact"

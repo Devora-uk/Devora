@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo-pages"
+import { CONTACT_EMAIL, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, STUDIO_ADDRESS } from "@/lib/seo-pages"
 
 type BreadcrumbItem = {
   name: string
@@ -62,8 +62,10 @@ export function localBusinessSchema() {
     priceRange: "££",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Sheffield",
-      addressRegion: "South Yorkshire",
+      streetAddress: `${STUDIO_ADDRESS.name}, ${STUDIO_ADDRESS.street}`,
+      addressLocality: STUDIO_ADDRESS.locality,
+      addressRegion: STUDIO_ADDRESS.region,
+      postalCode: STUDIO_ADDRESS.postcode,
       addressCountry: "GB",
     },
     areaServed: [

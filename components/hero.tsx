@@ -60,7 +60,7 @@ export function Hero() {
         <div className="mt-auto flex items-end justify-between gap-6 pt-10 md:pt-12">
           <p className="hidden max-w-[15rem] text-sm leading-6 text-[var(--navy)]/55 md:block">
             Web design · Development · Branding<br />
-            Remote-first across the UK
+            Sheffield Technology Park, Sheffield
           </p>
 
           <Link

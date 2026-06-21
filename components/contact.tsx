@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { ArrowUpRight, Loader2 } from "lucide-react"
 import { toast } from "sonner"
 import { BrandBadge } from "@/components/brand-badge"
+import { STUDIO_ADDRESS } from "@/lib/seo-pages"
 
 export function Contact() {
   const router = useRouter()
@@ -251,8 +252,11 @@ export function Contact() {
           </p>
           <address className="mt-8 space-y-1 not-italic text-base leading-8 text-muted-navy">
             <span className="block">Devora</span>
-            <span className="block">United Kingdom</span>
-            <span className="block">Remote-first studio</span>
+            <span className="block">{STUDIO_ADDRESS.name}</span>
+            <span className="block">{STUDIO_ADDRESS.street}</span>
+            <span className="block">
+              {STUDIO_ADDRESS.locality}, {STUDIO_ADDRESS.postcode}
+            </span>
           </address>
           <p className="mt-8">
             <a

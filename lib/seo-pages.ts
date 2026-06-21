@@ -3,6 +3,15 @@ export const SITE_NAME = "Devora"
 export const DEFAULT_OG_IMAGE = "/devora-office.png"
 export const CONTACT_EMAIL = "hello@devora.co.uk"
 
+export const STUDIO_ADDRESS = {
+  name: "Sheffield Technology Park",
+  street: "Arundel Street",
+  locality: "Sheffield",
+  region: "South Yorkshire",
+  postcode: "S1 2NS",
+  country: "United Kingdom",
+} as const
+
 export type SeoPage = {
   slug: string
   title: string
