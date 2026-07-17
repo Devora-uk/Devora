@@ -31,7 +31,7 @@ export function OurServices() {
       image: "/mobile-apps.png",
     },
     {
-      title: "Startup Brand Systems",
+      title: "Brand Systems",
       href: "/services/branding",
       image: "/startup-brand-systems.png",
     },

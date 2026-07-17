@@ -42,7 +42,7 @@ export function WhyUs() {
             </h2>
           </div>
           <p className="max-w-2xl text-lg leading-8 text-[#3D3D3D]">
-            A startup-focused web studio should bring more than just code. We bring taste, urgency, market validation, and the technical judgment to make ambitious ideas feel effortless online.
+            A web studio for businesses of all scales should bring more than just code. We bring taste, clarity, technical judgement, and the care to make complex organisations feel clear and confident online.
           </p>
         </div>
 

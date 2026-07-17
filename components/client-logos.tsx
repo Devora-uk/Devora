@@ -15,7 +15,7 @@ export function ClientLogos() {
     <section className="border-y border-black/15 bg-card px-4 py-8 md:px-6" aria-label="Selected Devora clients">
       <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-[17rem_1fr] md:items-center">
         <p className="text-sm font-bold uppercase tracking-[0.18em] text-foreground/68">
-          Trusted by founders, recruiters and specialist teams
+          Trusted by businesses, recruiters and specialist teams
         </p>
 
         <div className="grid grid-cols-2 gap-px overflow-hidden border border-black/20 bg-black/20 sm:grid-cols-3 lg:grid-cols-5">

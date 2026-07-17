@@ -22,8 +22,8 @@ export function WhoWeAre() {
           <div className="space-y-6 md:pt-1">
             <p className="text-base font-medium leading-7 text-white md:text-lg md:leading-8">
               Based in the UK, Devora delivers bespoke web design, development,
-              branding, and conversion refinement for startups ready to stand out
-              and scale.
+              branding, and conversion refinement for businesses of all scales
+              and public sector organisations.
             </p>
 
             <p className="text-base font-medium leading-7 text-white md:text-lg md:leading-8">

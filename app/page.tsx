@@ -22,19 +22,17 @@ import {
 } from "@/lib/schema"
 
 export const metadata: Metadata = {
-  title: resolveTitle("Bespoke Web Design, Development & Branding for Startups | Devora"),
-  description: "Devora builds bespoke, fast, and conversion-focused websites for startups and growing UK brands that need to stand out, explain their offer, and scale intelligently.",
+  title: resolveTitle("Bespoke Websites for Businesses of All Scales | Devora"),
+  description: "Devora builds bespoke, fast and conversion-focused websites for businesses of all scales and public sector organisations across the UK.",
   keywords: [
-    "startup web design UK",
-    "web design for startups",
-    "startup web development",
+    "bespoke web design UK",
+    "business website design",
+    "public sector website design UK",
     "brand development UK",
     "build a website from scratch UK",
-    "bespoke web design UK",
     "next.js developers UK",
-    "custom web development for startups",
-    "affordable web development startups",
-    "bootstrap web design",
+    "custom web development UK",
+    "web design for businesses",
     "scalable digital solutions",
     "SEO website design UK",
     "website design near me",
@@ -43,8 +41,8 @@ export const metadata: Metadata = {
     canonical: "https://www.devora.co.uk",
   },
   openGraph: {
-    title: "Bespoke Web Design, Development & Branding for Startups | Devora",
-    description: "Bespoke, fast and conversion-focused websites for startups and growing UK brands.",
+    title: "Bespoke Websites for Businesses of All Scales | Devora",
+    description: "Bespoke websites for businesses of all scales and public sector organisations across the UK.",
     url: "https://www.devora.co.uk",
     type: "website",
     locale: "en_GB",
@@ -53,14 +51,14 @@ export const metadata: Metadata = {
         url: "/devora-office.png",
         width: 1200,
         height: 630,
-        alt: "Devora startup web design, development and branding studio",
+        alt: "Devora bespoke web design, development and branding studio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bespoke Web Design, Development & Branding for Startups | Devora",
-    description: "Bespoke websites built for startups to win trust, rank better and scale.",
+    title: "Bespoke Websites for Businesses of All Scales | Devora",
+    description: "Bespoke websites for businesses of all scales and public sector organisations.",
     images: ["/devora-office.png"],
     creator: "@devora",
   },
@@ -71,7 +69,7 @@ export default function Home() {
     {
       question: "What services does Devora offer?",
       answer:
-        "Devora provides bespoke web design, custom development, branding, and conversion refinement for startups and businesses across the UK.",
+        "Devora provides bespoke web design, custom development, branding, and conversion refinement for businesses of all scales and public sector organisations across the UK.",
     },
     {
       question: "Do you build websites from the ground up?",
@@ -89,9 +87,9 @@ export default function Home() {
           websiteSchema(),
           webPageSchema({
             path: "/",
-            name: "Bespoke Web Design, Development & Branding for Startups",
+            name: "Bespoke Websites for Businesses of All Scales",
             description:
-              "Devora builds bespoke, fast and conversion-focused websites for startups and UK businesses.",
+              "Devora builds bespoke, fast and conversion-focused websites for businesses of all scales and public sector organisations across the UK.",
           }),
           serviceSchema({
             path: "/services/web-design",

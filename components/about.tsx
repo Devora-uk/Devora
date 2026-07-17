@@ -19,7 +19,7 @@ export function About() {
           </h2>
 
           <p className="mt-6 max-w-xl text-base font-medium leading-7 text-white md:mt-8 md:text-lg md:leading-8">
-            Whether you&apos;re an early-stage startup or a growing business, we work to the
+            Whether you&apos;re a growing business or a public sector organisation, we work to the
             very highest standards and specialise in building websites that earn trust and
             drive enquiries.
           </p>
