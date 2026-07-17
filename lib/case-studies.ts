@@ -1,6 +1,67 @@
 export type CaseStudy = Record<string, any>
 
 export const caseStudies: Record<string, CaseStudy> = {
+  "crystal-clean-pro-solutions": {
+    title: "Crystal Clean Pro Solutions",
+    subtitle: "Premium Property Cleaning Across Central Scotland",
+    client: "Crystal Clean Pro Solutions",
+    category: "Property Services",
+    duration: "4 weeks",
+    year: "2026",
+    website: "https://www.crystalcleanprosolutions.co.uk/",
+    heroImage: "/case-studies/crystal-clean-pro-solutions.png",
+    heroImageAlt: "Crystal Clean Pro Solutions website designed and developed by Devora",
+    heroImageClass: "object-cover object-top",
+    heroImageUnoptimized: true,
+    heroOverlayClass: "bg-gradient-to-t from-[#16130f] via-[#241f18]/55 to-[#17140f]/10",
+    challenge: "Crystal Clean had the service quality and client retention of a premium property partner, but needed a digital presence capable of communicating that value to landlords, HMO operators, serviced accommodation hosts and commercial clients across Central Scotland.",
+    challenges: [
+      "Position a cleaning company as an accountable property maintenance partner",
+      "Organise 15 services without overwhelming high-intent visitors",
+      "Build confidence for landlords, portfolio operators and commercial buyers",
+      "Create clear quote pathways across desktop and mobile",
+      "Show the scale, standards and quality of real completed work",
+    ],
+    solution: "We created a refined, conversion-focused website built around clarity and proof. Premium editorial styling elevates the brand while dedicated service pathways, searchable categories and audience-specific messaging help visitors find the right solution quickly. Client names, real property photography, insurance assurances and performance statistics establish credibility before repeated quote calls to action turn confidence into enquiries.",
+    solutionPhases: [
+      { title: "Positioning & Content", points: ["Defined the premium property-partner proposition", "Mapped landlords, HMO operators, hosts and commercial audiences", "Structured service and location content for search visibility"] },
+      { title: "UX & Visual Design", points: ["Created a warm, high-end visual system", "Designed searchable service discovery and category filters", "Made proof, standards and past work central to the journey"] },
+      { title: "Development", points: ["Built a fast responsive Next.js experience", "Created scalable templates for services and locations", "Added accessible navigation and lead-generation pathways"] },
+      { title: "Launch & Refinement", points: ["Optimised imagery and page performance", "Tested quote journeys across key breakpoints", "Prepared the platform for continued service and location growth"] },
+    ],
+    results: { "Service Discovery": "15 clear service pathways", "Trust": "Insurance, client and retention proof placed prominently", "Lead Generation": "Quote access repeated across every key journey", "Scalability": "Reusable service and location architecture", "Brand Position": "A premium partner, not a transactional cleaner" },
+    services: ["Brand Positioning", "Bespoke Web Design", "Next.js Development", "Content Architecture", "Local SEO", "Conversion Optimisation"],
+    technologies: ["Next.js", "TypeScript", "Responsive Design", "SEO Architecture", "Accessible UI", "Vercel"],
+    variant: "editorial",
+  },
+  "four-leaf-recruitment": {
+    title: "Four Leaf Recruitment",
+    subtitle: "Consultative Recruitment Services Across the UK",
+    client: "Four Leaf Recruitment",
+    category: "Recruitment",
+    duration: "4 weeks",
+    year: "2026",
+    website: "https://www.fourleafrecruitment.com/",
+    heroVideo: "/case-studies/videos/four-leaf-recruitment-hero.mp4",
+    heroVideoPoster: "/case-studies/four-leaf-recruitment-poster.jpg",
+    heroImageAlt: "Four Leaf Recruitment website designed and developed by Devora",
+    heroImageClass: "object-cover object-top",
+    heroImageUnoptimized: true,
+    heroOverlayClass: "bg-gradient-to-t from-[#0a0a0a] via-black/35 to-transparent",
+    challenge: "With more than 20 years of recruitment experience behind the team, Four Leaf needed a modern digital platform that felt personal, made its consultative difference clear and served candidates and hiring organisations equally well.",
+    challenges: ["Create distinct candidate and employer journeys", "Present live roles in a useful, scannable format", "Communicate a relationship-led approach", "Explain temporary, permanent, insourcing and consultancy services", "Make contacting the team feel easy and immediate"],
+    solution: "We built a crisp, confident recruitment website with two unmistakable entry points: finding a job and hiring talent. A clean monochrome system with a fresh green accent reinforces the Four Leaf identity, while live vacancies, clear service explanations and practical supporting content give each audience a reason to return. Strong calls to action keep the experience focused on starting a conversation.",
+    solutionPhases: [
+      { title: "Journey Mapping", points: ["Defined candidate and client priorities", "Created direct paths to jobs, hiring and contact", "Structured services around real recruitment needs"] },
+      { title: "Design System", points: ["Developed a bold monochrome and green visual language", "Created reusable job and content cards", "Balanced personality with professional credibility"] },
+      { title: "Platform Build", points: ["Built a responsive Next.js website", "Delivered live vacancy pages and filtering-ready structures", "Created flexible blog and service content templates"] },
+      { title: "Launch", points: ["Tested candidate and hiring journeys", "Optimised imagery and core web performance", "Prepared SEO metadata and structured content"] },
+    ],
+    results: { "Audience Clarity": "Immediate candidate and employer pathways", "Vacancy Visibility": "Live roles surfaced from the homepage", "Service Clarity": "Four recruitment offers explained simply", "Content": "Dedicated client and candidate guidance", "Conversion": "Contact prompts throughout the journey" },
+    services: ["UX Strategy", "Bespoke Web Design", "Next.js Development", "Vacancy Architecture", "Content Design", "SEO"],
+    technologies: ["Next.js", "TypeScript", "Responsive Design", "Accessible UI", "Dynamic Job Content", "Vercel"],
+    variant: "minimal",
+  },
   "envirotech-plumbing": {
     title: "EnviroTech Emergency Plumbing",
     subtitle: "24/7 Emergency Plumbing Service Platform",
@@ -1086,7 +1147,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     title: "Thai Grace Massage & Wellbeing",
     subtitle: "Immersive video sanctuary for authentic Thai massage in Amersham",
     client: "Thai Grace",
-    website: "https://thai-grace.vercel.app/",
+    website: "https://www.thaigracemassage.co.uk/",
     category: "Wellness & Hospitality",
     duration: "3 weeks",
     year: "2025",
@@ -1246,4 +1307,3 @@ export function caseStudySitemapPriority(slug: string): number {
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return caseStudies[slug]
 }
-

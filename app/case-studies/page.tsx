@@ -41,6 +41,22 @@ export const metadata: Metadata = {
 
 const allProjects = [
   {
+    name: "Crystal Clean Pro Solutions",
+    slug: "crystal-clean-pro-solutions",
+    description:
+      "A premium, conversion-focused website for a growing property maintenance and contract cleaning partner across Central Scotland. Clear service discovery, strong proof points and direct quote pathways position the business for larger landlord, HMO and commercial contracts.",
+    image: "/case-studies/crystal-clean-pro-solutions.png",
+    tags: ["Property Services", "Next.js", "Conversion"],
+  },
+  {
+    name: "Four Leaf Recruitment",
+    slug: "four-leaf-recruitment",
+    description:
+      "A relationship-led recruitment website with clear journeys for candidates and employers, live vacancies and consultative service content — designed to turn more visitors into meaningful conversations.",
+    image: "/case-studies/four-leaf-recruitment-poster.jpg",
+    tags: ["Recruitment", "Next.js", "Web Design"],
+  },
+  {
     name: "AHRK Property Maintenance",
     slug: "ahrk-property-maintenance",
     description:
@@ -221,7 +237,7 @@ export default function AllCaseStudiesPage() {
                         fill
                         className={`${project.slug === "sky-limit-travels" || project.slug === "teachers-surgery" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" || project.slug === "envirotech-plumbing" || project.slug === "nl-education" || project.slug === "thai-grace" || project.slug === "rolletic-massage-london" ? "object-cover object-center" : project.slug === "sarah-bartlet-optimal-health" ? "object-contain object-center p-4 sm:p-6" : project.slug === "luma-education" ? "object-cover object-center" : "object-contain"} transition-transform duration-500 group-hover:scale-[1.02]`}
                         quality={100}
-                        unoptimized={project.slug === "sarah-bartlet-optimal-health" || project.slug === "luma-education" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" || project.slug === "teachers-surgery" || project.slug === "envirotech-plumbing" || project.slug === "nl-education" || project.slug === "thai-grace" || project.slug === "rolletic-massage-london"}
+                        unoptimized={project.slug === "crystal-clean-pro-solutions" || project.slug === "four-leaf-recruitment" || project.slug === "sarah-bartlet-optimal-health" || project.slug === "luma-education" || project.slug === "kickin-kilos" || project.slug === "ahrk-property-maintenance" || project.slug === "sandalwood-memorials" || project.slug === "teachers-surgery" || project.slug === "envirotech-plumbing" || project.slug === "nl-education" || project.slug === "thai-grace" || project.slug === "rolletic-massage-london"}
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />

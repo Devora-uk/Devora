@@ -191,7 +191,10 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
                   <source src={heroVideo} type="video/mp4" />
                 </video>
               ) : null}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F1729] via-[#0F1729]/50 to-[#0F1729]/20" aria-hidden="true" />
+              <div
+                className={`absolute inset-0 ${caseStudy.heroOverlayClass ?? "bg-gradient-to-t from-[#0F1729] via-[#0F1729]/50 to-[#0F1729]/20"}`}
+                aria-hidden="true"
+              />
               {heroVideo && !heroImage && (
                 <div className="absolute top-4 right-4 z-10 rounded-full bg-white/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-white/70 backdrop-blur-sm" aria-hidden="true">
                   Video

@@ -8,16 +8,32 @@ import { BrandBadge } from "@/components/brand-badge"
 
 const projects = [
   {
-    name: "Sandalwood Memorials",
-    slug: "sandalwood-memorials",
-    tags: ["E-commerce", "3D Experience"],
-    image: "/case-studies/sandalwood-memorials-thumb.png",
+    name: "Four Leaf Recruitment",
+    slug: "four-leaf-recruitment",
+    tags: ["Recruitment", "Web Design"],
+    image: "/case-studies/four-leaf-recruitment-poster.jpg",
+    imageAlt: "Four Leaf Recruitment website homepage with candidate and employer pathways",
     span: "lg:col-span-2 lg:row-span-2",
     aspect: "aspect-[4/3] lg:aspect-auto lg:min-h-[28rem]",
     imageClass: "object-cover object-top",
     unoptimized: true,
+    video: "/case-studies/videos/four-leaf-recruitment-hero.mp4",
+    poster: "/case-studies/four-leaf-recruitment-poster.jpg",
+    autoplayVideo: true,
     priority: true,
     sizes: "(max-width: 768px) 85vw, (max-width: 1024px) 50vw, 66vw",
+  },
+  {
+    name: "Sandalwood Memorials",
+    slug: "sandalwood-memorials",
+    tags: ["E-commerce", "3D Experience"],
+    image: "/case-studies/sandalwood-memorials-thumb.png",
+    span: "lg:col-span-1",
+    aspect: "aspect-[4/3]",
+    imageClass: "object-cover object-top",
+    unoptimized: true,
+    priority: false,
+    sizes: "(max-width: 768px) 85vw, 33vw",
   },
   {
     name: "Thai Grace Massage & Wellbeing",
@@ -31,6 +47,7 @@ const projects = [
     unoptimized: true,
     video: "/case-studies/videos/thai-grace-hero.mp4",
     poster: "/case-studies/thai-grace-hero-poster.jpg",
+    autoplayVideo: true,
   },
   {
     name: "Rolletic Massage London",
@@ -44,6 +61,7 @@ const projects = [
     unoptimized: true,
     video: "/case-studies/videos/rolletic-hero.mp4",
     poster: "/case-studies/rolletic-hero-poster.jpg",
+    autoplayVideo: true,
   },
   {
     name: "The Teacher's Surgery",
@@ -65,18 +83,6 @@ const projects = [
     imageClass: "object-cover object-center",
     unoptimized: true,
   },
-  {
-    name: "Sarah Bartlet Optimal Health",
-    slug: "sarah-bartlet-optimal-health",
-    tags: ["Health & Wellbeing", "Web Design"],
-    image: "/case-studies/sarah-bartlet-optimal-health-nutritional-therapy-website.jpg",
-    imageAlt:
-      "Sarah Bartlet Optimal Health nutritional therapy website designed by Devora — Aberdeenshire practice homepage on laptop mockup",
-    span: "lg:col-span-1",
-    aspect: "aspect-[4/3]",
-    imageClass: "object-cover object-center",
-    unoptimized: true,
-  },
 ]
 
 function ProjectCard({
@@ -87,13 +93,14 @@ function ProjectCard({
   className?: string
 }) {
   const hasVideo = "video" in project && project.video && "poster" in project && project.poster
+  const autoplayVideo = "autoplayVideo" in project && project.autoplayVideo
   const [isHovering, setIsHovering] = useState(false)
   const videoRef = useRef<HTMLVideoElement | null>(null)
 
   function handleEnter() {
     setIsHovering(true)
     const v = videoRef.current
-    if (v) {
+    if (v && !autoplayVideo) {
       // Restart from beginning for a clean loop feel on each hover
       v.currentTime = 0
       v.play().catch(() => {})
@@ -102,7 +109,7 @@ function ProjectCard({
   function handleLeave() {
     setIsHovering(false)
     const v = videoRef.current
-    if (v) {
+    if (v && !autoplayVideo) {
       v.pause()
     }
   }
@@ -122,7 +129,7 @@ function ProjectCard({
             src={(project as any).poster}
             alt={"imageAlt" in project && project.imageAlt ? project.imageAlt : `${project.name} project`}
             fill
-            className={`${project.imageClass ?? "object-cover"} transition-opacity duration-300 ${isHovering ? "opacity-0" : "opacity-100"}`}
+            className={`${project.imageClass ?? "object-cover"} transition-opacity duration-300 ${isHovering || autoplayVideo ? "opacity-0" : "opacity-100"}`}
             sizes={"sizes" in project && project.sizes ? project.sizes : "(max-width: 768px) 85vw, 33vw"}
             quality={90}
             unoptimized={"unoptimized" in project ? project.unoptimized : false}
@@ -134,15 +141,16 @@ function ProjectCard({
             muted
             loop
             playsInline
-            preload="none"
+            autoPlay={autoplayVideo}
+            preload={autoplayVideo ? "metadata" : "none"}
             poster={(project as any).poster}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovering ? "opacity-100" : "opacity-0"}`}
-            aria-hidden={!isHovering}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovering || autoplayVideo ? "opacity-100" : "opacity-0"}`}
+            aria-hidden={!isHovering && !autoplayVideo}
           >
             <source src={(project as any).video} type="video/mp4" />
           </video>
           {/* Subtle play affordance when not hovering */}
-          {!isHovering && (
+          {!isHovering && !autoplayVideo && (
             <div className="absolute top-3 right-3 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm">
               <Play className="h-3.5 w-3.5" aria-hidden="true" />
             </div>
