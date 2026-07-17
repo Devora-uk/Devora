@@ -99,7 +99,7 @@ export function Header() {
     (pathname.startsWith("/services") ||
       pathname.startsWith("/industries") ||
       pathname.startsWith("/areas-we-cover"))
-  const useLightHeaderText = onDarkPageTop
+  const useLightHeaderText = onDarkPageTop || onHero
   const textClass = useLightHeaderText ? "text-white" : "text-[var(--navy)]"
   const activeTextClass = textClass
   const mutedClass = useLightHeaderText

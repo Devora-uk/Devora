@@ -740,6 +740,37 @@
     pointer-events: none;
   }
 
+  .hero-grid {
+    background-image:
+      linear-gradient(rgba(15, 23, 41, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 41, 0.045) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, black, transparent 88%);
+  }
+
+  .hero-orb {
+    filter: blur(2px);
+    opacity: 0.48;
+  }
+
+  .hero-orb-lime {
+    background: radial-gradient(circle at 40% 40%, #e7ff82 0%, rgba(204, 255, 0, 0.48) 42%, transparent 72%);
+  }
+
+  .hero-orb-cyan {
+    background: radial-gradient(circle, rgba(0, 200, 232, 0.22), transparent 68%);
+  }
+
+  .hero-showcase-frame > div > div[role="tablist"] {
+    margin-bottom: 0.15rem;
+  }
+
+  @media (max-width: 640px) {
+    .hero-grid {
+      background-size: 32px 32px;
+    }
+  }
+
   .section-heading {
     font-size: clamp(1.75rem, 4vw, 2.75rem);
     font-weight: 600;

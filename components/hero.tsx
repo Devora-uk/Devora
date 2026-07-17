@@ -1,80 +1,69 @@
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { HeroProjectCarousel } from "@/components/hero-project-carousel"
 
 export function Hero() {
   return (
     <section
-      className="hero-marble-bg relative flex flex-col overflow-hidden"
-      aria-label="Hero section"
+      className="relative isolate overflow-hidden bg-[#0b101b] pt-[4.5rem] text-white md:pt-[5.5rem]"
+      aria-labelledby="hero-heading"
     >
-      {/* Large transparent "devora." watermark centered */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center"
-        aria-hidden="true"
-      >
-        <span className="select-none font-bold lowercase text-[var(--navy)]/5 text-[clamp(5.5rem,20vw,14rem)] leading-none tracking-[-0.065em]">
-          devora.
-        </span>
-      </div>
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_28%,rgba(255,255,255,0.055),transparent_32%)]" aria-hidden="true" />
 
-      {/* Main content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-[90rem] flex-col mobile-safe-x px-5 pb-6 pt-20 md:px-8 md:pb-8 md:pt-24 lg:px-10">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--navy)]/55">
-            UK digital studio
-          </p>
+      <div className="mx-auto grid min-h-[calc(100svh-4.5rem)] w-full max-w-[90rem] px-5 mobile-safe-x md:px-8 lg:grid-cols-[minmax(0,0.94fr)_minmax(28rem,0.86fr)] lg:px-10">
+        <div className="flex flex-col border-white/10 py-12 lg:border-r lg:py-16 lg:pr-16 xl:pr-24">
+          <div className="animate-hero-rise flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/50">
+            <span className="h-px w-8 bg-white/35" aria-hidden="true" />
+            Independent digital studio · Sheffield
+          </div>
 
-          <h1 className="mt-3 text-balance text-[clamp(2rem,7vw,3.75rem)] font-bold leading-[1.02] tracking-[-0.035em] text-[var(--navy)] md:mt-5 md:text-[clamp(2.5rem,4.5vw,3.75rem)] lg:text-[clamp(2.75rem,4.2vw,4rem)]">
-            Bespoke websites<br />for every scale.
-          </h1>
-
-          <p className="mt-3 max-w-[42ch] text-[15px] leading-[1.55] text-[var(--navy)]/75 md:mt-5 md:text-base md:leading-[1.6]">
-            Design, build and brand for businesses of all scales and public
-            sector organisations across the UK.
-          </p>
-
-          <div className="mt-5 flex flex-col gap-3.5 sm:flex-row sm:items-center sm:gap-6 md:mt-6">
-            <Link
-              href="/case-studies"
-              className="group inline-flex items-center gap-2 font-medium text-[var(--navy)] transition-colors hover:text-[var(--navy)]/80"
+          <div className="my-auto py-14 lg:py-20">
+            <h1
+              id="hero-heading"
+              className="animate-hero-rise max-w-[10ch] text-balance text-[clamp(3.35rem,8.3vw,7.1rem)] font-medium leading-[0.91] tracking-[-0.065em] [animation-delay:70ms] lg:text-[clamp(4.4rem,6.4vw,6.8rem)]"
             >
-              view our work
-              <ArrowUpRight
-                className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                aria-hidden="true"
-              />
+              Digital work of lasting value.
+            </h1>
+
+            <div className="animate-hero-rise mt-9 grid max-w-[38rem] gap-8 border-t border-white/15 pt-7 [animation-delay:140ms] sm:grid-cols-[1fr_auto] sm:items-end md:mt-12">
+              <p className="max-w-[31rem] text-[1.02rem] leading-7 text-white/65 md:text-lg md:leading-8">
+                We design and build distinctive websites, brands and digital
+                products for organisations with ambition.
+              </p>
+
+              <Link
+                href="#contact"
+                className="group inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-white hover:bg-white hover:text-[#0b101b]"
+                aria-label="Start a project"
+              >
+                <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="animate-hero-rise flex items-end justify-between gap-6 text-[11px] uppercase tracking-[0.18em] text-white/40 [animation-delay:210ms]">
+            <Link href="/case-studies" className="group flex items-center gap-3 text-white/70 transition-colors hover:text-white">
+              Selected projects
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
             </Link>
-
-            <span className="hidden h-3.5 w-px bg-[var(--navy)]/15 sm:block" aria-hidden="true" />
-
-            <Link
-              href="#contact"
-              className="inline-flex w-full items-center justify-center rounded-full bg-[var(--navy)] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#162038] sm:w-auto sm:py-2.5"
-            >
-              start a project
+            <Link href="#intro" className="hidden items-center gap-2 sm:flex" aria-label="Scroll to introduction">
+              Scroll
+              <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
             </Link>
           </div>
         </div>
 
-        {/* Bottom meta + scroll prompt */}
-        <div className="mt-6 flex items-end justify-between gap-6 pt-2 md:mt-8">
-          <p className="hidden max-w-[15rem] text-sm leading-6 text-[var(--navy)]/55 md:block">
-            Web design · Development · Branding<br />
-            Sheffield Technology Park, Sheffield
-          </p>
+        <div className="animate-hero-rise relative min-h-[28rem] overflow-hidden border-t border-white/10 [animation-delay:130ms] lg:min-h-0 lg:border-t-0 lg:pl-10 xl:pl-14">
+          <HeroProjectCarousel />
+        </div>
+      </div>
 
-          <Link
-            href="#intro"
-            className="group ml-auto flex min-h-11 flex-col items-center justify-center gap-1.5 text-[var(--navy)]/65 transition-colors hover:text-[var(--navy)] md:ml-0"
-            aria-label="Scroll to content"
-          >
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em]">
-              Scroll
-            </span>
-            <span className="flex h-8 w-5 items-start justify-center rounded-full border-2 border-[var(--navy)]/20 pt-1.5 transition-colors group-hover:border-[var(--navy)]/45">
-              <span className="h-1.5 w-px animate-scroll-wheel rounded-full bg-[var(--navy)]/50" />
-            </span>
-          </Link>
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-[90rem] flex-wrap items-center justify-between gap-x-10 gap-y-2 px-5 py-4 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/38 mobile-safe-x md:px-8 lg:px-10">
+          <span>Strategy &amp; direction</span>
+          <span>Identity &amp; design</span>
+          <span>Web &amp; digital products</span>
+          <span>Optimisation &amp; growth</span>
         </div>
       </div>
     </section>
