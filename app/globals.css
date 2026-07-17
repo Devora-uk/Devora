@@ -780,11 +780,11 @@
 
   /* Legacy section backgrounds — now token driven for easier theming */
   .section-cream {
-    background: var(--cream);
+    background: #FAF8F4;
   }
 
   .section-dark {
-    background-color: var(--navy);
+    background-color: #0b101b;
     color: #F5F4F0;
   }
 

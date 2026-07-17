@@ -94,11 +94,7 @@ export function Header() {
   ]
 
   const onHero = isHomePage && !scrolled
-  const onDarkPageTop =
-    !scrolled &&
-    (pathname.startsWith("/services") ||
-      pathname.startsWith("/industries") ||
-      pathname.startsWith("/areas-we-cover"))
+  const onDarkPageTop = !scrolled && pathname !== "/" && pathname !== "/thank-you"
   const useLightHeaderText = onDarkPageTop || onHero
   const textClass = useLightHeaderText ? "text-white" : "text-[var(--navy)]"
   const activeTextClass = textClass

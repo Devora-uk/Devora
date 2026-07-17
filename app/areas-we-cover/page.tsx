@@ -197,7 +197,7 @@ export default function AreasWeCoverPage() {
           return (
             <section
               key={country}
-              className={isDark ? "bg-black page-section text-white" : "bg-[var(--cream)] page-section text-[var(--navy)]"}
+              className={isDark ? "bg-[#0b101b] page-section text-white" : "bg-[#FAF8F4] page-section text-[var(--navy)]"}
             >
               <div className="page-container">
                 <h2 className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.12] tracking-tight">

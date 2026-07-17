@@ -6,7 +6,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="bg-black page-section text-white"
+      className="bg-[#0b101b] page-section text-white"
       aria-labelledby="about-heading"
     >
       <div className="page-container grid gap-10 md:grid-cols-2 md:items-start md:gap-14 lg:gap-24">

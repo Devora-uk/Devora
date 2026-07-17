@@ -106,7 +106,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="section-cream section-shell-cream relative overflow-hidden mobile-safe-x page-section"
+      className="section-shell-cream relative overflow-hidden bg-[#F1EDE6] mobile-safe-x page-section"
     >
       <div
         className="pointer-events-none absolute -left-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-[#CCFF00]/10 blur-3xl"

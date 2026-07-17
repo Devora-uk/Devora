@@ -10,7 +10,7 @@ export function Footer() {
 
   return (
     <footer
-      className="section-dark border-t border-white/10 mobile-safe-x px-5 py-9 text-white max-md:pb-[max(2rem,env(safe-area-inset-bottom))] md:px-8 md:py-10 lg:px-10"
+      className="bg-[#0b101b] border-t border-white/10 mobile-safe-x px-5 py-9 text-white max-md:pb-[max(2rem,env(safe-area-inset-bottom))] md:px-8 md:py-10 lg:px-10"
       role="contentinfo"
     >
       <div className="page-container">

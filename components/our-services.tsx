@@ -40,7 +40,7 @@ export function OurServices() {
   return (
     <section
       id="services"
-      className="section-cream mobile-safe-x page-section"
+      className="border-b border-[var(--navy)]/8 bg-[#FAF8F4] mobile-safe-x page-section"
       aria-labelledby="services-list-heading"
     >
       <div className="page-container">

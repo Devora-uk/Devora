@@ -18,14 +18,14 @@ export function PageCta({
   className,
 }: PageCtaProps) {
   return (
-    <section className={cn("bg-black page-section text-white", className)}>
+    <section className={cn("border-t border-white/10 bg-[#0b101b] page-section text-white", className)}>
       <div className="page-container md:flex md:items-end md:justify-between md:gap-12">
         <div className="max-w-2xl md:max-w-xl lg:max-w-2xl">
-          <h2 className="text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.12] tracking-tight text-white">
+          <h2 className="text-balance text-[clamp(1.9rem,4vw,3rem)] font-medium leading-[1.08] tracking-[-0.035em] text-white">
             {title}
           </h2>
           {description && (
-            <p className="mt-5 text-base font-medium leading-7 text-white md:mt-6 md:text-lg md:leading-8">
+            <p className="mt-5 text-base leading-7 text-white/65 md:mt-6 md:text-lg md:leading-8">
               {description}
             </p>
           )}

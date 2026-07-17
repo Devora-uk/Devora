@@ -193,7 +193,7 @@ export function OurWork() {
   return (
     <section
       id="work"
-      className="section-cream section-shell-cream mobile-safe-x page-section"
+      className="section-shell-cream bg-[#F1EDE6] mobile-safe-x page-section"
       aria-labelledby="work-heading"
     >
       <div className="page-container">

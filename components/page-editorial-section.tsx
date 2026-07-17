@@ -23,14 +23,14 @@ export function PageEditorialSection({
       id={id}
       className={cn(
         "page-section",
-        isBlack ? "bg-black text-white" : "bg-[var(--cream)] text-[var(--navy)]",
+        isBlack ? "bg-[#0b101b] text-white" : "bg-[#FAF8F4] text-[var(--navy)]",
         className
       )}
     >
       <div className="page-container max-w-3xl">
         <h2
           className={cn(
-            "text-balance text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-[1.12] tracking-tight",
+            "text-balance text-[clamp(1.9rem,4vw,3rem)] font-medium leading-[1.08] tracking-[-0.035em]",
             isBlack ? "text-white" : "text-[var(--navy)]"
           )}
         >
@@ -38,8 +38,8 @@ export function PageEditorialSection({
         </h2>
         <div
           className={cn(
-            "mt-6 space-y-5 text-base font-medium leading-7 md:mt-8 md:text-lg md:leading-8",
-            isBlack ? "text-white" : "text-[var(--navy)]"
+            "mt-7 space-y-5 border-t pt-7 text-base leading-7 md:mt-9 md:text-lg md:leading-8",
+            isBlack ? "border-white/15 text-white/70" : "border-[var(--navy)]/10 text-[var(--navy)]/72"
           )}
         >
           {children}

@@ -79,7 +79,7 @@ export function SuccessStories() {
   return (
     <section
       id="testimonials"
-      className="bg-black page-section mobile-safe-x text-white"
+      className="bg-[#0b101b] page-section mobile-safe-x text-white"
       aria-labelledby="testimonials-heading"
     >
       <div className="page-container">
